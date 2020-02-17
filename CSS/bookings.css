@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap');
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', 'PT Sans Narrow', sans-serif;
+}
+
+/* main heading */
+@media only screen and (min-width: 360px) {
+  .container-booking {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .booking-heading {
+    display: flex;
+    width: 100%;
+    margin-top: 5em;
+    justify-content: space-between;
+  }
+  
+  /*Form for booking*/
+  .position {
+    position: relative;
+  }
+  
+  /*Departure selection*/
+  .booking-box {
+    position: relative;
+    width: 100%;
+    padding-bottom: 1rem;
+  }
+  
+  .select {
+    position: relative;
+    margin: auto;
+    width: 100%;
+  }
+  
+  .select-heading {
+    margin: auto;
+    margin-top: 0.2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .selection {
+    border-color: #666666;
+    border-radius: 5px;
+    border-style: solid;
+    width: 100%;
+    height: 2.5rem;
+    -webkit-appearance: none;
+  }
+  
+  .selection:hover {
+    border-color: #f10000;
+  }
+  
+  .selection option:hover {
+    cursor: pointer;
+  }
+  
+  .booking-box img[src*="down-arrow"] {
+    margin: auto;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .flight-bookpc {
+    width: 0px;
+  }
+  
+  .flight-book {
+    position: relative;
+    width: 100%;
+    margin-bottom: 2px;
+  }
+  
+  /* Arrow Styles */
+  .arrow {
+     position: absolute;
+     height: 15px;
+     width: 15px;
+     right: 12px;
+     top: 56px;
+}
+ .arrow::before, .arrow::after {
+     content: "";
+     position: absolute;
+     bottom: 0px;
+     width: 0.15rem;
+     height: 100%;
+     transition: all 0.5s;
+}
+ .arrow::before {
+     left: -5px;
+     transform: rotate(45deg);
+     background-color: #f10000;
+}
+ .arrow::after {
+     left: 5px;
+     transform: rotate(-45deg);
+     background-color: #f10000;
+}
+ .open .arrow::before {
+     left: -5px;
+     transform: rotate(-45deg);
+}
+ .open .arrow::after {
+     left: 5px;
+     transform: rotate(45deg);
+}
+  
+}

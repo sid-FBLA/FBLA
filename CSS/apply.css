@@ -1,0 +1,224 @@
+/* mobile */
+
+@media only screen and (min-width: 360px) {
+  /*The original .box is in DRY CSS in main.css*/
+  .box {
+    height: 25%;
+    max-height: 320px;
+  }
+  
+  .gradient-background {
+    height: 550px;
+  }
+  
+  .gradient-background h1 {
+    color: white;
+    font-weight: bold;
+    font-size: 3rem;
+  }
+  
+  .headline {
+    padding-top: 2.5rem;
+    text-align: center;
+  }
+  
+  .number {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    text-align: center;
+    color: white;
+    height: 1.5em;
+    width: 1.5em;
+    border: solid #f10;
+    border-radius: 50%;
+    background-color: red;
+    margin-bottom: 1.5rem;
+  }
+  .instruction {
+    text-align: center;
+  }
+  
+  .info {
+    margin: auto;
+    text-align: center;
+  }
+  
+  .more_info {
+    display: none;
+  }
+  
+  /* For The Collapsible; Collapsibles shared content */
+  label[class="expander"] {
+    margin: auto;
+    display: block;
+    cursor: pointer;
+    background: url("../Images/expand-down.png") no-repeat top center;
+    padding: 0.5rem;
+    width: 32px;
+    height: 32px;
+    transition: 250ms;
+    margin-bottom: 0.5rem;
+    border-bottom-width: 1px;
+    border-bottom: solid transparent;
+  }
+  
+  label[class="expander"]:hover {
+    cursor: pointer;
+    border-bottom-color: #f10000;
+  }
+  
+  label[class="expander"]:not:hover {
+    border-bottom-color: transparent;
+  }
+  
+  #expander1,
+  #expander2,
+  #expander3,
+  #expander4 {
+    margin: auto;
+    width: 32px;
+    height: 32px;
+    display: none;
+  }
+  
+  .collapsible {
+    max-height: 0;
+    overflow: hidden;
+    margin: auto;
+    /*margin-top: 0.5rem;*/
+  }
+  
+  .step {
+    margin-top: 5rem;
+  }
+  
+ /* Specific Height For Each Collapsible(Transitions don't work with 'auto') */ 
+ 
+ /* First Collapsible, There is definitely a better and less repetitive way to do this, but my brain is feeling too racked right now*/
+  input[class="num1"]:checked ~ .collap-one{
+    max-height: 40px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+  
+  input[id="expander1"]:checked +label {
+    background-image: url("../Images/expand-up.png");
+  }
+  
+  input[id="expander1"]:not(:checked) +label {
+    background-image: url("../Images/expand-down.png");
+  }
+  
+  
+  input[id="expander1"]:not(:checked) ~ .collapsible {
+    max-height: 0;
+    transition-property: max-height;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+  }
+  
+  /*Second Collapsible*/
+  input[class="num2"]:checked ~ .collap-two {
+    max-height: 380px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+  
+  input[id="expander2"]:checked +label {
+    background-image: url("../Images/expand-up.png");
+  }
+  
+  input[id="expander2"]:not(:checked) +label {
+    background-image: url("../Images/expand-down.png");
+  }
+  
+  
+  input[id="expander2"]:not(:checked) ~ .collapsible {
+    max-height: 0;
+    transition-property: max-height;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+  }
+  
+  img[alt="document icon"],
+  a[href*="businessinsider.com"] {
+    margin-top: 0.5rem;
+  }
+  
+  /*Third Collapsible*/
+  input[class="num3"]:checked ~ .collap-three {
+    max-height: 90px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+  
+  input[id="expander3"]:checked +label {
+    background-image: url("../Images/expand-up.png");
+  }
+  
+  input[id="expander3"]:not(:checked) +label {
+    background-image: url("../Images/expand-down.png");
+  }
+  
+  
+  input[id="expander3"]:not(:checked) ~ .collapsible {
+    max-height: 0;
+    transition-property: max-height;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+  }
+  /*Fourth Collapsible*/
+  input[id="expander4"]:not(:checked) +label {
+    background-image: url("../Images/expand-down.png");
+  }
+  
+  input[class="num4"]:checked ~ .collap-four {
+    max-height: 40px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+  
+  input[id="expander4"]:not(:checked) ~ .collapsible {
+    max-height: 0;
+    transition-property: max-height;
+    transition-duration: 1s;
+    transition-timing-function: ease-out;
+  }
+  
+  input[id="expander4"]:checked +label {
+    background-image: url("../Images/expand-up.png");
+  } 
+  
+  .step div:last-child {
+    margin-bottom: 2rem;
+  }
+  
+  .info-dress {
+    text-align: center;
+  }
+  
+  .info-dress li {
+    padding-bottom: 0.25rem;
+  }
+  
+  .info-dress li:nth-child(-4n+8),
+  .info-dress li:first-child {
+    font-weight: bold;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+   
+}
+
+@media only screen and (min-width: 1024px) {
+  .collapsible {
+    max-width: 821.19px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .collapsible {
+    max-width: 1208px;
+  }
+}

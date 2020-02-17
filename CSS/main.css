@@ -1,0 +1,480 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow&display=swap');
+
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', 'PT Sans Narrow', sans-serif;
+}
+
+img {
+  display: block; 
+}
+
+/* Background Color EDEFF0 */
+
+/* DRY CSS */
+
+.text-center {
+  text-align: center;
+}
+  
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.credit {
+  font-size: 0.5rem;
+}
+    
+@media only screen and (min-width: 360px) {  
+  .pc {
+    display: none;
+  }
+  
+  .pc-vis {
+    visibility: hidden;
+  }
+  
+  .container-mobile {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .box {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 2rem;
+    box-shadow: 0rem 0.2rem 0.4rem 0.2rem rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    width: 100%;
+    height: auto;
+  }
+  
+  .inline-textpic {
+    display: inline-flex;
+  }
+  
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  a:hover {
+    transition: 50ms;
+    transition-timing-function: ease-in;
+    text-decoration: underline;
+    text-decoration-color: #f10000;
+    cursor: pointer;
+  }
+  /*button elements*/
+  .button {
+    background-color: #f10000;
+    border: none;
+    border-radius: 5px;
+    padding: 1rem 2rem 1rem 2rem;
+    color: white;
+    border: solid transparent;
+    max-height: 54px;
+  }
+  
+  .button:hover {
+    cursor: pointer;
+  }
+  
+  /* Footer */
+  footer {
+    bottom: 0;
+    width: 100%;
+    color: black;
+    background-color: white;
+    text-align: center;
+    box-shadow: 0rem -0.2rem 0.4rem 0.2rem rgba(0, 0, 0, 0.1);
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .footer-link {
+    color: #f10000;
+  }
+  
+  .socials {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    width: auto;
+  }
+  
+  .socials img {
+    border-radius: 50%;
+    border: solid transparent;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .box {
+    margin: 0;
+    margin-top: 5rem;
+    box-shadow: 0rem 0.2rem 0.4rem 0.2rem rgba(0, 0, 0, 0.1);
+    padding: 0.5rem;
+    width: 30%;
+    min-width: 375px;
+    max-width: 375px;
+    transition: 500ms;
+    border: solid transparent;
+  }
+  
+  .box:hover {
+    border-color: #f10000;               
+  }
+  
+  /*buttons*/
+  .button {
+    text-align: center;
+    bottom: 0;
+    font-size: 1em;
+  }
+  
+  .button:hover {
+   transition: 200ms;
+   background-color: white;
+   color: #f10000;
+   border-color: #f10000;
+  }
+}
+
+
+/* Main Page-Mobile */
+@media only screen and (min-width: 360px) {
+  /* Navigation */
+  .nav-header {
+    background-color: #ffffff;
+    z-index: 100;
+  }
+  
+  #logo-pc {
+    display: none;
+  }
+  
+  #logo-mobile {
+    margin: auto;
+  }
+  
+  /*This has been done to override the normalize.css margin: 0.67em property*/
+  .name {
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+  }
+  
+  .main-nav {
+    display: flex;
+    flex-direction: column;
+    width: 80vw;
+    margin: auto;
+    border-bottom: 0.2rem solid #f10000;
+  }  
+
+  .main-nav li {
+    /*background-color: #FFDD00;*/
+    text-align: center;
+    color: #ffffff;
+    padding-top: 2em;
+    padding-bottom: 2em;
+    border-top: 0.2rem solid #f10000;
+  }
+  
+  .main-nav li a {
+    color: black;
+    text-decoration: none;
+  }
+  
+  /*rest of main page */
+  .animation {
+    display: none;
+  }
+  
+  .wrapper {
+    min-height: calc(100vh - 472px);
+    margin-bottom: 5rem;
+  }
+  
+  .box .state,
+  .box .city {
+    text-align: center;
+  }
+  
+  .box .city {
+    margin-bottom: 0.2rem;
+    margin-top: 0.5rem;
+  }
+ /* 
+  .red-border:hover {
+    transition: 250ms;
+    border-bottom: solid transparent;
+    border-bottom-color: #f10000;
+  }*/
+  
+  /*Footer Adjustments*/
+  .footer-left,
+  .footer-center,
+  .footer-right {
+    margin-top: 1.5rem;
+  }
+  
+  .footer-right .inline-textpic {
+    font-size: 1rem;
+  }
+  
+  .footer-right .inline-textpic img {
+    margin-right: 0.5rem;
+  }
+  
+  .footer-right .inline-textpic:nth-child(n+1) {
+    margin-top: 1rem;
+  }
+  
+  .footer-right .inline-textpic:last-child {
+    margin-bottom: 1rem;
+  }
+  
+  .credit:first-child {
+    margin-top: 1rem;
+  }
+}
+
+/* Navigation-PC */
+@media only screen and (min-width: 1024px) {
+  .nav-header {
+    position: fixed;
+    background-color: #ffffff;
+    height: auto;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    box-shadow: 0rem 0.2rem 0.4rem 0.2rem rgba(0, 0, 0, 0.1);
+  } 
+
+  .name {
+    display: none;
+  }
+  
+  .main-nav {
+    display: flex;
+    width: 829.19px;
+    margin: auto;
+    border-bottom: none;
+    flex-direction: row;
+    margin-top: 1rem;
+    justify-content: flex-start;
+    /* To override some other property */
+    margin-bottom: 1rem;
+    /*margin-bottom: 1.5625rem;*/
+  }
+  
+  .main-nav li {
+    display: flex;
+    border-top: none;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
+    border-left: solid 2px rgba(255, 17, 0, 0.9);
+    margin-top: auto;
+    font-size: 1.5em;
+  }
+  
+  /*selects 1st list item, idk why*/
+  .main-nav li:nth-child(2) {
+    border-left: none;
+    padding-left: 1rem;
+    border-right: solid 2px rgba(255, 17, 0, 0.9);
+  }
+  
+  /*selects 2nd list item idk why*/
+  .main-nav li:nth-child(3) {
+    margin-left: auto;
+  }
+  
+  .main-nav li a:hover {
+    transition: 250ms;
+    color: #f10000;
+  }
+  
+  #logo-mobile {
+    display: none;
+  }
+  
+  #logo-pc {
+    /* To re-display element */
+    display: block;
+    align-self: center;
+    width: 50px;
+    height: 50px;
+  }
+  
+  
+  /* Main Page Styles*/
+  
+  .animation {
+    display: flex;
+    justify-content: flex-start;
+    height: 550px;
+  }
+  
+  .gradient-background {
+    background: linear-gradient(#f10000, #b30707);
+  }
+  
+  .space-between {
+    margin-top: 175px;
+    width: 33.333%;
+  }
+  
+  .animation img {
+    margin: auto;
+  }
+  
+  .space-between p {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  #slogan {
+    position: absolute;
+    left: 50%;
+    /*Center*/
+    margin-left: -302.595px;
+    top: 5%;
+    z-index: 7;
+    margin-top: 93px;
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .container-location {
+    margin: auto;
+    width: 819px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .book-button {
+    width: 35%;
+    align-self: flex-end;
+  }
+  
+  /*Footer Adjustments*/
+  .wrapper {
+    /*To create a sticky footer*/
+    min-height: calc(100vh - 373px);
+    /*To place content below header*/
+    margin-top: 82px;
+  }
+  
+  footer {
+    flex-direction: row;
+    height: 216px;
+  }
+  
+  .footer-left {
+    width: 33%;
+    margin-top: 0;
+  }
+  
+  .footer-left h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .footer-left p {
+    margin-bottom: 0.5rem;
+    text-align: left;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  .footer-center {
+    width: 33%;
+    margin: 0;
+    border-right: dashed rgba(255, 17, 0, 0.7);
+    align-items: center;
+    border-left: dashed rgba(255, 17, 0, 0.7);
+  }
+  
+  .socials {
+    margin-top: 5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .socials img {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  
+  .socials img:hover {
+    transition: 250ms;
+    border-color: #f10000;
+  }
+  
+  .footer-right {
+    margin-top: 0;
+    width: 33%;
+    align-items: flex-start;
+  }
+  
+  .footer-right p {
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-right p:first-child {
+    margin-top: 1.5rem;
+  }
+  
+  .footer-right .inline-textpic:first-child {
+    margin-top: 0.5rem;
+  }
+  
+  .footer-right img {
+    margin-left: 1rem;
+  }
+  
+}
+
+/* Larger screens */
+@media only screen and (min-width: 1440px) {
+  
+  .container-location {
+    min-width: 1200px;
+    max-width: 1200px;
+  }
+  
+  .main-nav {
+    /*The 8px is for the padding on the list items*/
+    width: 1208px;
+  }
+  
+  /*Footer Adjustments*/
+  .footer-left h3 {
+    margin-bottom: 1.5rem;
+  }
+  .footer-right p {
+    margin-bottom: 0.5rem;
+  }
+}
