@@ -1,6 +1,6 @@
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log("DOM content fully loaded and parsed");
-  
+
   const newark = [40.6895, -74.1745];
   //Newark Liberty Airport
   const cleveland = [41.4058, -81.8539];
@@ -11,13 +11,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const warwick = [41.7001, -71.4162];
   const wilmington = [34.2669, -77.9105];
   const baltimore = [39.1774, -76.6684];
-  
-  
+
+
   /*other global variables*/
-  
-  
+
+
   console.log("hi");
-  
+
   function calc(city1, city2) {
     var x1 = city1[0];
     var y1 = city1[1];
@@ -45,24 +45,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     return price;
   };
-  
+
   console.log(calc(boston, warwick));
-  
+
   let search = document.querySelector('.flight-book');
   const form = document.querySelector('form');
   const select = document.querySelector('.select');
   const wrapper = document.querySelector('.wrapper');
   let searchClick = 0;
-  
+
   //Function for mobile depature/arrival date and time
   function create_element(type, parent, classtype) {
-    var identify = document.createElement(type); 
+    var identify = document.createElement(type);
     identify.classList.add(classtype);
     parent.appendChild(identify);
-    console.log(identify); 
+    console.log(identify);
     return identify;
-  };  
-  
+  };
+
   /*
   const wrapper = document.querySelector('.wrapper');
   let wallPaper = create_element('DIV', wrapper);
@@ -70,13 +70,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
   wallPaper.style.height = '100vh';
   console.log(wallPaper);
   */
-  
+
   //creates the element contain
   let contain = create_element('DIV', form);
   contain.style.display = "inline-block";
   contain.style.width = "100%";
   contain.setAttribute("id", "check-height");
-  
+
   function form2() {
     /*Submit info button*/
     if(searchClick === 0) {
@@ -85,57 +85,57 @@ window.addEventListener('DOMContentLoaded', (event) => {
       buttonbook.style.backgroundColor = '#f10000';
       buttonbook.style.color = 'white';
       buttonbook.innerHTML = 'BOOK';
-      console.log(buttonbook);      
-      
+      console.log(buttonbook);
+
       /*Departure Date Heading*/
       const depHeading = create_element('H2', contain, 'select-heading');
-      depHeading.innerHTML = 'Departure Date';      
-      
+      depHeading.innerHTML = 'Departure Date';
+
       /*Departure date + time select menus*/
       const depDate = create_element('DIV', contain, 'selection');
       depDate.style.borderWidth = 1;
       depDate.style.cssFloat = "left";
       depDate.style.width = "75%";
       depDate.style.marginBottom = 48;
-      
+
       const depTime = create_element('SELECT', contain, 'selection');
       depTime.style.width = "25%";
       depTime.style.cssFloat = "right";
       depTime.style.marginBottom = 48;
-      
+
       /*Arrival Date Heading*/
       const arrHeading = create_element('H2', contain, 'select-heading');
       arrHeading.innerHTML = 'Arrival Date';
-      
+
       /*Arrival date + time select menus*/
       const arrDate = create_element('DIV', contain, 'selection');
       arrDate.style.borderWidth = 1;
       arrDate.style.cssFloat = "left";
       arrDate.style.width = "75%";
       arrDate.style.marginBottom = 48;
-      
+
       const arrTime = create_element('SELECT', contain, 'selection');
       arrTime.style.width = "25%";
       arrTime.style.cssFloat = "right";
       arrTime.style.marginBottom = 48;
     }
-    
+
     //Select 2
     /*$('.selection option').select2({
       backgroundColor: "red";
     });*/
-    
-    //Now that all the elements are inside the container we can check for the height of the container 
-    contain.style.overflow = "hidden";  
+
+    //Now that all the elements are inside the container we can check for the height of the container
+    contain.style.overflow = "hidden";
     searchClick = 1;
   };
-  
+
   //Event Listeners
   select.addEventListener('click', function() {
-  
-  }
-    
-/*date booking for mobile*/  
+
+  });
+
+/*date booking for mobile*/
   search.addEventListener('click', function() {
       form2();
       const containHeight = $('#check-height').height();
@@ -143,6 +143,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       contain.style.height = 0;
       $('#check-height').animate({height:containHeight}, 1000);
   });
-    
+
 
 });
