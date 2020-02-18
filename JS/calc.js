@@ -47,6 +47,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   };
 
   console.log(calc(boston, warwick));
+  console.log(calc(newark, cleveland));
 
   let search = document.querySelector('.flight-book');
   const form = document.querySelector('form');
