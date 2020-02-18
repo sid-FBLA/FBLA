@@ -50,9 +50,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   let search = document.querySelector('.flight-book');
   const form = document.querySelector('form');
-  const select = document.querySelector('.select');
+  const select = document.querySelector('.selection');
   const wrapper = document.querySelector('.wrapper');
-  const arrow = document.querySelector('.arrow')
+  const arrow = document.querySelector('.arrow');
+  const selectMenus = document.querySelectorAll('.select')
+  const body = document.querySelector('body');
   let searchClick = 0;
 
   //Function for mobile depature/arrival date and time
@@ -64,13 +66,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     return identify;
   };
 
-  /*
-  const wrapper = document.querySelector('.wrapper');
-  let wallPaper = create_element('DIV', wrapper);
-  wallPaper.style.backgroundColor = 'blue';
-  wallPaper.style.height = '100vh';
-  console.log(wallPaper);
-  */
 
   //creates the element contain
   let contain = create_element('DIV', form);
@@ -132,8 +127,27 @@ window.addEventListener('DOMContentLoaded', (event) => {
   };
 
   //Event Listeners
+  let fakeboo = 0;
+
+  body.addEventListener('click', function(e) {
+    if (!select.contains(e.target)) {
+      arrow.classList.remove('arrow-down')
+      arrow.classList.add('arrow-up')
+      fakeboo = 0;
+      console.log(fakeboo);
+    }
+  })
+
   select.addEventListener('click', function() {
-    arrow.classList.add('arrow-down');
+    if (fakeboo === 0) {
+      arrow.classList.remove('arrow-up')
+      arrow.classList.add('arrow-down');
+      fakeboo = 1;
+    } else if(fakeboo === 1) {
+      arrow.classList.remove('arrow-down')
+      arrow.classList.add('arrow-up')
+      fakeboo = 0;
+    }
   });
 
 /*date booking for mobile*/
@@ -144,6 +158,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       contain.style.height = 0;
       $('#check-height').animate({height:containHeight}, 1000);
   });
+
+
 
 
 });
