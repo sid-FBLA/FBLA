@@ -52,6 +52,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const form = document.querySelector('form');
   const select = document.querySelector('.select');
   const wrapper = document.querySelector('.wrapper');
+  const arrow = document.querySelector('.arrow')
   let searchClick = 0;
 
   //Function for mobile depature/arrival date and time
@@ -132,7 +133,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //Event Listeners
   select.addEventListener('click', function() {
-
+    arrow.classList.add('arrow-down');
   });
 
 /*date booking for mobile*/
