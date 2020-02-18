@@ -14,39 +14,39 @@
     width: 80%;
     margin: auto;
   }
-  
+
   .booking-heading {
     display: flex;
     width: 100%;
     margin-top: 5em;
     justify-content: space-between;
   }
-  
+
   /*Form for booking*/
   .position {
     position: relative;
   }
-  
+
   /*Departure selection*/
   .booking-box {
     position: relative;
     width: 100%;
     padding-bottom: 1rem;
   }
-  
+
   .select {
     position: relative;
     margin: auto;
     width: 100%;
   }
-  
+
   .select-heading {
     margin: auto;
     margin-top: 0.2rem;
     margin-bottom: 1rem;
     text-align: center;
   }
-  
+
   .selection {
     border-color: #666666;
     border-radius: 5px;
@@ -55,64 +55,54 @@
     height: 2.5rem;
     -webkit-appearance: none;
   }
-  
+
   .selection:hover {
     border-color: #f10000;
   }
-  
+
   .selection option:hover {
     cursor: pointer;
   }
-  
+
   .booking-box img[src*="down-arrow"] {
     margin: auto;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
   }
-  
+
   .flight-bookpc {
     width: 0px;
   }
-  
+
   .flight-book {
     position: relative;
     width: 100%;
     margin-bottom: 2px;
   }
-  
+
   /* Arrow Styles */
   .arrow {
-     position: absolute;
-     height: 15px;
-     width: 15px;
-     right: 12px;
-     top: 56px;
-}
- .arrow::before, .arrow::after {
-     content: "";
-     position: absolute;
-     bottom: 0px;
-     width: 0.15rem;
-     height: 100%;
-     transition: all 0.5s;
-}
- .arrow::before {
-     left: -5px;
-     transform: rotate(45deg);
-     background-color: #f10000;
-}
- .arrow::after {
-     left: 5px;
-     transform: rotate(-45deg);
-     background-color: #f10000;
-}
- .open .arrow::before {
-     left: -5px;
-     transform: rotate(-45deg);
-}
- .open .arrow::after {
-     left: 5px;
-     transform: rotate(45deg);
-}
-  
+    position: absolute;
+    border: solid #f10000;
+    border-width: 0 3px 3px 0;
+    transform: rotate(-135deg);
+    padding: 9px;
+    right: 20px;
+    top: 59px;
+  }
+
+  .arrow-down {
+    transition-duration: 500ms;
+    top: 50px;
+    /*Rotates from original position so for a clockwise effect, this direction is required*/
+    transform: rotate(-315deg);
+  }
+
+  .arrow-up {
+    transition-duration: 500ms;
+    top: 59px;
+    transform: rotate(-135deg);
+  }
+
+
 }
