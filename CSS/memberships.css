@@ -1,16 +1,28 @@
-@media only screen and (min-width: 360px) { 
+@media only screen and (min-width: 360px) {
+
+  .gradient-background {
+    display: block;
+    margin-top: 2rem;
+  }
+
   .member-intro {
-    height: 500px;
+    height: 250px;
     display: flex;
   }
-  
+
   .member-intro h1{
     color: white;
     text-align: center;
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: bold;
     align-self: center;
     margin: auto;
+  }
+
+  .page-slogan {
+    margin-top: 2rem;
+    font-size: 1rem;
+    text-align: center;
   }
 
 }
