@@ -1,12 +1,13 @@
 @media only screen and (min-width: 360px) {
 
+  img {
+    width: 256px;
+    height: 256px;
+  }
+
   .gradient-background {
     display: block;
     margin-top: 2rem;
-  }
-
-  .member-intro {
-    display: flex;
   }
 
   .member-intro h1{
@@ -16,7 +17,9 @@
     font-weight: bold;
     align-self: center;
     margin: auto;
+    padding-top: 2rem;
     margin-top: 2rem;
+    padding-bottom: 2rem;
     margin-bottom: 2rem;
   }
 
@@ -26,23 +29,89 @@
     text-align: center;
   }
 
+  .contain {
+    margin-top: 2rem;
+  }
+
+  /*.points {
+    border-bottom: solid #f10000;
+    border-bottom-style: dashed;
+  }*/
+
   #change-top-margin {
     margin-top: 0.2rem;
   }
 
-  .top-margin {
-    margin-top: 2rem;
-  }
-
-  .points{
-    border-bottom: solid #f10000;
-    border-bottom-style: dashed;
-  }
-
   .intro {
-    margin-top: 2rem;
+    margin-top: 3rem;
     text-align: center;
     font-size: 3rem;
+  }
+
+
+  .points .intro,
+  .intro {
+   width: 100%;
+   text-align: center;
+   border-top: 0.1rem solid #f10000;
+   border-top-style: dashed;
+   line-height: 0.1rem;
+   margin-bottom: 0.5rem;
+  }
+
+  .points span,
+  .intro:nth-child(n+3) span {
+    background:#fff;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .main {
+    margin-bottom: 1.5rem;
+    margin-top: 5rem;
+  }
+
+
+  .contain-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .contain-content img {
+    align-self: center;
+  }
+
+  .contain-text-content {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+  }
+
+  .contain-text-content h3 {
+    margin-top: 1rem;
+    font-size: 2.5rem;
+    text-align: center;
+    /*Extra stuff*/
+  }
+
+  .contain-text-content p {
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .benefits {
+    font-weight: bold;
+  }
+
+  .contain-text-content ul {
+    margin-top: 0.2rem;
+    list-style-type: circle;
+  }
+
+  .contain-text-content ul li {
+    font-size: 1.5rem;
   }
 
 }
