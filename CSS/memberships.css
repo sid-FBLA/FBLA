@@ -6,23 +6,43 @@
   }
 
   .member-intro {
-    height: 250px;
     display: flex;
   }
 
   .member-intro h1{
     color: white;
     text-align: center;
-    font-size: 3rem;
+    font-size: 5rem;
     font-weight: bold;
     align-self: center;
     margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 
   .page-slogan {
     margin-top: 2rem;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-align: center;
+  }
+
+  #change-top-margin {
+    margin-top: 0.2rem;
+  }
+
+  .top-margin {
+    margin-top: 2rem;
+  }
+
+  .points{
+    border-bottom: solid #f10000;
+    border-bottom-style: dashed;
+  }
+
+  .intro {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 3rem;
   }
 
 }
