@@ -53,9 +53,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const form = document.querySelector('form');
   const select = document.querySelector('.selection');
   const wrapper = document.querySelector('.wrapper');
-  const arrow = document.querySelector('.arrow');
-  const selectMenus = document.querySelectorAll('.select')
+  const arrow = document.querySelectorAll('.arrow');
+  const selectMenus = document.querySelectorAll('.selection')
+  console.log(selectMenus);
   const body = document.querySelector('body');
+
   let searchClick = 0;
 
   //Function for mobile depature/arrival date and time
@@ -128,17 +130,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   };
 
   //Event Listeners
+
   let fakeboo = 0;
 
-  body.addEventListener('click', function(e) {
-    if (!select.contains(e.target)) {
-      arrow.classList.remove('arrow-down')
-      arrow.classList.add('arrow-up')
-      fakeboo = 0;
-      console.log(fakeboo);
-    }
-  })
-
+/*
   select.addEventListener('click', function() {
     if (fakeboo === 0) {
       arrow.classList.remove('arrow-up')
@@ -149,7 +144,34 @@ window.addEventListener('DOMContentLoaded', (event) => {
       arrow.classList.add('arrow-up')
       fakeboo = 0;
     }
-  });
+  });*/
+  const select1 = document.querySelector('#select-1');
+  console.log(select1);
+  const select2 = document.querySelector('#select-2');
+
+  function flipper(e) {
+    let arrow = e.target.previousElementSibling;
+    if (arrow.classList.contains('arrow-down')) {
+      arrow.classList.remove('arrow-down');
+      arrow.classList.add('arrow-up');
+    } else {
+      arrow.classList.remove('arrow-up');
+      arrow.classList.add('arrow-down');
+    }
+  }
+/*
+  body.addEventListener('click', function(e) {
+    if (selectMenus != e.target) {
+      console.log(e.target);
+      for(let i = 0; i < arrow.length; i += 1) {
+        console.log(arrow.length);
+        $('.arrow').eq(i).removeClass('arrow-down');
+        $('.arrow').eq(i).addClass('arrow-up');
+      }
+  }) */
+
+  select1.addEventListener('click', flipper);
+  select2.addEventListener('click', flipper);
 
 /*date booking for mobile*/
   search.addEventListener('click', function() {
