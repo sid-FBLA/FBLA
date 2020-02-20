@@ -47,6 +47,10 @@
     text-align: center;
   }
 
+  .relative {
+    position: relative;
+  }
+
   .selection {
     border-color: #666666;
     border-radius: 5px;
@@ -84,23 +88,23 @@
   .arrow {
     position: absolute;
     border: solid #f10000;
-    border-width: 0 3px 3px 0;
+    border-width: 0 2px 2px 0;
     transform: rotate(-135deg);
-    padding: 9px;
-    right: 20px;
-    top: 59px;
+    padding: 6px;
+    right: 16px;
+    top: 16px;
   }
 
   .arrow-down {
     transition-duration: 500ms;
-    top: 50px;
+    top: 10px;
     /*Rotates from original position so for a clockwise effect, this direction is required*/
     transform: rotate(-315deg);
   }
 
   .arrow-up {
     transition-duration: 500ms;
-    top: 59px;
+    top: 16px;
     transform: rotate(-135deg);
   }
 

@@ -32,6 +32,7 @@
 
     src.appendChild(img);
   }
+
   //calculating width of the animation img container, then subtracting animation image width, then dividiing by 2 to calculate the left offset
   const width = document.querySelector('.space-between').offsetWidth;
   console.log(width);
@@ -58,14 +59,14 @@
 
     $('.animation img').show();
     $('.animation img').eq(0).animate({
-      left: leftoffset}, 'slow'
+      left: leftoffset}, 500, 'linear'
     );
     //Technically their are 3 children, as their are two discount.png's just leave this alone
-    $('.animation img').eq(2).delay(1000).animate({
-      left: leftoffset}, 'slow'
+    $('.animation img').eq(2).delay(500).animate({
+      left: leftoffset}, 500, 'linear'
     );
 
-    $('.animation img').eq(4).delay(2000).animate({
-      left: leftoffset}, 'slow'
+    $('.animation img').eq(4).delay(1000).animate({
+      left: leftoffset}, 500, 'linear'
     );
   }

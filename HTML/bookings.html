@@ -27,7 +27,7 @@
       <form class="booking-box">
         <div class="select">
           <h2 class="select-heading">Departure Airport</h2>
-          <div id="select-1">
+          <div id="select-1" class="relative">
             <span class="arrow"></span>
             <select name="departure" id="departure-location" class="selection">
               <option value=""></option>
@@ -40,7 +40,7 @@
 
         <div class="select">
           <h2 class="select-heading">Arrival Airport</h2>
-          <div id="select-2">
+          <div id="select-2" class="relative">
             <span class="arrow"></span>
             <select name="arrival" id="arrival-location" class="selection">
               <option value=""></option>
@@ -48,7 +48,8 @@
             </select>
           </div>
         </div>
-        <button type="submit" class="button flight-bookpc pc-vis">SEARCH FLIGHTS</button>
+        <button type="submit" class="button flight-bookpc pc">SEARCH FLIGHTS</button>
+          <img src="../Images/down-arrow.png" rel="down arrow" width="32" height="32">
       </form>
           <!--This element is exclusively for mobile, as it does not work with js when inside a form-->
       <button type="submit" class="button flight-book">SEARCH FLIGHTS</button>

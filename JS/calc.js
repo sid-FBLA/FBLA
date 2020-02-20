@@ -76,7 +76,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
   contain.style.width = "100%";
   contain.setAttribute("id", "check-height");
 
+  console.log(contain);
+
   function form2() {
+
+    //function to create select elements
+    function create_select(identify) {
+      let select = create_element('DIV', contain, 'relative');
+      select.setAttribute('ID', identify);
+      contain.appendChild(select);
+      return select;
+    };
+
+    //function to create arrow Elements
+    function create_arrow(parent) {
+      let arrow = create_element('SPAN', parent, 'arrow');
+      return arrow;
+    };
+
+    //function to create down arrow image
+    function create_image() {
+      let img = create_element('img', contain);
+      console.log(img);
+      img.src = '../../Images/down-arrow.png';
+      img.width = 32;
+      img.height = 32;
+    }
+
+    //Departure date elements down-arrow right offset
+
+    let offSet = $('.selection').width();
+    console.log(offSet);
+    let outerSet = offSet/4;
+    console.log(outerSet);
+    let right = outerSet + 16;
+    console.log(right);
+
+
+    console.log('hi')
+
     /*Submit info button*/
     if(searchClick === 0) {
       console.log(searchClick);
@@ -90,34 +128,58 @@ window.addEventListener('DOMContentLoaded', (event) => {
       const depHeading = create_element('H2', contain, 'select-heading');
       depHeading.innerHTML = 'Departure Date';
 
+      /*Depature Date Select DIV + Arrow*/
+      const select3 = create_select('select-3');
+      const arrow0 = create_arrow(select3);
+      arrow0.style.right = right;
+
+      /*Depature Time Select DIV + Arrow*/
+      const select4 = create_select('select-4');
+      const arrow1 = create_arrow(select4);
+
       /*Departure date + time select menus*/
       const depDate = create_element('DIV', contain, 'selection');
       depDate.style.borderWidth = 1;
       depDate.style.cssFloat = "left";
       depDate.style.width = "75%";
-      depDate.style.marginBottom = 48;
+      depDate.style.marginBottom = 8;
 
       const depTime = create_element('SELECT', contain, 'selection');
       depTime.style.width = "25%";
       depTime.style.cssFloat = "right";
-      depTime.style.marginBottom = 48;
+      depTime.style.marginBottom = 8;
+
+      /*Down Arrow*/
+      create_image();
 
       /*Arrival Date Heading*/
       const arrHeading = create_element('H2', contain, 'select-heading');
       arrHeading.innerHTML = 'Arrival Date';
+
+      /*Arrival Date Select DIV + Arrow*/
+      const select5 = create_select('select-5');
+      const arrow2 = create_arrow(select5);
+      arrow2.style.right = right;
+
+      /*Arrival Time Select DIV + Arrow*/
+      const select6 = create_select('select-6');
+      const arrow3 = create_arrow(select6);
 
       /*Arrival date + time select menus*/
       const arrDate = create_element('DIV', contain, 'selection');
       arrDate.style.borderWidth = 1;
       arrDate.style.cssFloat = "left";
       arrDate.style.width = "75%";
-      arrDate.style.marginBottom = 48;
+      arrDate.style.marginBottom = 8;
 
       const arrTime = create_element('SELECT', contain, 'selection');
       arrTime.style.width = "25%";
       arrTime.style.cssFloat = "right";
-      arrTime.style.marginBottom = 48;
+      arrTime.style.marginBottom = 8;
     }
+
+    /*Down Arrow*/
+    create_image();
 
     //Select 2
     /*$('.selection option').select2({
@@ -159,16 +221,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
       arrow.classList.add('arrow-down');
     }
   }
-/*
+
   body.addEventListener('click', function(e) {
-    if (selectMenus != e.target) {
-      console.log(e.target);
-      for(let i = 0; i < arrow.length; i += 1) {
-        console.log(arrow.length);
-        $('.arrow').eq(i).removeClass('arrow-down');
-        $('.arrow').eq(i).addClass('arrow-up');
-      }
-  }) */
+    if (select1 || select2 != e.target) {
+        $('.arrow').removeClass('arrow-down');
+        $('.arrow').addClass('arrow-up');
+    }
+  })
 
   select1.addEventListener('click', flipper);
   select2.addEventListener('click', flipper);
