@@ -189,17 +189,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function flipper(e) {
     let arrow = e.target.previousElementSibling;
     if (arrow.classList.contains('arrow-up')) {
-      arrow.classList.remove('arrow-up')
+      arrow.classList.remove('arrow-up');
       arrow.classList.add('arrow-down');
+      e.stopPropogation();
     } else if (arrow.classList.contains('arrow-down')) {
       arrow.classList.remove('arrow-down');
       arrow.classList.add('arrow-up');
+      e.stopPropogation();
     } else {
       arrow.classList.remove('arrow-up');
       arrow.classList.add('arrow-down');
+      e.stopPropogation();
     }
 
   };
+
+  /* Changes the arrow class to "up" when the user presses outside the body */
+  $("body").click(e => {
+    $('.arrow').removeClass('arrow-down');
+    $('.arrow').addClass('arrow-up');
+  });
 
     /* "Adding" all arrows to event listener */
     select1.addEventListener('click', flipper);
@@ -212,9 +221,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //Now that all the elements are inside the container we can check for the height of the container
     contain.style.overflow = "hidden";
-
-    let fakeboo = 0;
-
 
 /*date booking for mobile*/
   search.addEventListener('click', function() {
