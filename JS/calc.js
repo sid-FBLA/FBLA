@@ -60,7 +60,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   let searchClick = 0;
 
-  //Function for mobile depature/arrival date and time
+  //Function for creating elements
   function create_element(type, parent, classtype) {
     var identify = document.createElement(type);
     identify.classList.add(classtype);
@@ -78,21 +78,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   console.log(contain);
 
+  //function to create select elements
+  function create_select(identify, sibling) {
+    let select = create_element('DIV', contain, 'relative');
+    select.setAttribute('ID', identify);
+    contain.appendChild(select);
+    contain.insertBefore(select, sibling);
+    return select;
+  };
+
+  //function to create arrow Elements
+  function create_arrow(parent) {
+    let arrow = create_element('SPAN', parent, 'arrow');
+    return arrow;
+  };
+
   function form2() {
-
-    //function to create select elements
-    function create_select(identify) {
-      let select = create_element('DIV', contain, 'relative');
-      select.setAttribute('ID', identify);
-      contain.appendChild(select);
-      return select;
-    };
-
-    //function to create arrow Elements
-    function create_arrow(parent) {
-      let arrow = create_element('SPAN', parent, 'arrow');
-      return arrow;
-    };
 
     //function to create down arrow image
     function create_image() {
@@ -128,14 +129,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
       const depHeading = create_element('H2', contain, 'select-heading');
       depHeading.innerHTML = 'Departure Date';
 
-      /*Depature Date Select DIV + Arrow*/
-      const select3 = create_select('select-3');
-      const arrow0 = create_arrow(select3);
+      /*Depature Date Select DIV + Arrow(this has been created underneath the function)*/
       arrow0.style.right = right;
 
       /*Depature Time Select DIV + Arrow*/
-      const select4 = create_select('select-4');
-      const arrow1 = create_arrow(select4);
 
       /*Departure date + time select menus*/
       const depDate = create_element('DIV', contain, 'selection');
@@ -157,13 +154,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
       arrHeading.innerHTML = 'Arrival Date';
 
       /*Arrival Date Select DIV + Arrow*/
-      const select5 = create_select('select-5');
-      const arrow2 = create_arrow(select5);
       arrow2.style.right = right;
 
       /*Arrival Time Select DIV + Arrow*/
-      const select6 = create_select('select-6');
-      const arrow3 = create_arrow(select6);
 
       /*Arrival date + time select menus*/
       const arrDate = create_element('DIV', contain, 'selection');
@@ -207,9 +200,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
       fakeboo = 0;
     }
   });*/
+
+
   const select1 = document.querySelector('#select-1');
   console.log(select1);
   const select2 = document.querySelector('#select-2');
+
+  const select3 = create_select('select-3', );
+  console.log(select3);
+  const arrow0 = create_arrow(select3);
+  console.log(arrow0);
+
+  const select4 = create_select('select-4');
+  const arrow1 = create_arrow(select4);
+
+  const select5 = create_select('select-5');
+  const arrow2 = create_arrow(select5);
+
+  const select6 = create_select('select-6');
+  const arrow3 = create_arrow(select6);
 
   function flipper(e) {
     let arrow = e.target.previousElementSibling;
@@ -221,16 +230,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
       arrow.classList.add('arrow-down');
     }
   }
-
+/*
   body.addEventListener('click', function(e) {
     if (select1 || select2 != e.target) {
         $('.arrow').removeClass('arrow-down');
         $('.arrow').addClass('arrow-up');
     }
   })
-
+*/
   select1.addEventListener('click', flipper);
   select2.addEventListener('click', flipper);
+  select3.addEventListener('click', flipper);
+  select4.addEventListener('click', flipper);
+  select5.addEventListener('click', flipper);
 
 /*date booking for mobile*/
   search.addEventListener('click', function() {
