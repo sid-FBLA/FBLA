@@ -57,6 +57,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const selectMenus = document.querySelectorAll('.selection')
   console.log(selectMenus);
   const body = document.querySelector('body');
+  const select1 = document.querySelector('#select-1');
+  console.log(select1);
+  const select2 = document.querySelector('#select-2');
 
   let searchClick = 0;
 
@@ -79,11 +82,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   console.log(contain);
 
   //function to create select elements
-  function create_select(identify, sibling) {
+  function create_select(identify) {
     let select = create_element('DIV', contain, 'relative');
     select.setAttribute('ID', identify);
     contain.appendChild(select);
-    contain.insertBefore(select, sibling);
     return select;
   };
 
@@ -130,18 +132,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
       depHeading.innerHTML = 'Departure Date';
 
       /*Depature Date Select DIV + Arrow(this has been created underneath the function)*/
+      const select3 = create_select('select-3');
+      console.log(select3);
+      const arrow0 = create_arrow(select3);
       arrow0.style.right = right;
+      console.log(arrow0);
 
       /*Depature Time Select DIV + Arrow*/
+      const select4 = create_select('select-4');
+      const arrow1 = create_arrow(select4);
 
       /*Departure date + time select menus*/
-      const depDate = create_element('DIV', contain, 'selection');
+      const depDate = create_element('DIV', select3, 'selection');
       depDate.style.borderWidth = 1;
       depDate.style.cssFloat = "left";
       depDate.style.width = "75%";
       depDate.style.marginBottom = 8;
 
-      const depTime = create_element('SELECT', contain, 'selection');
+      const depTime = create_element('SELECT', select4, 'selection');
       depTime.style.width = "25%";
       depTime.style.cssFloat = "right";
       depTime.style.marginBottom = 8;
@@ -154,103 +162,79 @@ window.addEventListener('DOMContentLoaded', (event) => {
       arrHeading.innerHTML = 'Arrival Date';
 
       /*Arrival Date Select DIV + Arrow*/
+      const select5 = create_select('select-5');
+      const arrow2 = create_arrow(select5);
       arrow2.style.right = right;
 
       /*Arrival Time Select DIV + Arrow*/
+      const select6 = create_select('select-6');
+      const arrow3 = create_arrow(select6);
 
       /*Arrival date + time select menus*/
-      const arrDate = create_element('DIV', contain, 'selection');
+      const arrDate = create_element('DIV', select5, 'selection');
       arrDate.style.borderWidth = 1;
       arrDate.style.cssFloat = "left";
       arrDate.style.width = "75%";
       arrDate.style.marginBottom = 8;
 
-      const arrTime = create_element('SELECT', contain, 'selection');
+      const arrTime = create_element('SELECT', select6, 'selection');
       arrTime.style.width = "25%";
       arrTime.style.cssFloat = "right";
       arrTime.style.marginBottom = 8;
+
+      //Event Listeners
+
+      /* "flip" arrows */
+      function flipper(e) {
+        let arrow = e.target.previousElementSibling;
+        if (arrow.classList.contains('arrow-up')) {
+          arrow.classList.remove('arrow-down');
+          arrow.classList.add('arrow-up');
+        } else {
+          arrow.classList.remove('arrow-up');
+          arrow.classList.add('arrow-down');
+        }
+      }
+
+      /* "Adding" all arrows to event listener */
+      select1.addEventListener('click', flipper);
+      select2.addEventListener('click', flipper);
+      select3.addEventListener('click', flipper);
+      select4.addEventListener('click', flipper);
+      select5.addEventListener('click', flipper);
     }
 
     /*Down Arrow*/
     create_image();
-
-    //Select 2
-    /*$('.selection option').select2({
-      backgroundColor: "red";
-    });*/
 
     //Now that all the elements are inside the container we can check for the height of the container
     contain.style.overflow = "hidden";
     searchClick = 1;
   };
 
-  //Event Listeners
+
 
   let fakeboo = 0;
-
 /*
-  select.addEventListener('click', function() {
-    if (fakeboo === 0) {
-      arrow.classList.remove('arrow-up')
-      arrow.classList.add('arrow-down');
-      fakeboo = 1;
-    } else if(fakeboo === 1) {
-      arrow.classList.remove('arrow-down')
-      arrow.classList.add('arrow-up')
-      fakeboo = 0;
-    }
-  });*/
 
-
-  const select1 = document.querySelector('#select-1');
-  console.log(select1);
-  const select2 = document.querySelector('#select-2');
-
-  const select3 = create_select('select-3', );
-  console.log(select3);
-  const arrow0 = create_arrow(select3);
-  console.log(arrow0);
-
-  const select4 = create_select('select-4');
-  const arrow1 = create_arrow(select4);
-
-  const select5 = create_select('select-5');
-  const arrow2 = create_arrow(select5);
-
-  const select6 = create_select('select-6');
-  const arrow3 = create_arrow(select6);
-
-  function flipper(e) {
-    let arrow = e.target.previousElementSibling;
-    if (arrow.classList.contains('arrow-down')) {
-      arrow.classList.remove('arrow-down');
-      arrow.classList.add('arrow-up');
-    } else {
-      arrow.classList.remove('arrow-up');
-      arrow.classList.add('arrow-down');
-    }
-  }
-/*
   body.addEventListener('click', function(e) {
     if (select1 || select2 != e.target) {
         $('.arrow').removeClass('arrow-down');
         $('.arrow').addClass('arrow-up');
     }
   })
+
 */
-  select1.addEventListener('click', flipper);
-  select2.addEventListener('click', flipper);
-  select3.addEventListener('click', flipper);
-  select4.addEventListener('click', flipper);
-  select5.addEventListener('click', flipper);
 
 /*date booking for mobile*/
   search.addEventListener('click', function() {
+    if(searchClick === 0) {
       form2();
       const containHeight = $('#check-height').height();
       console.log(containHeight);
       contain.style.height = 0;
       $('#check-height').animate({height:containHeight}, 1000);
+    }
   });
 
 
