@@ -95,8 +95,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     return arrow;
   };
 
-  function form2() {
-
     //function to create down arrow image
     function create_image() {
       let img = create_element('img', contain);
@@ -119,121 +117,117 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log('hi')
 
     /*Submit info button*/
+    console.log(searchClick);
+
+    /*Departure Date Heading*/
+    const depHeading = create_element('H2', contain, 'select-heading');
+    depHeading.innerHTML = 'Departure Date';
+
+    /*Depature Date Select DIV + Arrow(this has been created underneath the function)*/
+    const select3 = create_select('select-3');
+    console.log(select3);
+    const arrow0 = create_arrow(select3);
+    arrow0.style.right = right;
+    console.log(arrow0);
+
+    /*Depature Time Select DIV + Arrow*/
+    const select4 = create_select('select-4');
+    const arrow1 = create_arrow(select4);
+
+    /*Departure date + time select menus*/
+    const depDate = create_element('DIV', select3, 'selection');
+    depDate.style.borderWidth = 1;
+    depDate.style.cssFloat = "left";
+    depDate.style.width = "75%";
+    depDate.style.marginBottom = 8;
+
+    const depTime = create_element('SELECT', select4, 'selection');
+    depTime.style.width = "25%";
+    depTime.style.cssFloat = "right";
+    depTime.style.marginBottom = 8;
+
+    /*Down Arrow*/
+    create_image();
+
+    /*Arrival Date Heading*/
+    const arrHeading = create_element('H2', contain, 'select-heading');
+    arrHeading.innerHTML = 'Arrival Date';
+
+    /*Arrival Date Select DIV + Arrow*/
+    const select5 = create_select('select-5');
+    const arrow2 = create_arrow(select5);
+    arrow2.style.right = right;
+
+    /*Arrival Time Select DIV + Arrow*/
+    const select6 = create_select('select-6');
+    const arrow3 = create_arrow(select6);
+
+    /*Arrival date + time select menus*/
+    const arrDate = create_element('DIV', select5, 'selection');
+    arrDate.style.borderWidth = 1;
+    arrDate.style.cssFloat = "left";
+    arrDate.style.width = "75%";
+    arrDate.style.marginBottom = 8;
+
+    const arrTime = create_element('SELECT', select6, 'selection');
+    arrTime.style.width = "25%";
+    arrTime.style.cssFloat = "right";
+    arrTime.style.marginBottom = 8;
+
+    /*Down Arrow*/
+    create_image();
+
+    const containHeight = $('#check-height').height();
+    console.log(containHeight);
+
+    $('#check-height').height(0);
+
+
+  //Event Listeners
+
+  /* "flip" arrows */
+  function flipper(e) {
+    let arrow = e.target.previousElementSibling;
+    if (arrow.classList.contains('arrow-up')) {
+      arrow.classList.remove('arrow-up')
+      arrow.classList.add('arrow-down');
+    } else if (arrow.classList.contains('arrow-down')) {
+      arrow.classList.remove('arrow-down');
+      arrow.classList.add('arrow-up');
+    } else {
+      arrow.classList.remove('arrow-up');
+      arrow.classList.add('arrow-down');
+    }
+
+  };
+
+    /* "Adding" all arrows to event listener */
+    select1.addEventListener('click', flipper);
+    select2.addEventListener('click', flipper);
+    select3.addEventListener('click', flipper);
+    select4.addEventListener('click', flipper);
+    select5.addEventListener('click', flipper);
+    select6.addEventListener('click', flipper);
+
+
+    //Now that all the elements are inside the container we can check for the height of the container
+    contain.style.overflow = "hidden";
+
+    let fakeboo = 0;
+
+
+/*date booking for mobile*/
+  search.addEventListener('click', function() {
     if(searchClick === 0) {
-      console.log(searchClick);
+      console.log(containHeight);
+      $('#check-height').animate({height:containHeight}, 1000);
+      console.log(containHeight);
       const buttonbook = document.querySelector('.flight-book');
       buttonbook.style.backgroundColor = '#f10000';
       buttonbook.style.color = 'white';
       buttonbook.innerHTML = 'BOOK';
       console.log(buttonbook);
-
-      /*Departure Date Heading*/
-      const depHeading = create_element('H2', contain, 'select-heading');
-      depHeading.innerHTML = 'Departure Date';
-
-      /*Depature Date Select DIV + Arrow(this has been created underneath the function)*/
-      const select3 = create_select('select-3');
-      console.log(select3);
-      const arrow0 = create_arrow(select3);
-      arrow0.style.right = right;
-      console.log(arrow0);
-
-      /*Depature Time Select DIV + Arrow*/
-      const select4 = create_select('select-4');
-      const arrow1 = create_arrow(select4);
-
-      /*Departure date + time select menus*/
-      const depDate = create_element('DIV', select3, 'selection');
-      depDate.style.borderWidth = 1;
-      depDate.style.cssFloat = "left";
-      depDate.style.width = "75%";
-      depDate.style.marginBottom = 8;
-
-      const depTime = create_element('SELECT', select4, 'selection');
-      depTime.style.width = "25%";
-      depTime.style.cssFloat = "right";
-      depTime.style.marginBottom = 8;
-
-      /*Down Arrow*/
-      create_image();
-
-      /*Arrival Date Heading*/
-      const arrHeading = create_element('H2', contain, 'select-heading');
-      arrHeading.innerHTML = 'Arrival Date';
-
-      /*Arrival Date Select DIV + Arrow*/
-      const select5 = create_select('select-5');
-      const arrow2 = create_arrow(select5);
-      arrow2.style.right = right;
-
-      /*Arrival Time Select DIV + Arrow*/
-      const select6 = create_select('select-6');
-      const arrow3 = create_arrow(select6);
-
-      /*Arrival date + time select menus*/
-      const arrDate = create_element('DIV', select5, 'selection');
-      arrDate.style.borderWidth = 1;
-      arrDate.style.cssFloat = "left";
-      arrDate.style.width = "75%";
-      arrDate.style.marginBottom = 8;
-
-      const arrTime = create_element('SELECT', select6, 'selection');
-      arrTime.style.width = "25%";
-      arrTime.style.cssFloat = "right";
-      arrTime.style.marginBottom = 8;
-
-      //Event Listeners
-
-      /* "flip" arrows */
-      function flipper(e) {
-        let arrow = e.target.previousElementSibling;
-        if (arrow.classList.contains('arrow-up')) {
-          arrow.classList.remove('arrow-down');
-          arrow.classList.add('arrow-up');
-        } else {
-          arrow.classList.remove('arrow-up');
-          arrow.classList.add('arrow-down');
-        }
-      }
-
-      /* "Adding" all arrows to event listener */
-      select1.addEventListener('click', flipper);
-      select2.addEventListener('click', flipper);
-      select3.addEventListener('click', flipper);
-      select4.addEventListener('click', flipper);
-      select5.addEventListener('click', flipper);
-    }
-
-    /*Down Arrow*/
-    create_image();
-
-    //Now that all the elements are inside the container we can check for the height of the container
-    contain.style.overflow = "hidden";
-    searchClick = 1;
-  };
-
-
-
-  let fakeboo = 0;
-/*
-
-  body.addEventListener('click', function(e) {
-    if (select1 || select2 != e.target) {
-        $('.arrow').removeClass('arrow-down');
-        $('.arrow').addClass('arrow-up');
-    }
-  })
-
-*/
-
-/*date booking for mobile*/
-  search.addEventListener('click', function() {
-    if(searchClick === 0) {
-      form2();
-      const containHeight = $('#check-height').height();
-      console.log(containHeight);
-      contain.style.height = 0;
-      $('#check-height').animate({height:containHeight}, 1000);
+      searhClick = 1;
     }
   });
 
