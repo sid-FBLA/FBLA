@@ -234,6 +234,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   console.log(close);
   close.src = '../Images/close.png';
   heading_div.appendChild(close);
+  close.style.position = 'absolute';
+  close.classList.add('close-position')
 
   //Adding variables that are associated with elements in date-picker
   const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
@@ -258,9 +260,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //Adding event Listeners
   select3.addEventListener('click', toggleDatePickerDisplay);
-  //body.addEventListener('click', bodyRemoveDatePicker);
   nextMonth.addEventListener('click', goToNextMonth);
   prevMonth.addEventListener('click', goToPrevMonth);
+  close.addEventListener('click', closeDatePicker)
 
   //Event Listeners that relate exclusively to date picker
   function toggleDatePickerDisplay(e) {
@@ -273,14 +275,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
       contain_date_picker.classList.add('height-none');
     }
   }
-/*
-  function bodyRemoveDatePicker() {
-    if (contain_date_picker.classList.contains('height-full')) {
-      contain_date_picker.classList.remove('height-full')
-      contain_date_picker.classList.add('height-none');
-    }
-  }
-*/
+
+ function closeDatePicker(e) {
+   contain_date_picker.classList.remove('height-full');
+   contain_date_picker.classList.add('height-none');
+ }
 
   function goToNextMonth(e) {
     month++;

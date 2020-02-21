@@ -96,14 +96,14 @@
   }
 
   .arrow-down {
-    transition-duration: 500ms;
+    transition-duration: 200ms;
     top: 10px;
     /*Rotates from original position so for a clockwise effect, this direction is required*/
     transform: rotate(-315deg);
   }
 
   .arrow-up {
-    transition-duration: 500ms;
+    transition-duration: 200ms;
     top: 16px;
     transform: rotate(-135deg);
   }
@@ -198,6 +198,8 @@
     font-size: 2rem;
   }
 
+  /*JS added classes*/
+
   .height-none {
     transition: 500ms;
     height: 0%;
@@ -206,6 +208,11 @@
   .height-full {
     transition: 500ms;
     height: 100%;
+  }
+
+  .close-position {
+    top: 1rem;
+    right: 1rem;
   }
 
 
