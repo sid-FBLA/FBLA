@@ -53,7 +53,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const form = document.querySelector('form');
   const select = document.querySelector('.selection');
   const wrapper = document.querySelector('.wrapper');
-  const arrow = document.querySelectorAll('.arrow');
   const selectMenus = document.querySelectorAll('.selection')
   console.log(selectMenus);
   const body = document.querySelector('body');
@@ -181,13 +180,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   $('#check-height').height(0);
 
   //Date picker
-/*
-  let selectWidth = $('body').width();
-  console.log(selectWidth);
-  let select_date_offset = selectWidth - 20000;
-  console.log(select_date_offset);
-*/
   body.style.backgroundColor = '#FFCE00';
+
+  const arrow = $('.arrow');
 
   function create_element(type, parent, classtype) {
     var identify = document.createElement(type);
@@ -199,76 +194,139 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //Creates DIV for datepicker fixed positioning
   const contain_date_picker = create_element('DIV', body, 'fixed');
+  contain_date_picker.classList.add('height-none');
+  //Creates DIV for heading for date_picker
+  const heading_div = create_element('DIV', contain_date_picker, 'heading-div');
+
+  //Creates HEADING for datepicker
+  const date_picker_heading = create_element('H1', heading_div, 'date-picker-heading');
+  date_picker_heading.innerHTML = "Departure Date";
 
   //Creates main date-picker DIV
   const date_picker = create_element('DIV', contain_date_picker, 'date-picker');
-  date_picker.innerHTML = "7/09/2020";
 
   //Selects DIV for selected date, display formatted selected date
   const selected_date = create_element('DIV', select3, 'selected-date');
-  selected_date.innerHTML = "";
 
-  //Creates DIV that holds all dates, when datepicker is pressed this dropdown is opened
+  //Creates DIV that holds all dates
   const dates = create_element('DIV', date_picker, 'dates');
 
   //Creates DIV that holds all months
-  const months = create_element('DIV', dates, 'month');
+  const months = create_element('DIV', dates, 'months');
 
   //Creates DIVs that allow the user to swithc between months
-  const prevMonth = create_element('DIV', months, 'arrows');
+  const prevMonth = create_element('DIV', months, 'pointers');
   prevMonth.classList.add('prev-mth');
   prevMonth.innerHTML = '&lt;';
 
   //Class inbetween two arrows to style month text
   const mth = create_element('DIV', months, 'mth');
 
-  const nextMonth = create_element('DIV', months, 'arrows');
+  const nextMonth = create_element('DIV', months, 'pointers');
   nextMonth.classList.add('next-mth');
-  prevMonth.innerHTML = '&gt;';
+  nextMonth.innerHTML = '&gt;';
 
+  //Array displaying all the days in a month
   const days = create_element('DIV', dates, 'days');
+
+  //Adding variables that are associated with elements in date-picker
+  const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
+'October', 'November', 'December'];
+
+  const daysOfMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+  let date = new Date();
+  let day = date.getDate();
+  let month = date.getMonth();
+  let year = date.getFullYear();
+
+  let selectedDate =  date;
+  let selectedDay = day;
+  let selectedMonth = month;
+  let selectedYear = year;
+
+  console.log(monthsOfYear[month]);
+  mth.innerHTML = monthsOfYear[month] + ' ' + year;
+
+  selected_date.innerHTML = formatDate(date);
 
   //Adding event Listeners
   select3.addEventListener('click', toggleDatePickerDisplay);
+  //body.addEventListener('click', bodyRemoveDatePicker);
+  nextMonth.addEventListener('click', goToNextMonth);
+  prevMonth.addEventListener('click', goToPrevMonth);
 
-  //Event Listeners
+  //Event Listeners that relate exclusively to date picker
   function toggleDatePickerDisplay(e) {
-    console.log(e.path);
-    if (!checkEventPathForClass(e.path, 'dates')) {
-      contain_date_picker.classList.toggle('active');
+    e.stopPropagation();
+    if (contain_date_picker.classList.contains('height-none')) {
+      contain_date_picker.classList.remove('height-none');
+      contain_date_picker.classList.add('height-full');
+    } else if (contain_date_picker.classList.contains('height-full')) {
+      contain_date_picker.classList.remove('height-full');
+      contain_date_picker.classList.add('height-none');
     }
   }
+/*
+  function bodyRemoveDatePicker() {
+    if (contain_date_picker.classList.contains('height-full')) {
+      contain_date_picker.classList.remove('height-full')
+      contain_date_picker.classList.add('height-none');
+    }
+  }
+*/
+
+  function goToNextMonth(e) {
+    month++;
+    if (month > 11) {
+      month = 0;
+      year++;
+    }
+    mth.innerHTML = monthsOfYear[month] + ' ' + year;
+  }
+
+  function goToPrevMonth(e) {
+    month--;
+    if (month = 0) {
+      month = 11;
+      year--;
+    }
+    if (year < 2020) {
+      alert('you cannot book for a flight in the past');
+      year = 2020;
+    }
+    mth.innerHTML = monthsOfYear[month] + ' ' + year;
+  }
+
+  //All event listners
 
 
   /* "flip" arrows */
   function flipper(e) {
+    e.stopPropagation();
     let arrow = e.target.previousElementSibling;
     if (arrow.classList.contains('arrow-up')) {
       arrow.classList.remove('arrow-up');
       arrow.classList.add('arrow-down');
-      //e.stopPropogation();
     } else if (arrow.classList.contains('arrow-down')) {
       arrow.classList.remove('arrow-down');
       arrow.classList.add('arrow-up');
-      //e.stopPropogation();
     } else {
       arrow.classList.remove('arrow-up');
       arrow.classList.add('arrow-down');
-      //e.stopPropogation();
     }
 
   };
 
   /* Changes the arrow class to "up" when the user presses outside the body */
-/*
   $("body").click(e => {
     $('.arrow').removeClass('arrow-down');
     $('.arrow').addClass('arrow-up');
-  });*/
+  });
 
   /*Helper functions*/
 
-  //Checks if an element has a specific cllas
+  //Checks if an element has a specific class
   function checkEventPathForClass (path, selector) {
     for(let i = 0; i < path.length; i++) {
       if (path[i].classList && path[i].classList.contains(selector)) {
@@ -277,6 +335,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
       return false;
       }
     }
+  }
+
+  function formatDate(d) {
+    let day = d.getDate();
+
+    let month = d.getMonth();
+
+    let year = d.getFullYear();
+
+    return day + '/' + month + '/' + year;
   }
 
     /* "Adding" all arrows to event listener */
