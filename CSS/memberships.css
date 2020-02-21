@@ -114,4 +114,14 @@
     font-size: 1.5rem;
   }
 
+  footer img {
+    width: 32px;
+    height: 32px;
+  }
+
+  footer .socials img {
+    height: 38px;
+    width: 38px;
+  }
+
 }

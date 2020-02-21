@@ -49,6 +49,10 @@
   let rightoffset = windowWidth*-1;
   console.log(rightoffset)
 
+  let rightoffset2 = (rightoffset/3)*2;
+
+  let rightoffset3 = (rightoffset/3);
+
   if ($(window).width() <= 1023) {
     $('.animation img').eq(0).slideDown(1000);
     $('.animation img').eq(1).delay(1000).slideDown(1000);
@@ -59,14 +63,14 @@
 
     $('.animation img').show();
     $('.animation img').eq(0).animate({
-      left: leftoffset}, 500, 'linear'
+      left: leftoffset}, 1000, 'linear'
     );
     //Technically their are 3 children, as their are two discount.png's just leave this alone
-    $('.animation img').eq(2).delay(500).animate({
-      left: leftoffset}, 500, 'linear'
+    $('.animation img').eq(2).delay(1000).animate({
+      left: leftoffset}, 1000, 'linear'
     );
 
-    $('.animation img').eq(4).delay(1000).animate({
-      left: leftoffset}, 500, 'linear'
+    $('.animation img').eq(4).delay(2000).animate({
+      left: leftoffset}, 1000, 'linear'
     );
   }

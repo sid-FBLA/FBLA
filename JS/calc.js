@@ -96,94 +96,149 @@ window.addEventListener('DOMContentLoaded', (event) => {
   };
 
     //function to create down arrow image
-    function create_image() {
-      let img = create_element('img', contain);
-      console.log(img);
-      img.src = '../../Images/down-arrow.png';
-      img.width = 32;
-      img.height = 32;
-    }
+  function create_image() {
+    let img = create_element('img', contain);
+    console.log(img);
+    img.src = '../../Images/down-arrow.png';
+    img.width = 32;
+    img.height = 32;
+  }
 
-    //Departure date elements down-arrow right offset
+  //Departure date elements down-arrow right offset
+  let offSet = $('.selection').width();
+  console.log(offSet);
+  let outerSet = offSet/4;
+  console.log(outerSet);
+  let right = outerSet + 16;
+  console.log(right);
 
-    let offSet = $('.selection').width();
-    console.log(offSet);
-    let outerSet = offSet/4;
-    console.log(outerSet);
-    let right = outerSet + 16;
-    console.log(right);
+  console.log('hi')
 
+  /*Submit info button*/
+  console.log(searchClick);
 
-    console.log('hi')
+  /*Departure Date Heading*/
+  const depHeading = create_element('H2', contain, 'select-heading');
+  depHeading.innerHTML = 'Departure Date';
 
-    /*Submit info button*/
-    console.log(searchClick);
+  /*Depature Date Select DIV + Arrow(this has been created underneath the function)*/
+  const select3 = create_select('select-3');
+  console.log(select3);
+  const arrow0 = create_arrow(select3);
+  arrow0.style.right = right;
+  console.log(arrow0);
 
-    /*Departure Date Heading*/
-    const depHeading = create_element('H2', contain, 'select-heading');
-    depHeading.innerHTML = 'Departure Date';
+  /*Depature Time Select DIV + Arrow*/
+  const select4 = create_select('select-4');
+  const arrow1 = create_arrow(select4);
 
-    /*Depature Date Select DIV + Arrow(this has been created underneath the function)*/
-    const select3 = create_select('select-3');
-    console.log(select3);
-    const arrow0 = create_arrow(select3);
-    arrow0.style.right = right;
-    console.log(arrow0);
+  /*Departure date + time select menus*/
+  const depDate = create_element('DIV', select3, 'selection');
+  depDate.style.borderWidth = 1;
+  depDate.style.cssFloat = "left";
+  depDate.style.width = "75%";
+  depDate.style.marginBottom = 8;
 
-    /*Depature Time Select DIV + Arrow*/
-    const select4 = create_select('select-4');
-    const arrow1 = create_arrow(select4);
+  const depTime = create_element('SELECT', select4, 'selection');
+  depTime.style.width = "25%";
+  depTime.style.cssFloat = "right";
+  depTime.style.marginBottom = 8;
 
-    /*Departure date + time select menus*/
-    const depDate = create_element('DIV', select3, 'selection');
-    depDate.style.borderWidth = 1;
-    depDate.style.cssFloat = "left";
-    depDate.style.width = "75%";
-    depDate.style.marginBottom = 8;
+  /*Down Arrow*/
+  create_image();
 
-    const depTime = create_element('SELECT', select4, 'selection');
-    depTime.style.width = "25%";
-    depTime.style.cssFloat = "right";
-    depTime.style.marginBottom = 8;
+  /*Arrival Date Heading*/
+  const arrHeading = create_element('H2', contain, 'select-heading');
+  arrHeading.innerHTML = 'Arrival Date';
 
-    /*Down Arrow*/
-    create_image();
+  /*Arrival Date Select DIV + Arrow*/
+  const select5 = create_select('select-5');
+  const arrow2 = create_arrow(select5);
+  arrow2.style.right = right;
 
-    /*Arrival Date Heading*/
-    const arrHeading = create_element('H2', contain, 'select-heading');
-    arrHeading.innerHTML = 'Arrival Date';
+  /*Arrival Time Select DIV + Arrow*/
+  const select6 = create_select('select-6');
+  const arrow3 = create_arrow(select6);
 
-    /*Arrival Date Select DIV + Arrow*/
-    const select5 = create_select('select-5');
-    const arrow2 = create_arrow(select5);
-    arrow2.style.right = right;
+  /*Arrival date + time select menus*/
+  const arrDate = create_element('DIV', select5, 'selection');
+  arrDate.style.borderWidth = 1;
+  arrDate.style.cssFloat = "left";
+  arrDate.style.width = "75%";
+  arrDate.style.marginBottom = 8;
 
-    /*Arrival Time Select DIV + Arrow*/
-    const select6 = create_select('select-6');
-    const arrow3 = create_arrow(select6);
+  const arrTime = create_element('SELECT', select6, 'selection');
+  arrTime.style.width = "25%";
+  arrTime.style.cssFloat = "right";
+  arrTime.style.marginBottom = 8;
 
-    /*Arrival date + time select menus*/
-    const arrDate = create_element('DIV', select5, 'selection');
-    arrDate.style.borderWidth = 1;
-    arrDate.style.cssFloat = "left";
-    arrDate.style.width = "75%";
-    arrDate.style.marginBottom = 8;
+  /*Down Arrow*/
+  create_image();
 
-    const arrTime = create_element('SELECT', select6, 'selection');
-    arrTime.style.width = "25%";
-    arrTime.style.cssFloat = "right";
-    arrTime.style.marginBottom = 8;
+  const containHeight = $('#check-height').height();
+  console.log(containHeight);
 
-    /*Down Arrow*/
-    create_image();
+  $('#check-height').height(0);
 
-    const containHeight = $('#check-height').height();
-    console.log(containHeight);
+  //Date picker
+/*
+  let selectWidth = $('body').width();
+  console.log(selectWidth);
+  let select_date_offset = selectWidth - 20000;
+  console.log(select_date_offset);
+*/
+  body.style.backgroundColor = '#FFCE00';
 
-    $('#check-height').height(0);
+  function create_element(type, parent, classtype) {
+    var identify = document.createElement(type);
+    identify.classList.add(classtype);
+    parent.appendChild(identify);
+    console.log(identify);
+    return identify;
+  };
 
+  //Creates DIV for datepicker fixed positioning
+  const contain_date_picker = create_element('DIV', body, 'fixed');
+
+  //Creates main date-picker DIV
+  const date_picker = create_element('DIV', contain_date_picker, 'date-picker');
+  date_picker.innerHTML = "7/09/2020";
+
+  //Selects DIV for selected date, display formatted selected date
+  const selected_date = create_element('DIV', select3, 'selected-date');
+  selected_date.innerHTML = "";
+
+  //Creates DIV that holds all dates, when datepicker is pressed this dropdown is opened
+  const dates = create_element('DIV', date_picker, 'dates');
+
+  //Creates DIV that holds all months
+  const months = create_element('DIV', dates, 'month');
+
+  //Creates DIVs that allow the user to swithc between months
+  const prevMonth = create_element('DIV', months, 'arrows');
+  prevMonth.classList.add('prev-mth');
+  prevMonth.innerHTML = '&lt;';
+
+  //Class inbetween two arrows to style month text
+  const mth = create_element('DIV', months, 'mth');
+
+  const nextMonth = create_element('DIV', months, 'arrows');
+  nextMonth.classList.add('next-mth');
+  prevMonth.innerHTML = '&gt;';
+
+  const days = create_element('DIV', dates, 'days');
+
+  //Adding event Listeners
+  select3.addEventListener('click', toggleDatePickerDisplay);
 
   //Event Listeners
+  function toggleDatePickerDisplay(e) {
+    console.log(e.path);
+    if (!checkEventPathForClass(e.path, 'dates')) {
+      contain_date_picker.classList.toggle('active');
+    }
+  }
+
 
   /* "flip" arrows */
   function flipper(e) {
@@ -191,24 +246,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (arrow.classList.contains('arrow-up')) {
       arrow.classList.remove('arrow-up');
       arrow.classList.add('arrow-down');
-      e.stopPropogation();
+      //e.stopPropogation();
     } else if (arrow.classList.contains('arrow-down')) {
       arrow.classList.remove('arrow-down');
       arrow.classList.add('arrow-up');
-      e.stopPropogation();
+      //e.stopPropogation();
     } else {
       arrow.classList.remove('arrow-up');
       arrow.classList.add('arrow-down');
-      e.stopPropogation();
+      //e.stopPropogation();
     }
 
   };
 
   /* Changes the arrow class to "up" when the user presses outside the body */
+/*
   $("body").click(e => {
     $('.arrow').removeClass('arrow-down');
     $('.arrow').addClass('arrow-up');
-  });
+  });*/
+
+  /*Helper functions*/
+
+  //Checks if an element has a specific cllas
+  function checkEventPathForClass (path, selector) {
+    for(let i = 0; i < path.length; i++) {
+      if (path[i].classList && path[i].classList.contains(selector)) {
+      return true;
+      } else {
+      return false;
+      }
+    }
+  }
 
     /* "Adding" all arrows to event listener */
     select1.addEventListener('click', flipper);
