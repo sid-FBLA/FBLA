@@ -276,6 +276,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   }
 
+//This line may be useless
  function closeDatePicker(e) {
    contain_date_picker.classList.remove('height-full');
    contain_date_picker.classList.add('height-none');
