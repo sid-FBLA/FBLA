@@ -229,6 +229,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //Array displaying all the days in a month
   const days = create_element('DIV', dates, 'days');
 
+  //Image for closing
+  var close = document.createElement('img');
+  console.log(close);
+  close.src = '../Images/close.png';
+  heading_div.appendChild(close);
+
   //Adding variables that are associated with elements in date-picker
   const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
 'October', 'November', 'December'];
