@@ -56,12 +56,18 @@
     border-radius: 5px;
     border-style: solid;
     width: 100%;
-    height: 2.5rem;
+    height: 7rem;
     -webkit-appearance: none;
+    font-size: 2rem;
   }
 
   .selection:hover {
     border-color: #f10000;
+  }
+
+  .selection option {
+    position: absolute;
+    left: 32px;
   }
 
   .selection option:hover {
@@ -92,19 +98,19 @@
     transform: rotate(-135deg);
     padding: 6px;
     right: 16px;
-    top: 16px;
+    top: 54px;
   }
 
   .arrow-down {
     transition-duration: 200ms;
-    top: 10px;
+    top: 48px;
     /*Rotates from original position so for a clockwise effect, this direction is required*/
     transform: rotate(-315deg);
   }
 
   .arrow-up {
     transition-duration: 200ms;
-    top: 16px;
+    top: 54px;
     transform: rotate(-135deg);
   }
 
@@ -123,21 +129,21 @@
 
   .fixed .heading-div {
     position: relative;
-    height: 7rem;
+    height: 15rem;
     background-color: #f10000;
   }
 
   .fixed .heading-div .date-picker-heading {
     position: absolute;
     left: 50%;
-    /*width is 314.5px*/
-    margin-left: -157.025px;
+    /*width is 628pxpx*/
+    margin-left: -314px;
     top: 50%;
-    /*height is 49px*/
-    margin-top: -29px;
+    /*height is 97px*/
+    margin-top: -50px;
     color: white;
     font-weight: bold;
-    font-size: 2.5rem;
+    font-size: 5rem;
   }
 
   .date-picker {
@@ -147,15 +153,14 @@
     background-color: white;
     cursor: pointer;
     user-select: none;
-    /*height: 360px;*/
   }
 
   .selected-date {
     position: absolute;
     z-index: 1;
-    top: 6.5px;
+    top: 35.5px;
     left: 16px;
-    font-size: 22px;
+    font-size: 2rem;
   }
 
   .date-picker .dates {
@@ -167,14 +172,14 @@
   .date-picker .dates .days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    height: 200px;
+    height: 623.5px;
   }
 
   .date-picker .dates .days .day {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #f10000;
+    font-size: 3rem;
   }
 
   .date-picker .dates .months {
@@ -182,7 +187,7 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #f10000;
-    padding: 0.5rem;
+    padding: 2rem 2.5rem 2rem 2.5rem;
   }
 
   .date-picker .dates .months .pointers {
@@ -191,11 +196,11 @@
     align-items: center;
     padding-right: 1rem;
     padding-left: 1rem;
-    font-size: 50px;
+    font-size: 3rem;
   }
 
   .date-picker .dates .months .mth {
-    font-size: 2rem;
+    font-size: 3rem;
   }
 
   /*JS added classes*/
@@ -213,6 +218,13 @@
   .close-position {
     top: 1rem;
     right: 1rem;
+  }
+
+  .date-picker .dates .days .selected {
+    color: white;
+    background-color: #f10000;
+    border: solid #f10000;
+    border-radius: 20px;
   }
 
 

@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var x2 = city2[0];
     var y2 = city2[1];
     //one degree of longitude is 84km at latitude 41.5
-    //one degree of latitude is approx 111km
+    //one degree of latitude is approx 1fu11km
     //The multiplication to convert to km
     var xdistance = (x2 - x1)*111;
     console.log(xdistance);
@@ -188,7 +188,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var identify = document.createElement(type);
     identify.classList.add(classtype);
     parent.appendChild(identify);
-    console.log(identify);
+    //console.log(identify);
     return identify;
   };
 
@@ -241,7 +241,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
 'October', 'November', 'December'];
 
-  const daysOfMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  //const daysOfMonths = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
   let date = new Date();
   let day = date.getDate();
@@ -262,7 +262,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   select3.addEventListener('click', toggleDatePickerDisplay);
   nextMonth.addEventListener('click', goToNextMonth);
   prevMonth.addEventListener('click', goToPrevMonth);
-  close.addEventListener('click', closeDatePicker)
+  close.addEventListener('click', closeDatePicker);
+  populateDates();
 
   //Event Listeners that relate exclusively to date picker
   function toggleDatePickerDisplay(e) {
@@ -288,20 +289,72 @@ window.addEventListener('DOMContentLoaded', (event) => {
       month = 0;
       year++;
     }
+
+    if (year > 2020) {
+      alert('Our flight schedules do not expand this far into the future');
+      month = 0;
+      year = 2020;
+    }
+
     mth.innerHTML = monthsOfYear[month] + ' ' + year;
+
+    populateDates();
   }
 
   function goToPrevMonth(e) {
     month--;
-    if (month = 0) {
+    console.log(month);
+    if (month < 0) {
       month = 11;
       year--;
     }
+    console.log(month);
     if (year < 2020) {
       alert('you cannot book for a flight in the past');
+      month = 0;
       year = 2020;
     }
     mth.innerHTML = monthsOfYear[month] + ' ' + year;
+    console.log(month);
+    console.log(monthsOfYear[month]);
+
+    populateDates();
+  }
+
+  function populateDates(e) {
+    days.innerHTML = '';
+
+    let amountDays = 30;
+
+    if (month == 1) {
+      amountDays = 28;
+      days.style.height = 500;
+    }
+
+    if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
+      amountDays = 31;
+      days.style.height = 623.5;
+    }
+
+    for (let i = 0; i < amountDays; i++) {
+      const day = create_element('DIV', days, 'day');
+      day.innerHTML = i + 1;
+
+      if (selectedDay == (i + 1) && selectedMonth == month && selectedYear == year) {
+        day.classList.add('selected');
+      }
+
+      day.addEventListener('click', function() {
+        selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
+        selectedDay = (i + 1);
+        selectedMonth = month;
+        selectedYear = year;
+        selected_date.textContent = formatDate(selectedDate);
+        selected_date.dataset.value = selectedDate;
+
+        populateDates();
+      });
+    }
   }
 
   //All event listners
@@ -346,11 +399,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function formatDate(d) {
     let day = d.getDate();
 
-    let month = d.getMonth();
+    if (day < 10) {
+      day = '0' + day;
+    }
+
+    let month = d.getMonth() + 1;
+
+    if (month < 10) {
+      month = '0' + month;
+    }
 
     let year = d.getFullYear();
 
-    return day + '/' + month + '/' + year;
+    return day + ' / ' + month + ' / ' + year;
   }
 
     /* "Adding" all arrows to event listener */
