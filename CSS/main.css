@@ -118,10 +118,6 @@ img {
     width: auto;
   }
 
-  .socials img {
-    border-radius: 50%;
-    border: solid transparent;
-  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -243,7 +239,7 @@ img {
 
   .space-between p {
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2.5rem;
     color: white;
     font-weight: bold;
   }
@@ -262,9 +258,14 @@ img {
     text-align: center;
   }
 
+  .box .state {
+    font-size: 2rem;
+  }
+
   .box .city {
     margin-bottom: 0.2rem;
     margin-top: 0.5rem;
+    font-size: 1.5rem;
   }
  /*
   .red-border:hover {
@@ -278,6 +279,22 @@ img {
   .footer-center,
   .footer-right {
     margin-top: 1.5rem;
+  }
+
+  .footer-left p {
+    font-size: 1.5rem;
+  }
+
+  .footer-center img {
+    height: 64px;
+    width: 64px;
+  }
+
+  .footer-center .socials img {
+    border-radius: 50%;
+    border: solid transparent;
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
   }
 
   .footer-right .inline-textpic {
@@ -457,6 +474,7 @@ img {
   }
 
   .footer-left p {
+    font-size: 1rem;
     margin-bottom: 0.5rem;
     text-align: left;
     padding-left: 0.5rem;
@@ -469,6 +487,12 @@ img {
     border-right: dashed rgba(255, 17, 0, 0.7);
     align-items: center;
     border-left: dashed rgba(255, 17, 0, 0.7);
+  }
+
+  .footer-center img,
+  .footer-right img {
+    height: 38px;
+    width: 38px;
   }
 
   .socials {

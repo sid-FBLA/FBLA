@@ -67,7 +67,7 @@
   }
 
   .main {
-    margin-bottom: 1.5rem;
+    margin-bottom: 3.5rem;
     margin-top: 5rem;
   }
 
@@ -114,14 +114,10 @@
     font-size: 1.5rem;
   }
 
+/*Resets images width and height, because of previous footer style on image*/
+
   footer img {
-    width: 32px;
-    height: 32px;
+    height: 64px;
+    width: 64px;
   }
-
-  footer .socials img {
-    height: 38px;
-    width: 38px;
-  }
-
 }
