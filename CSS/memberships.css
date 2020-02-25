@@ -135,5 +135,13 @@
     font-size: 7rem;
   }
 
+}
+
+@media only screen and (min-width: 1440px) {
+
+  .points {
+    margin: auto;
+    width: 1208px;
+  }
 
 }
