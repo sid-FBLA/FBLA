@@ -525,6 +525,10 @@ img {
     margin-top: 1.5rem;
   }
 
+  .footer-right .inline-textpic {
+    font-size: 1rem;
+  }
+
   .footer-right .inline-textpic:first-child {
     margin-top: 0.5rem;
   }

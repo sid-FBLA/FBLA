@@ -25,7 +25,7 @@
 
   .page-slogan {
     margin-top: 2rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
     text-align: center;
   }
 
@@ -89,7 +89,7 @@
   }
 
   .contain-text-content h3 {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     font-size: 2.5rem;
     text-align: center;
     /*Extra stuff*/
@@ -120,4 +120,20 @@
     height: 64px;
     width: 64px;
   }
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .gradient-background {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  .gradient-background .pc {
+    display: block;
+    width: 100%;
+    font-size: 7rem;
+  }
+
+
 }
