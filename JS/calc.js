@@ -23,7 +23,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var y1 = city1[1];
     var x2 = city2[0];
     var y2 = city2[1];
-    //one degree of longitude is 84km at latitude 41.5
+    //one degree of longitude is 84km at latitude 41.5 if f(x) is a logarithmic function and g(x) is a sine function then input f(g(x))
     //one degree of latitude is approx 1fu11km
     //The multiplication to convert to km
     var xdistance = (x2 - x1)*111;
