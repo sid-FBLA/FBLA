@@ -179,7 +179,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   create_image();
 
   /*Disclaimer*/
-  const disclaimer = create_element('p', contain, 'disclaimer');
+  const disclaimer = create_element('DIV', contain, 'disclaimer');
   disclaimer.textContent = "*All flights are two-way trips";
   disclaimer.style.color = "#666666";
   disclaimer.style.fontSize = "1.5rem";
@@ -216,6 +216,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //Selects DIV for selected date, display formatted selected date
   const selected_date = create_element('DIV', select3, 'selected-date');
+  const selected_arrival_date = create_element('DIV', select5, 'selected-date');
 
   //Creates DIV that holds all dates
   const dates = create_element('DIV', date_picker, 'dates');
@@ -272,6 +273,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let selectedMonth = month;
   let selectedYear = year;
 
+  let selectedArrivalDate = date;
+  let selectedArrivalDay = day;
+  let selectedArrivalMonth = month;
+  let selectedArrivalYear = year;
+
   console.log(monthsOfYear[month]);
   mth.innerHTML = monthsOfYear[month] + ' ' + year;
 
@@ -279,10 +285,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //Adding event Listeners
   select3.addEventListener('click', toggleDatePickerDisplay);
+  select5.addEventListener('click', toggleDatePickerDisplay);
   nextMonth.addEventListener('click', goToNextMonth);
   prevMonth.addEventListener('click', goToPrevMonth);
   close.addEventListener('click', closeDatePicker);
-  set.addEventListener('click', closeDatePicker);
+  //set.addEventListener('click', closeDatePicker);
   populateDates();
 
   //Event Listeners that relate exclusively to date picker
@@ -374,6 +381,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         populateDates();
       });
+/*
+      set.addEventListener('click', function() {
+        selectedArrivalDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
+        selectedArrivalDay = (i + 1);
+        selectedArrivalMonth = month;
+        selectedArrivalYear = year;
+        selected_arrival_date.textContent = formatDate(selectedDate);
+        selected_arrival_date.dataset.value = selectedDate;
+
+        populateDates();
+      }); */
     }
   }
 

@@ -34,6 +34,10 @@
     padding-bottom: 1rem;
   }
 
+#departure-location {
+  font-size: 2em;
+}
+
   .select {
     position: relative;
     margin: auto;
@@ -75,8 +79,12 @@
   }
 
   .booking-box img[src*="down-arrow"] {
+    /* position: relative;
+    transform: translateX(-50%);
+    left: 50%; */
+    height: 32px;
     margin: auto;
-    margin-top: 0.5rem;
+    margin-top: 0.5rem;;
     margin-bottom: 0.5rem;
   }
 
@@ -88,6 +96,12 @@
     position: relative;
     width: 100%;
     margin-bottom: 2px;
+    font-size: 3rem;
+    max-height: none;
+  }
+
+  .offest1 {
+    left: 16px;
   }
 
   /* Arrow Styles */
