@@ -227,6 +227,11 @@
     border-radius: 20px;
   }
 
+  .date-picker .set {
+    position: absolute;
+    font-size: 3rem;
+    color: #f10000;
+  }
 
   /* For PC*/
   .date-picker .dates .months .pointers:hover {

@@ -59,6 +59,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const select1 = document.querySelector('#select-1');
   console.log(select1);
   const select2 = document.querySelector('#select-2');
+  const windowWidth = $('body').width();
 
   let searchClick = 0;
 
@@ -237,6 +238,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
   close.style.position = 'absolute';
   close.classList.add('close-position')
 
+  //SET text
+  const dates_height = $('.dates').height();
+  console.log(dates_height);
+  const set = create_element('H3', date_picker, 'set');
+  set.classList.add('close-position');
+  set.innerHTML = 'SET';
+  set.style.top = dates_height;
+  set.style.right = 46;
+  console.log(set);
+
   //Adding variables that are associated with elements in date-picker
   const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
 'October', 'November', 'December'];
@@ -263,6 +274,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   nextMonth.addEventListener('click', goToNextMonth);
   prevMonth.addEventListener('click', goToPrevMonth);
   close.addEventListener('click', closeDatePicker);
+  set.addEventListener('click', closeDatePicker);
   populateDates();
 
   //Event Listeners that relate exclusively to date picker
