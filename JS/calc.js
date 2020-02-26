@@ -24,12 +24,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var x2 = city2[0];
     var y2 = city2[1];
     //one degree of longitude is 84km at latitude 41.5 if f(x) is a logarithmic function and g(x) is a sine function then input f(g(x))
-    //one degree of latitude is approx 1fu11km
+    //one degree of latitude is approx 111km
     //The multiplication to convert to km
     var xdistance = (x2 - x1)*111;
     console.log(xdistance);
     var ydistance = (y2 - y1)*84;
-    console.log(xdistance);
+    console.log(ydistance);
     var xsquared = Math.pow(xdistance, 2);
     console.log(xsquared);
     var ysquared = Math.pow(ydistance, 2);
@@ -38,16 +38,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log(squaresadded);
     var distance = Math.sqrt(squaresadded);
     console.log(distance);
-    //0.17 is the price/km
-    var price = Math.ceil(((distance*0.17)/10))*10;
-    if(distance < 100) {
+    if (distance < 100) {
       return "no";
     }
+    //0.17 is the price/km
+    var price = Math.ceil((distance*0.17)/10)*10 + 50;
+    price = price*2;
     return price;
+    console.log(price);
   };
 
-  console.log(calc(boston, warwick));
-  console.log(calc(newark, cleveland));
+  var x = calc(newark, warwick);
+  console.log(x);
+  console.log(calc(newark, hartford));
 
   let search = document.querySelector('.flight-book');
   const form = document.querySelector('form');
@@ -175,13 +178,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
   /*Down Arrow*/
   create_image();
 
+  /*Disclaimer*/
+  const disclaimer = create_element('p', contain, 'disclaimer');
+  disclaimer.textContent = "*All flights are two-way trips";
+  disclaimer.style.color = "#666666";
+  disclaimer.style.fontSize = "1.5rem";
   const containHeight = $('#check-height').height();
   console.log(containHeight);
 
   $('#check-height').height(0);
 
   //Date picker
-  body.style.backgroundColor = '#FFCE00';
+  //body.style.backgroundColor = '#FFCE00';
 
   const arrow = $('.arrow');
 

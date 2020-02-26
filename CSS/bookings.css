@@ -41,7 +41,7 @@
   }
 
   .select-heading {
-    margin: auto;
+    font-size: 3rem;
     margin-top: 0.2rem;
     margin-bottom: 1rem;
     text-align: center;
@@ -112,6 +112,10 @@
     transition-duration: 200ms;
     top: 54px;
     transform: rotate(-135deg);
+  }
+
+  .disclaimer {
+    z-index: 100;
   }
 
   /* Date Picker Styles*/
