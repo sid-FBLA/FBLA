@@ -207,9 +207,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //Creates DIV for heading for date_picker
   const heading_div = create_element('DIV', contain_date_picker, 'heading-div');
 
-  //Creates HEADING for datepicker
-  const date_picker_heading = create_element('H1', heading_div, 'date-picker-heading');
-  date_picker_heading.innerHTML = "Departure Date";
+  //Creates HEADINGS for datepicker both departure and arrival
+  const date_picker_heading_departure = create_element('H1', heading_div, 'date-picker-heading');
+  date_picker_heading_departure.innerHTML = "Departure Date";
+  let depIndex = 0;
+  const date_picker_heading_arrival = create_element('H1', heading_div, 'date-picker-heading');
+  date_picker_heading_arrival.setAttribute('id', 'arrival-heading');
+  date_picker_heading_arrival.innerHTML = "Arrival Date";
+  $('#arrival-heading').offset({left: windowWidth});
 
   //Creates main date-picker DIV
   const date_picker = create_element('DIV', contain_date_picker, 'date-picker');
@@ -289,7 +294,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   nextMonth.addEventListener('click', goToNextMonth);
   prevMonth.addEventListener('click', goToPrevMonth);
   close.addEventListener('click', closeDatePicker);
-  //set.addEventListener('click', closeDatePicker);
+  set.addEventListener('click', toggleDepartureArrival);
   populateDates();
 
   //Event Listeners that relate exclusively to date picker
@@ -308,6 +313,40 @@ window.addEventListener('DOMContentLoaded', (event) => {
  function closeDatePicker(e) {
    contain_date_picker.classList.remove('height-full');
    contain_date_picker.classList.add('height-none');
+ }
+
+ function toggleDepartureArrival(e) {
+   //original width of the arrival date heading is 466px
+   e.stopPropagation();
+   date_picker_heading_arrival.style.width = 500;
+   let arrivalLeft = windowWidth/2 - 466/2;
+   date_picker_heading_arrival.style.marginLeft = 0;
+   date_picker_heading_departure.style.display = "none";
+   $('#arrival-heading').animate({
+     left: arrivalLeft}, 500, 'linear'
+   );
+   date_picker_heading_arrival.style.width = 466.09;
+   depIndex = 1;
+
+   select3.addEventListener('click', function() {
+     depIndex = 0;
+     date_picker_heading_arrival.style.display = "none";
+     date_picker_heading_departure.style.display = "block";
+     set.addEventListener('click', toggleDatePickerDisplay);
+     if (contain_date_picker.classList.contains('height-none')) {
+       set.removeEventListener('click', toggleDatePickerDisplay);
+     }
+   });
+
+   select5.addEventListener('click', function() {
+     depIndex = 1;
+     date_picker_heading_departure.style.display = "none";
+     date_picker_heading_arrival.style.display = "block";
+     set.addEventListener('click', toggleDatePickerDisplay);
+     if (contain_date_picker.classList.contains('height-none')) {
+       set.removeEventListener('click', toggleDatePickerDisplay);
+     }
+   });
  }
 
   function goToNextMonth(e) {
@@ -372,14 +411,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
 
       day.addEventListener('click', function() {
-        selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
-        selectedDay = (i + 1);
-        selectedMonth = month;
-        selectedYear = year;
-        selected_date.textContent = formatDate(selectedDate);
-        selected_date.dataset.value = selectedDate;
-
-        populateDates();
+        if(depIndex == 0) {
+          selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
+          selectedDay = (i + 1);
+          selectedMonth = month;
+          selectedYear = year;
+          selected_date.textContent = formatDate(selectedDate);
+          selected_date.dataset.value = selectedDate;
+          populateDates();
+        } else if (depIndex == 1) {
+          console.log(depIndex);
+          //this is what you have to work on, make sure you can also book for the arrival date
+          selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
+          selectedDay = (i + 1);
+          selectedMonth = month;
+          selectedYear = year;
+          selected_date.textContent = formatDate(selectedDate);
+          selected_date.dataset.value = selectedDate;
+        }
       });
 
       /*
