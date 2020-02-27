@@ -430,20 +430,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
           selected_date.dataset.value = selectedDate;
         }
       });
-
-      /*
-
-      set.addEventListener('click', function() {
-        selectedArrivalDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
-        selectedArrivalDay = (i + 1);
-        selectedArrivalMonth = month;
-        selectedArrivalYear = year;
-        selected_arrival_date.textContent = formatDate(selectedArrivalDate);
-        selected_arrival_date.dataset.value = selectedArrivalDate;
-
-        populateDates();
-      });
-      */
     }
   }
 
