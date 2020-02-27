@@ -421,13 +421,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
           populateDates();
         } else if (depIndex == 1) {
           console.log(depIndex);
+          const arrDay = day;
           //this is what you have to work on, make sure you can also book for the arrival date
           selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
           selectedDay = (i + 1);
           selectedMonth = month;
           selectedYear = year;
-          selected_date.textContent = formatDate(selectedDate);
-          selected_date.dataset.value = selectedDate;
+          selected_arrival_date.textContent = formatDate(selectedDate);
+          selected_arrival_date.dataset.value = selectedDate;
+          populateDates();
+          set.addEventListener('click', toggleDatePickerDisplay);
         }
       });
     }
