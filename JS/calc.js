@@ -402,16 +402,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
       days.style.height = 623.5;
     }
 
+    //const arrDay = create_element('DIV', days);
+
     for (let i = 0; i < amountDays; i++) {
       const day = create_element('DIV', days, 'day');
       day.innerHTML = i + 1;
 
       if (selectedDay == (i + 1) && selectedMonth == month && selectedYear == year) {
         day.classList.add('selected');
+        //arrDay.classList.add('selected');
       }
 
       day.addEventListener('click', function() {
         if(depIndex == 0) {
+          ///arrDay.style.display = 'none';
+          //arrDay.classList.remove('selected');
           selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
           selectedDay = (i + 1);
           selectedMonth = month;
@@ -420,17 +425,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
           selected_date.dataset.value = selectedDate;
           populateDates();
         } else if (depIndex == 1) {
-          console.log(depIndex);
-          const arrDay = day;
-          //this is what you have to work on, make sure you can also book for the arrival date
-          selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
-          selectedDay = (i + 1);
-          selectedMonth = month;
-          selectedYear = year;
-          selected_arrival_date.textContent = formatDate(selectedDate);
-          selected_arrival_date.dataset.value = selectedDate;
-          populateDates();
-          set.addEventListener('click', toggleDatePickerDisplay);
+          //arrDay.addEventListener('click', function() {
+            console.log(depIndex);
+            //this is what you have to work on, make sure you can also book for the arrival date
+            selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
+            selectedDay = (i + 1);
+            selectedMonth = month;
+            selectedYear = year;
+            selected_arrival_date.textContent = formatDate(selectedDate);
+            selected_arrival_date.dataset.value = selectedDate;
+            populateDates();
+            set.addEventListener('click', toggleDatePickerDisplay);
+          //});
         }
       });
     }
