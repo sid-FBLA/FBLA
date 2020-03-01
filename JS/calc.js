@@ -141,6 +141,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
   depDate.style.cssFloat = "left";
   depDate.style.width = "75%";
   depDate.style.marginBottom = 8;
+  /*Date Format*/
+  const format_tell = create_element('p', contain, 'disclaimer');
+  format_tell.innerHTML = "*Dates are in DD/MM/YYYY format";
 
   const depTime = create_element('SELECT', select4, 'selection');
   depTime.style.width = "25%";
@@ -170,6 +173,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   arrDate.style.width = "75%";
   arrDate.style.marginBottom = 8;
 
+  /*Date Format*/
+  const format_tell2 = create_element('p', contain, 'disclaimer');
+  format_tell2.innerHTML = "*Dates are in DD/MM/YYYY format";
+
   const arrTime = create_element('SELECT', select6, 'selection');
   arrTime.style.width = "25%";
   arrTime.style.cssFloat = "right";
@@ -181,8 +188,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   /*Disclaimer*/
   const disclaimer = create_element('DIV', contain, 'disclaimer');
   disclaimer.textContent = "*All flights are two-way trips";
-  disclaimer.style.color = "#666666";
-  disclaimer.style.fontSize = "1.5rem";
+
   const containHeight = $('#check-height').height();
   console.log(containHeight);
 
