@@ -338,16 +338,26 @@ window.addEventListener('DOMContentLoaded', (event) => {
      }
    });
 
-   select5.addEventListener('click', function() {
-     depIndex = 1;
-     date_picker_heading_departure.style.display = "none";
-     date_picker_heading_arrival.style.display = "block";
-     set.addEventListener('click', toggleDatePickerDisplay);
-     if (contain_date_picker.classList.contains('height-none')) {
-       set.removeEventListener('click', toggleDatePickerDisplay);
-     }
-   });
  }
+
+ select5.addEventListener('click', function() {
+   //Declaring some variables any styles
+   date_picker_heading_arrival.style.width = 500;
+   let arrivalLeft = windowWidth/2 - 466/2;
+   date_picker_heading_arrival.style.marginLeft = 0;
+   //Done that
+   depIndex = 1;
+   date_picker_heading_departure.style.display = "none";
+   date_picker_heading_arrival.style.display = "block";
+   $('#arrival-heading').animate({
+     left: arrivalLeft}, 10, 'linear'
+   );
+   set.addEventListener('click', toggleDatePickerDisplay);
+   if (contain_date_picker.classList.contains('height-none')) {
+     set.removeEventListener('click', toggleDatePickerDisplay);
+   }
+ });
+
 
   function goToNextMonth(e) {
     month++;

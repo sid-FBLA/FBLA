@@ -22,9 +22,30 @@
     justify-content: space-between;
   }
 
+  .announcement {
+    text-align: center;
+    font-size: 3.5rem;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+  }
+
   /*Form for booking*/
+  .gradient-background {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
   .position {
     position: relative;
+  }
+
+  .box-change {
+    width: 80%;
+    background-color: white;
+    padding: 1.5rem;
+    padding-top: 3rem;
+    padding-bottom: 1.5rem;
+    border-radius: 25px;
   }
 
   /*Departure selection*/
@@ -63,6 +84,8 @@
     height: 7rem;
     -webkit-appearance: none;
     font-size: 2rem;
+    /*Sets the left offset*/
+    padding-left: 14px;
   }
 
   .selection:hover {
