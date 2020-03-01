@@ -230,6 +230,10 @@
     font-size: 3rem;
   }
 
+  .unavailable {
+    background-color: #666666;
+  }
+
   .date-picker .dates .months {
     display: flex;
     justify-content: space-between;
@@ -284,6 +288,31 @@
   /* For PC*/
   .date-picker .dates .months .pointers:hover {
     /*pick some styling*/
+  }
+
+  /*Confirm page*/
+  .confirm-fixed {
+    z-index: 101;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    width: 80%;
+  }
+
+  .confirm-box {
+    position: relative;
+    padding: 0;
+    border-radius: 25px;
+    height: 700px;
+  }
+
+  .confirm-box .confirm-heading-div {
+    position: absolute;
+    background-color: #f10000;
+    width: 100%;
+    height: 20%;
+    border-radius: 25px;
   }
 
 }

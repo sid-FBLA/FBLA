@@ -403,7 +403,58 @@ window.addEventListener('DOMContentLoaded', (event) => {
     populateDates();
   }
 
+  //Unavailable dates for populateDates();
+  //selects days that are not available
+
   function populateDates(e) {
+
+    let arr = [];
+    while(arr.length < 7) {
+      let r = Math.floor(Math.random() * 28) + 1;
+      String(r);
+      if(arr.indexOf(r) === -1) arr.push(r);
+    }
+    console.log(arr);
+
+    var unavailable1v = arr[0];
+    var unavailable1 = String(unavailable1v);
+    var unavailable2v = arr[1];
+    var unavailable2 = String(unavailable2v);
+    var unavailable3v = arr[2];
+    var unavailable3 = String(unavailable3v);
+    var unavailable4v = arr[3];
+    var unavailable4 = String(unavailable4v);
+    var unavailable5v = arr[4];
+    var unavailable5 = String(unavailable5v);
+    var unavailable6v = arr[5];
+    var unavailable6 = String(unavailable6v);
+    var unavailable7v = arr[6];
+    var unavailable7= String(unavailable7v);
+    console.log(unavailable1);
+
+    function unavailable(unavailable) {
+      if (depIndex == 0) {
+        const unavailables = document.querySelectorAll('.unavailable');
+        console.log(unavailable);
+        if (day.innerHTML = unavailable && unavailable != 1 && unavailable != 2 && unavailables.length < 5) {
+          let unav1 = $(".day:contains('" + unavailable + "')").addClass('unavailable');
+          console.log(unavailable);
+        }
+        if (unavailables.length > 5) {
+          $(".day:contains('23')").removeClass('unavailable');
+          $(".day:contains('25')").removeClass('unavailable');
+          $(".day:contains('31')").removeClass('unavailable');
+          $(".day:contains('29')").removeClass('unavailable');
+        }
+        if (depIndex == 1) {
+          //work on this to make it different unavailable dates
+          const randomizeFurther = Math.floor(Math.random()) + 1;
+          console.log(randomizeFurther);
+        }
+      }
+    }
+
+
     days.innerHTML = '';
 
     let amountDays = 30;
@@ -418,21 +469,22 @@ window.addEventListener('DOMContentLoaded', (event) => {
       days.style.height = 623.5;
     }
 
-    //const arrDay = create_element('DIV', days);
 
     for (let i = 0; i < amountDays; i++) {
       const day = create_element('DIV', days, 'day');
       day.innerHTML = i + 1;
+      day.textContent = i + 1;
 
       if (selectedDay == (i + 1) && selectedMonth == month && selectedYear == year) {
         day.classList.add('selected');
-        //arrDay.classList.add('selected');
+      }
+
+      if (day.classList.contains('unavailable')) {
+        day.classList.remove('selected');
       }
 
       day.addEventListener('click', function() {
         if(depIndex == 0) {
-          ///arrDay.style.display = 'none';
-          //arrDay.classList.remove('selected');
           selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
           selectedDay = (i + 1);
           selectedMonth = month;
@@ -456,6 +508,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
       });
     }
+    unavailable(unavailable1);
+    unavailable(unavailable2);
+    unavailable(unavailable3);
+    unavailable(unavailable4);
+    unavailable(unavailable5);
+    unavailable(unavailable6);
+    unavailable(unavailable7);
   }
 
   //All event listners
