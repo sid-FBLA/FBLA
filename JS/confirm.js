@@ -16,12 +16,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //positions the confirmation "page" to fixed
     const confirmPosition = create_element('DIV', body, 'confirm-fixed');
-    confirmPosition.style.display = 'none';
+
     //positions everything relative to confirm
     const confirm = create_element('DIV', confirmPosition, 'confirm-box');
     confirm.classList.add('box');
 
     const confirmHeadingDiv = create_element('DIV', confirm, 'confirm-heading-div');
+
+    const confirmHeadingDivH1 = create_element('H1', confirmHeadingDiv);
+    confirmHeadingDivH1.innerHTML = "CONGRATULATIONS!";
+
+    const confirmHeadingDivH1p1 = create_element('p', confirmHeadingDivH1);
+    confirmHeadingDivH1p1.innerHTML = "You'll be flying with Explore";
+
+    const confirmHeadingDivFlatten = create_element('DIV', confirmHeadingDivH1, 'confirm-heading-div-flatten');
 
 
 });

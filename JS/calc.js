@@ -401,13 +401,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log(monthsOfYear[month]);
 
     populateDates();
+    populateUnavailableDates();
   }
 
   //Unavailable dates for populateDates();
   //selects days that are not available
-
-  function populateDates(e) {
-
+  function populateUnavailableDates(e) {
     let arr = [];
     while(arr.length < 7) {
       let r = Math.floor(Math.random() * 28) + 1;
@@ -432,7 +431,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var unavailable7= String(unavailable7v);
     console.log(unavailable1);
 
+    let arr2 = [];
+    while(arr2.length < 5) {
+      let r = Math.floor(Math.random() * 28) + 1;
+      String(r);
+      if(arr2.indexOf(r) === -1) arr2.push(r);
+    }
+
+    unavailable1_2 = arr2[0];
+    unavailable2_2 = arr2[1];
+    unavailable3_2 = arr2[2];
+    unavailable4_2 = arr2[3];
+    unavailable5_2 = arr2[4];
+    console.log(unavailable5_2);
+
+
     function unavailable(unavailable) {
+      /* So the issue is whenver I press somewhere the dates are repopulated, and the unavailable dates go away. I can obviously fix This
+      by re-calling the function populateUnavailableDates(); However, this woul change the unavailable dates each time the user clicks, how do I fix this*/
       if (depIndex == 0) {
         const unavailables = document.querySelectorAll('.unavailable');
         console.log(unavailable);
@@ -446,13 +462,39 @@ window.addEventListener('DOMContentLoaded', (event) => {
           $(".day:contains('31')").removeClass('unavailable');
           $(".day:contains('29')").removeClass('unavailable');
         }
-        if (depIndex == 1) {
-          //work on this to make it different unavailable dates
-          const randomizeFurther = Math.floor(Math.random()) + 1;
-          console.log(randomizeFurther);
+      }
+    }
+    /*
+    function unavailable_2(unavailable) {
+      if (depIndex == 1) {
+        const unavailables = document.querySelectorAll('.unavailable');
+        console.log(unavailable);
+        if (day.innerHTML = unavailable && unavailable != 1 && unavailable != 2 && unavailables.length < 5) {
+          let unav1 = $(".day:contains('" + unavailable + "')").addClass('unavailable');
+          console.log(unavailable);
+        }
+        if (unavailables.length > 5) {
+          $(".day:contains('23')").removeClass('unavailable');
+          $(".day:contains('25')").removeClass('unavailable');
+          $(".day:contains('31')").removeClass('unavailable');
+          $(".day:contains('29')").removeClass('unavailable');
         }
       }
     }
+  } */
+
+  unavailable(unavailable1);
+  unavailable(unavailable2);
+  unavailable(unavailable3);
+  unavailable(unavailable4);
+  unavailable(unavailable5);
+  unavailable(unavailable6);
+  unavailable(unavailable7);
+
+  //unavailable_2(unavailable1_2);
+  }
+
+  function populateDates(e) {
 
 
     days.innerHTML = '';
@@ -508,13 +550,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
       });
     }
-    unavailable(unavailable1);
-    unavailable(unavailable2);
-    unavailable(unavailable3);
-    unavailable(unavailable4);
-    unavailable(unavailable5);
-    unavailable(unavailable6);
-    unavailable(unavailable7);
   }
 
   //All event listners
