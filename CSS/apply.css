@@ -22,34 +22,45 @@
     text-align: center;
   }
 
-  .number {
+  .circle {
     margin-left: auto;
     margin-right: auto;
-    display: block;
+    background-color: #f10000;
     text-align: center;
-    color: white;
-    height: 1.5em;
-    width: 1.5em;
-    border: solid #f10;
+    vertical-align: middle;
+    height: 5rem;
+    width: 5rem;
     border-radius: 50%;
-    background-color: red;
     margin-bottom: 1.5rem;
   }
+
+  .number {
+    font-size: 3rem;
+    padding-top: 11px;
+    color: white;
+  }
   .instruction {
+    font-size: 2rem;
     text-align: center;
   }
 
   .info {
     margin: auto;
     text-align: center;
+    font-size: 1.5rem;
   }
 
   .more_info {
     display: none;
   }
 
+  .simple-steps {
+    text-align: center;
+    font-size: 3rem;
+  }
+
   .steps {
-    margin-top: 1rem;
+    margin-top: 5rem;
   }
 
   /* For The Collapsible; Collapsibles shared content */
@@ -101,7 +112,7 @@
 
  /* First Collapsible, There is definitely a better and less repetitive way to do this, but my brain is feeling too racked right now*/
   input[class="num1"]:checked ~ .collap-one{
-    max-height: 40px;
+    max-height: 90px;
     transition: max-height 1s ease-in;
     height: auto;
   }
@@ -124,7 +135,7 @@
 
   /*Second Collapsible*/
   input[class="num2"]:checked ~ .collap-two {
-    max-height: 380px;
+    max-height: 87px;
     transition: max-height 1s ease-in;
     height: auto;
   }
@@ -152,7 +163,7 @@
 
   /*Third Collapsible*/
   input[class="num3"]:checked ~ .collap-three {
-    max-height: 90px;
+    max-height: 156px;
     transition: max-height 1s ease-in;
     height: auto;
   }
@@ -178,7 +189,7 @@
   }
 
   input[class="num4"]:checked ~ .collap-four {
-    max-height: 40px;
+    max-height: 87px;
     transition: max-height 1s ease-in;
     height: auto;
   }

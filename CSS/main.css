@@ -79,13 +79,13 @@ img {
   }
   /*button elements*/
   .button {
+    font-size: 2rem;
     background-color: #f10000;
     border: none;
     border-radius: 5px;
     padding: 1rem 2rem 1rem 2rem;
     color: white;
     border: solid transparent;
-    max-height: 54px;
   }
 
   .button:hover {
