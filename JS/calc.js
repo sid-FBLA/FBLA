@@ -42,15 +42,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
       return "no";
     }
     //0.17 is the price/km
-    var price = Math.ceil((distance*0.17)/10)*10 + 50;
+    var price = Math.ceil((distance*0.09)/10)*10 + 50;
     price = price*2;
     return price;
     console.log(price);
   };
 
-  var x = calc(newark, warwick);
-  console.log(x);
+  console.log(calc(newark, cleveland));
+  console.log(calc(newark, boston));
   console.log(calc(newark, hartford));
+  console.log(calc(newark, warwick));
+  console.log(calc(newark, wilmington));
+  console.log(calc(newark, baltimore));
 
   let search = document.querySelector('.flight-book');
   const form = document.querySelector('form');
