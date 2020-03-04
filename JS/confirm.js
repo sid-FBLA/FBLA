@@ -7,6 +7,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log(show);
     const form = document.querySelector('form');
     const containCheck = document.querySelector('#check-height');
+    const departureLocation = document.querySelector('#departure-location');
+    const arrivalLocation = document.querySelector('#arrival-location');
+
+    //Retrieving values
+    const depLocation = departureLocation.options[departureLocation.selectedIndex].text;
+    console.log(depLocation);
 
     function create_element(type, parent, classtype) {
       var identify = document.createElement(type);
@@ -57,7 +63,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //All Departure Flight Info, need to collect and add dates
     const confirmDepLoc = create_element('H1', confirmFlightInfo, 'flight-info');
-    confirmDepLoc.innerHTML = "Location:";
+    confirmDepLoc.innerHTML = "Location: " + depLocation;
 
     const confirmDepDate = create_element('H1', confirmFlightInfo, 'flight-info');
     confirmDepDate.innerHTML = "Date:";
@@ -71,7 +77,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //All Arrival Flight Info, need to collect and add dates
     const confirmArrLoc = create_element('H1', confirmFlightInfo, 'flight-info');
-    confirmArrLoc.innerHTML = "Location:";
+    confirmArrLoc.innerHTML = "Location: ";
 
     const confirmArrDate = create_element('H1', confirmFlightInfo, 'flight-info');
     confirmArrDate.innerHTML = "Date:";
@@ -85,7 +91,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //Adding elements to event listeners
     // show.addEventListener('click', toggleConfirmDisplay);
-    //
+
     // //Event Listeners
     // function toggleConfirmDisplay(e) {
     //   if (form.contains(containCheck)) {

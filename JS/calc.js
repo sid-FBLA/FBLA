@@ -144,6 +144,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   depDate.style.cssFloat = "left";
   depDate.style.width = "75%";
   depDate.style.marginBottom = 8;
+
   /*Date Format*/
   const format_tell = create_element('p', contain, 'disclaimer');
   format_tell.innerHTML = "*Dates are in DD/MM/YYYY format";
@@ -152,6 +153,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
   depTime.style.width = "25%";
   depTime.style.cssFloat = "right";
   depTime.style.marginBottom = 8;
+  const depTime1 =  create_element('option', depTime);
+  depTime1.innerHTML = "14:00";
+  const depTime2 =  create_element('option', depTime);
+  depTime2.innerHTML = "19:00";
+
 
   /*Down Arrow*/
   create_image();
@@ -184,6 +190,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   arrTime.style.width = "25%";
   arrTime.style.cssFloat = "right";
   arrTime.style.marginBottom = 8;
+  const arrTime1 =  create_element('option', arrTime);
+  arrTime1.innerHTML = "14:00";
+  const arrTime2 =  create_element('option', arrTime);
+  arrTime2.innerHTML = "19:00";
 
   /*Down Arrow*/
   create_image();
@@ -304,7 +314,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   prevMonth.addEventListener('click', goToPrevMonth);
   close.addEventListener('click', closeDatePicker);
   set.addEventListener('click', toggleDepartureArrival);
+  set.addEventListener('click', populateUnavailableDates);
+  populateUnavailableDates();
   populateDates();
+  populateUnavailableDates();
 
   //Event Listeners that relate exclusively to date picker
   function toggleDatePickerDisplay(e) {
@@ -341,6 +354,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
      depIndex = 0;
      date_picker_heading_arrival.style.display = "none";
      date_picker_heading_departure.style.display = "block";
+     populateUnavailableDates();
      set.addEventListener('click', toggleDatePickerDisplay);
      if (contain_date_picker.classList.contains('height-none')) {
        set.removeEventListener('click', toggleDatePickerDisplay);
@@ -361,6 +375,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
    $('#arrival-heading').animate({
      left: arrivalLeft}, 10, 'linear'
    );
+   populateUnavailableDates();
    set.addEventListener('click', toggleDatePickerDisplay);
    if (contain_date_picker.classList.contains('height-none')) {
      set.removeEventListener('click', toggleDatePickerDisplay);
@@ -384,6 +399,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     mth.innerHTML = monthsOfYear[month] + ' ' + year;
 
     populateDates();
+    populateUnavailableDates();
   }
 
   function goToPrevMonth(e) {
@@ -407,66 +423,129 @@ window.addEventListener('DOMContentLoaded', (event) => {
     populateUnavailableDates();
   }
 
+  let modifier = true;
   //Unavailable dates for populateDates();
   //selects days that are not available
-  function populateUnavailableDates(e) {
-    let arr = [];
-    while(arr.length < 7) {
-      let r = Math.floor(Math.random() * 28) + 1;
-      String(r);
-      if(arr.indexOf(r) === -1) arr.push(r);
-    }
-    console.log(arr);
 
-    var unavailable1v = arr[0];
-    var unavailable1 = String(unavailable1v);
-    var unavailable2v = arr[1];
-    var unavailable2 = String(unavailable2v);
-    var unavailable3v = arr[2];
-    var unavailable3 = String(unavailable3v);
-    var unavailable4v = arr[3];
-    var unavailable4 = String(unavailable4v);
-    var unavailable5v = arr[4];
-    var unavailable5 = String(unavailable5v);
-    var unavailable6v = arr[5];
-    var unavailable6 = String(unavailable6v);
-    var unavailable7v = arr[6];
-    var unavailable7= String(unavailable7v);
-    console.log(unavailable1);
+  function populateUnavailableDates() {
+    let arr = [
+        [3, 9, 20, 27],
+        [5, 12, 15, 22],
+        [7, 21, 22],
+        [3, 9, 15, 27],
+        [7, 11, 15, 21],
+        [11, 17, 19],
+        [5, 3, 7, 20, 25],
+        [7, 15, 21, 29],
+        [9, 15, 31],
+        [12, 21, 27],
+        [6]
+    ];
 
-    let arr2 = [];
-    while(arr2.length < 5) {
-      let r = Math.floor(Math.random() * 28) + 1;
-      String(r);
-      if(arr2.indexOf(r) === -1) arr2.push(r);
-    }
+    let arr2 = [
+        [5, 12, 15, 22],
+        [3, 9, 23, 27],
+        [9, 19, 26],
+        [3, 4, 18, 21],
+        [11, 19],
+        [7, 9],
+        [20, 25],
+        [12, 29],
+        [15, 17, 31],
+        [13, 23, 27],
+        []
+    ];
+    var unavailableDates = arr[month];
+    console.log(month);
+    console.log(unavailableDates);
 
-    unavailable1_2 = arr2[0];
-    unavailable2_2 = arr2[1];
-    unavailable3_2 = arr2[2];
-    unavailable4_2 = arr2[3];
-    unavailable5_2 = arr2[4];
-    console.log(unavailable5_2);
+    var unavailableArrDates = arr2[month];
+    console.log(unavailableArrDates);
 
-
-    function unavailable(unavailable) {
-      /* So the issue is whenver I press somewhere the dates are repopulated, and the unavailable dates go away. I can obviously fix This
-      by re-calling the function populateUnavailableDates(); However, this woul change the unavailable dates each time the user clicks, how do I fix this*/
-      if (depIndex == 0) {
-        const unavailables = document.querySelectorAll('.unavailable');
-        console.log(unavailable);
-        if (day.innerHTML = unavailable && unavailable != 1 && unavailable != 2 && unavailables.length < 5) {
-          let unav1 = $(".day:contains('" + unavailable + "')").addClass('unavailable');
-          console.log(unavailable);
-        }
-        if (unavailables.length > 5) {
-          $(".day:contains('23')").removeClass('unavailable');
-          $(".day:contains('25')").removeClass('unavailable');
-          $(".day:contains('31')").removeClass('unavailable');
-          $(".day:contains('29')").removeClass('unavailable');
-        }
+    if(depIndex == 0) {
+      for (let i = 0; i < 6; i++) {
+        $(".day:contains('" + unavailableArrDates[i] + "')").removeClass('unavailable');
+        $(".day:contains('" + unavailableDates[i] + "')").addClass('unavailable');
+        console.log(unavailableDates[i]);
+      }
+      let unavailables = document.querySelectorAll('.unavailable');
+      console.log(unavailables.length);
+      if (unavailables.length > 5) {
+        $(".day:contains('23')").removeClass('unavailable');
+        $(".day:contains('25')").removeClass('unavailable');
+        $(".day:contains('31')").removeClass('unavailable');
+        $(".day:contains('29')").removeClass('unavailable');
+        $(".day:contains('15')").removeClass('unavailable');
       }
     }
+
+    if(depIndex == 1) {
+      for (let i = 0; i < 6; i++) {
+        $(".day:contains('" + unavailableDates[i] + "')").removeClass('unavailable');
+        $(".day:contains('" + unavailableArrDates[i] + "')").addClass('unavailable');
+        console.log(unavailableArrDates[i]);
+      }
+      let unavailables = document.querySelectorAll('.unavailable');
+      console.log(unavailables.length);
+      if (unavailables.length > 5) {
+        $(".day:contains('23')").removeClass('unavailable');
+        $(".day:contains('25')").removeClass('unavailable');
+        $(".day:contains('31')").removeClass('unavailable');
+        $(".day:contains('29')").removeClass('unavailable');
+        $(".day:contains('15')").removeClass('unavailable');
+      }
+    }
+
+    //
+    // var unavailable1v = arr[0];
+    // var unavailable1 = String(unavailable1v);
+    // var unavailable2v = arr[1];
+    // var unavailable2 = String(unavailable2v);
+    // var unavailable3v = arr[2];
+    // var unavailable3 = String(unavailable3v);
+    // var unavailable4v = arr[3];
+    // var unavailable4 = String(unavailable4v);
+    // var unavailable5v = arr[4];
+    // var unavailable5 = String(unavailable5v);
+    // var unavailable6v = arr[5];
+    // var unavailable6 = String(unavailable6v);
+    // var unavailable7v = arr[6];
+    // var unavailable7= String(unavailable7v);
+    // console.log(unavailable1);
+    //
+    // let arr2 = [];
+    // while(arr2.length < 5) {
+    //   let r = Math.floor(Math.random() * 28) + 1;
+    //   String(r);
+    //   if(arr2.indexOf(r) === -1) arr2.push(r);
+    // }
+    //
+    // unavailable1_2 = arr2[0];
+    // unavailable2_2 = arr2[1];
+    // unavailable3_2 = arr2[2];
+    // unavailable4_2 = arr2[3];
+    // unavailable5_2 = arr2[4];
+    // console.log(unavailable5_2);
+    //
+    //
+    // function unavailable(unavailable) {
+    //   /* So the issue is whenver I press somewhere the dates are repopulated, and the unavailable dates go away. I can obviously fix This
+    //   by re-calling the function populateUnavailableDates(); However, this woul change the unavailable dates each time the user clicks, how do I fix this*/
+    //   if (depIndex == 0) {
+    //     const unavailables = document.querySelectorAll('.unavailable');
+    //     console.log(unavailable);
+    //     if (day.innerHTML = unavailable && unavailable != 1 && unavailable != 2 && unavailables.length < 5) {
+    //       let unav1 = $(".day:contains('" + unavailable + "')").addClass('unavailable');
+    //       console.log(unavailable);
+    //     }
+    //     if (unavailables.length > 5) {
+    //       $(".day:contains('23')").removeClass('unavailable');
+    //       $(".day:contains('25')").removeClass('unavailable');
+    //       $(".day:contains('31')").removeClass('unavailable');
+    //       $(".day:contains('29')").removeClass('unavailable');
+    //     }
+    //   }
+    //}
     /*
     function unavailable_2(unavailable) {
       if (depIndex == 1) {
@@ -486,16 +565,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
   } */
 
-  unavailable(unavailable1);
-  unavailable(unavailable2);
-  unavailable(unavailable3);
-  unavailable(unavailable4);
-  unavailable(unavailable5);
-  unavailable(unavailable6);
-  unavailable(unavailable7);
+  // unavailable(unavailable1);
+  // unavailable(unavailable2);
+  // unavailable(unavailable3);
+  // unavailable(unavailable4);
+  // unavailable(unavailable5);
+  // unavailable(unavailable6);
+  // unavailable(unavailable7);
 
   //unavailable_2(unavailable1_2);
-  }
+};
 
   function populateDates(e) {
 
@@ -525,7 +604,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
 
       if (day.classList.contains('unavailable')) {
-        day.classList.remove('selected');
       }
 
       day.addEventListener('click', function() {
@@ -534,9 +612,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
           selectedDay = (i + 1);
           selectedMonth = month;
           selectedYear = year;
+          if (day.classList.contains('unavailable')) {
+            alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable');
+            day.classList.remove('selected');
+            day.classList.add('unavailable');
+            day != selectedDate;
+          }
           selected_date.textContent = formatDate(selectedDate);
           selected_date.dataset.value = selectedDate;
+          populateUnavailableDates();
           populateDates();
+          populateUnavailableDates();
         } else if (depIndex == 1) {
           //arrDay.addEventListener('click', function() {
             console.log(depIndex);
@@ -545,9 +631,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
             selectedDay = (i + 1);
             selectedMonth = month;
             selectedYear = year;
+            if (day.classList.contains('unavailable')) {
+              alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable');
+              day.classList.remove('selected');
+              day.classList.add('unavailable');
+            }
             selected_arrival_date.textContent = formatDate(selectedDate);
             selected_arrival_date.dataset.value = selectedDate;
+            populateUnavailableDates();
             populateDates();
+            populateUnavailableDates();
             set.addEventListener('click', toggleDatePickerDisplay);
           //});
         }
