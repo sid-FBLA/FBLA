@@ -1,6 +1,8 @@
 window.addEventListener('DOMContentLoaded', (event) => {
   console.log("DOM content fully loaded and parsed");
 
+  //written in (y,x), longitude, latitude
+
   const newark = [40.6895, -74.1745];
   //Newark Liberty Airport
   const cleveland = [41.4058, -81.8539];
@@ -8,6 +10,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const boston = [42.3656, -71.0096];
   //Boston Logan International Airport
   const hartford = [41.7658, -72.6734];
+  //Bradely International Airport
   const warwick = [41.7001, -71.4162];
   const wilmington = [34.2669, -77.9105];
   const baltimore = [39.1774, -76.6684];
@@ -18,37 +21,66 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   console.log("hi");
 
-  function calc(city1, city2) {
-    var x1 = city1[0];
-    var y1 = city1[1];
-    var x2 = city2[0];
-    var y2 = city2[1];
-    //one degree of longitude is 84km at latitude 41.5 if f(x) is a logarithmic function and g(x) is a sine function then input f(g(x))
-    //one degree of latitude is approx 111km
-    //The multiplication to convert to km
-    var xdistance = (x2 - x1)*111;
-    console.log(xdistance);
-    var ydistance = (y2 - y1)*84;
-    console.log(ydistance);
-    var xsquared = Math.pow(xdistance, 2);
-    console.log(xsquared);
-    var ysquared = Math.pow(ydistance, 2);
-    console.log(ysquared);
-    var squaresadded = xsquared + ysquared;
-    console.log(squaresadded);
-    var distance = Math.sqrt(squaresadded);
+  // function calc(city1, city2) {
+  //   var x1 = city1[1];
+  //   var y1 = city1[0];
+  //   var x2 = city2[1];
+  //   var y2 = city2[0];
+  //   //one degree of longitude is 84km at latitude 41.5 if f(x) is a logarithmic function and g(x) is a sine function then input f(g(x))
+  //   //one degree of latitude is approx 111km
+  //   //The multiplication to convert to km
+  //   var xdistance = (x2 - x1)*111;
+  //   console.log(xdistance);
+  //   var ydistance = (y2 - y1)*84;
+  //   console.log(ydistance);
+  //   var xsquared = Math.pow(xdistance, 2);
+  //   console.log(xsquared);
+  //   var ysquared = Math.pow(ydistance, 2);
+  //   console.log(ysquared);
+  //   var squaresadded = xsquared + ysquared;
+  //   console.log(squaresadded);
+  //   var distance = Math.sqrt(squaresadded);
+  //   console.log(distance);
+  //   if (distance < 100) {
+  //     return "no";
+  //   }
+  //   //0.17 is the price/km
+  //   var price = Math.ceil((distance*0.09)/10)*10 + 50;
+  //   price = price*2;
+  //   return price;
+  //   console.log(price);
+  // };
+
+  function calc2(city1, city2) {
+    let lon1 = city1[0];
+    let lon2 = city2[0];
+    let lat1 = city1[1];
+    let lat2 = city2[1];
+    var R = 6371e3; // metres
+    var φ1 = lat1 * Math.PI / 180;
+    var φ2 = lat2 * Math.PI / 180;
+    var Δφ = (lat2-lat1)* Math.PI / 180;
+    var Δλ = (lon2-lon1)* Math.PI / 180;
+
+    var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+            Math.cos(φ1) * Math.cos(φ2) *
+            Math.sin(Δλ/2) * Math.sin(Δλ/2);
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+    var distance = R * c;
     console.log(distance);
+
     if (distance < 100) {
       return "no";
     }
-    //0.17 is the price/km
+    //0.09 is the price/km
     var price = Math.ceil((distance*0.09)/10)*10 + 50;
     price = price*2;
     return price;
     console.log(price);
   };
 
-  console.log(calc(newark, cleveland));
+  console.log(calc2(newark, cleveland));
   console.log(calc(newark, boston));
   console.log(calc(newark, hartford));
   console.log(calc(newark, warwick));
