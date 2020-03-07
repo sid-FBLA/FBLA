@@ -131,9 +131,7 @@ img {
     margin-top: 5rem;
     box-shadow: 0rem 0.2rem 0.4rem 0.2rem rgba(0, 0, 0, 0.1);
     padding: 0.5rem;
-    width: 30%;
-    min-width: 375px;
-    max-width: 375px;
+    width: 375px;
     transition: 500ms;
     border: solid transparent;
   }
@@ -253,6 +251,15 @@ img {
   .wrapper {
     min-height: calc(100vh - 472px);
     margin-bottom: 5rem;
+  }
+
+  .box img[src*="Box"] {
+    position: relative;
+    width: 80vw;
+    height: 300px;
+    /*Add padding and margin of box so 8px, true for all sides*/
+    right: 8px;
+    top: -8px;
   }
 
   .box .state,
@@ -462,6 +469,14 @@ img {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  .box img[src*="Box"] {
+    position: relative;
+    width: 375px;
+    /*Add padding and margin of box so 11px, true for all sides*/
+    right: 11px;
+    top: -11px;
   }
 
   .box .city {
