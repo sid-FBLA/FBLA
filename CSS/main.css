@@ -219,9 +219,11 @@ img {
 
   #slogan {
     margin: auto;
+    text-align: center;
     color: white;
     margin-top: 2rem;
     margin-bottom: 1.5rem;
+    font-size: 5rem;
   }
 
 
@@ -239,7 +241,7 @@ img {
 
   .space-between p {
     text-align: center;
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: white;
     font-weight: bold;
   }
@@ -259,13 +261,22 @@ img {
   }
 
   .box .state {
-    font-size: 2rem;
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .box .city {
     margin-bottom: 0.2rem;
     margin-top: 0.5rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
+  }
+
+  .box .price {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
   }
  /*
   .red-border:hover {
@@ -285,6 +296,10 @@ img {
     font-size: 1.5rem;
   }
 
+  .footer-left h3 {
+    font-size: 1.5rem;
+  }
+
   .footer-center img {
     height: 64px;
     width: 64px;
@@ -295,6 +310,10 @@ img {
     border: solid transparent;
     margin-right: 0.5rem;
     margin-left: 0.5rem;
+  }
+
+  .footer-center .credit {
+    font-size: 1rem;
   }
 
   .footer-right .inline-textpic {
@@ -443,6 +462,22 @@ img {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
+  }
+
+  .box .city {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+  }
+
+  .box .state {
+    font-size: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .box .price {
+    font-size: 1.5rem;
+    margin-top: 0;
   }
 
   .book-button {

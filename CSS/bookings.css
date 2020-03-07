@@ -88,6 +88,11 @@
     height: 7rem;
     -webkit-appearance: none;
     font-size: 2rem;
+    /*Wraps text*/
+    overflow: hidden;
+    /*Altered two below to make word wrap work */
+    word-wrap: normal !important;
+    white-space: normal;
     /*Sets the left offset*/
     padding-left: 14px;
   }

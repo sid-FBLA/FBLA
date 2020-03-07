@@ -11,9 +11,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //Boston Logan International Airport
   const hartford = [41.7658, -72.6734];
   //Bradely International Airport
-  const warwick = [41.7001, -71.4162];
+  const warwick = [41.7245, -71.4304];
+  //TF Green International Airport
   const wilmington = [34.2669, -77.9105];
+  //Wilmington International Airport
   const baltimore = [39.1774, -76.6684];
+
 
 
   /*other global variables*/
@@ -51,13 +54,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //   console.log(price);
   // };
 
-  function calc2(city1, city2) {
-    let lon1 = city1[0];
-    let lon2 = city2[0];
-    let lat1 = city1[1];
-    let lat2 = city2[1];
-    var R = 6371e3; // metres
+  function calc(city1, city2) {
+    let lon1 = city1[1];
+    let lon2 = city2[1];
+    let lat1 = city1[0];
+    let lat2 = city2[0];
+    console.log(lat2);
+    var R = 6371; // kilo-metres
     var φ1 = lat1 * Math.PI / 180;
+    console.log(φ1);
     var φ2 = lat2 * Math.PI / 180;
     var Δφ = (lat2-lat1)* Math.PI / 180;
     var Δλ = (lon2-lon1)* Math.PI / 180;
@@ -65,9 +70,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
             Math.cos(φ1) * Math.cos(φ2) *
             Math.sin(Δλ/2) * Math.sin(Δλ/2);
+    console.log(a);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    console.log(c);
 
-    var distance = R * c;
+    var distance = (R * c);
     console.log(distance);
 
     if (distance < 100) {
@@ -80,7 +87,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     console.log(price);
   };
 
-  console.log(calc2(newark, cleveland));
+  console.log(calc(newark, cleveland));
   console.log(calc(newark, boston));
   console.log(calc(newark, hartford));
   console.log(calc(newark, warwick));
@@ -528,84 +535,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     }
 
-    //
-    // var unavailable1v = arr[0];
-    // var unavailable1 = String(unavailable1v);
-    // var unavailable2v = arr[1];
-    // var unavailable2 = String(unavailable2v);
-    // var unavailable3v = arr[2];
-    // var unavailable3 = String(unavailable3v);
-    // var unavailable4v = arr[3];
-    // var unavailable4 = String(unavailable4v);
-    // var unavailable5v = arr[4];
-    // var unavailable5 = String(unavailable5v);
-    // var unavailable6v = arr[5];
-    // var unavailable6 = String(unavailable6v);
-    // var unavailable7v = arr[6];
-    // var unavailable7= String(unavailable7v);
-    // console.log(unavailable1);
-    //
-    // let arr2 = [];
-    // while(arr2.length < 5) {
-    //   let r = Math.floor(Math.random() * 28) + 1;
-    //   String(r);
-    //   if(arr2.indexOf(r) === -1) arr2.push(r);
-    // }
-    //
-    // unavailable1_2 = arr2[0];
-    // unavailable2_2 = arr2[1];
-    // unavailable3_2 = arr2[2];
-    // unavailable4_2 = arr2[3];
-    // unavailable5_2 = arr2[4];
-    // console.log(unavailable5_2);
-    //
-    //
-    // function unavailable(unavailable) {
-    //   /* So the issue is whenver I press somewhere the dates are repopulated, and the unavailable dates go away. I can obviously fix This
-    //   by re-calling the function populateUnavailableDates(); However, this woul change the unavailable dates each time the user clicks, how do I fix this*/
-    //   if (depIndex == 0) {
-    //     const unavailables = document.querySelectorAll('.unavailable');
-    //     console.log(unavailable);
-    //     if (day.innerHTML = unavailable && unavailable != 1 && unavailable != 2 && unavailables.length < 5) {
-    //       let unav1 = $(".day:contains('" + unavailable + "')").addClass('unavailable');
-    //       console.log(unavailable);
-    //     }
-    //     if (unavailables.length > 5) {
-    //       $(".day:contains('23')").removeClass('unavailable');
-    //       $(".day:contains('25')").removeClass('unavailable');
-    //       $(".day:contains('31')").removeClass('unavailable');
-    //       $(".day:contains('29')").removeClass('unavailable');
-    //     }
-    //   }
-    //}
-    /*
-    function unavailable_2(unavailable) {
-      if (depIndex == 1) {
-        const unavailables = document.querySelectorAll('.unavailable');
-        console.log(unavailable);
-        if (day.innerHTML = unavailable && unavailable != 1 && unavailable != 2 && unavailables.length < 5) {
-          let unav1 = $(".day:contains('" + unavailable + "')").addClass('unavailable');
-          console.log(unavailable);
-        }
-        if (unavailables.length > 5) {
-          $(".day:contains('23')").removeClass('unavailable');
-          $(".day:contains('25')").removeClass('unavailable');
-          $(".day:contains('31')").removeClass('unavailable');
-          $(".day:contains('29')").removeClass('unavailable');
-        }
-      }
-    }
-  } */
-
-  // unavailable(unavailable1);
-  // unavailable(unavailable2);
-  // unavailable(unavailable3);
-  // unavailable(unavailable4);
-  // unavailable(unavailable5);
-  // unavailable(unavailable6);
-  // unavailable(unavailable7);
-
-  //unavailable_2(unavailable1_2);
+  
 };
 
   function populateDates(e) {
