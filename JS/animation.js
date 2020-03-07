@@ -74,3 +74,15 @@
       left: leftoffset}, 1000, 'linear'
     );
   }
+
+  //For image boxes
+  // const box = document.querySelectorAll('.box');
+  // const imageLocation = $("img[src*='Box']");
+  // console.log(imageLocation);
+  //
+  // function shortenImage() {
+  //   //All images are 375px
+  //   imageLocation.style.width = 369;
+  // }
+  //
+  // shortenImage();

@@ -256,7 +256,7 @@ img {
   .box img[src*="Box"] {
     position: relative;
     width: 80vw;
-    height: 300px;
+    height: 200px;
     /*Add padding and margin of box so 8px, true for all sides*/
     right: 8px;
     top: -8px;
@@ -474,9 +474,16 @@ img {
   .box img[src*="Box"] {
     position: relative;
     width: 375px;
+    height: 125px;
     /*Add padding and margin of box so 11px, true for all sides*/
     right: 11px;
     top: -11px;
+  }
+
+  .box:hover img[src*="Box"] {
+    right: 8px;
+    top: -8px;
+    max-width: 369;
   }
 
   .box .city {
