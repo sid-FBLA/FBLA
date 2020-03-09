@@ -535,7 +535,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     }
 
-  
+
 };
 
   function populateDates(e) {
@@ -575,10 +575,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
           selectedMonth = month;
           selectedYear = year;
           if (day.classList.contains('unavailable')) {
-            alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable');
+            alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable.');
             day.classList.remove('selected');
             day.classList.add('unavailable');
-            day != selectedDate;
           }
           selected_date.textContent = formatDate(selectedDate);
           selected_date.dataset.value = selectedDate;

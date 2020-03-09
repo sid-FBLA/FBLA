@@ -47,7 +47,7 @@
   .info {
     margin: auto;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 
   .more_info {
@@ -112,7 +112,7 @@
 
  /* First Collapsible, There is definitely a better and less repetitive way to do this, but my brain is feeling too racked right now*/
   input[class="num1"]:checked ~ .collap-one{
-    max-height: 90px;
+    max-height: 158px;
     transition: max-height 1s ease-in;
     height: auto;
   }
@@ -135,7 +135,7 @@
 
   /*Second Collapsible*/
   input[class="num2"]:checked ~ .collap-two {
-    max-height: 87px;
+    max-height: 158px;
     transition: max-height 1s ease-in;
     height: auto;
   }
@@ -163,7 +163,7 @@
 
   /*Third Collapsible*/
   input[class="num3"]:checked ~ .collap-three {
-    max-height: 156px;
+    max-height: 344px;
     transition: max-height 1s ease-in;
     height: auto;
   }
@@ -189,9 +189,13 @@
   }
 
   input[class="num4"]:checked ~ .collap-four {
-    max-height: 87px;
+    max-height: 117px;
     transition: max-height 1s ease-in;
     height: auto;
+  }
+
+  .collap-three .inline-textpic {
+    font-size: 1.5rem;
   }
 
   input[id="expander4"]:not(:checked) ~ .collapsible {
@@ -230,6 +234,40 @@
   .collapsible {
     max-width: 821.19px;
   }
+
+  .info {
+    font-size: 1.5rem;
+  }
+
+  input[class="num1"]:checked ~ .collap-one {
+    max-height: 58px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+
+  input[class="num2"]:checked ~ .collap-two {
+    max-height: 58px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+
+  input[class="num3"]:checked ~ .collap-three {
+    max-height: 124px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+
+  input[class="num4"]:checked ~ .collap-four {
+    max-height: 58px;
+    transition: max-height 1s ease-in;
+    height: auto;
+  }
+
+
+
+
+
+
 }
 
 @media only screen and (min-width: 1440px) {
