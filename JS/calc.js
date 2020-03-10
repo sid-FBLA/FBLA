@@ -570,15 +570,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       day.addEventListener('click', function() {
         if(depIndex == 0) {
+          if (day.classList.contains('unavailable')) {
+            alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable.');
+            return false;
+          }
           selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
           selectedDay = (i + 1);
           selectedMonth = month;
           selectedYear = year;
-          if (day.classList.contains('unavailable')) {
-            alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable.');
-            day.classList.remove('selected');
-            day.classList.add('unavailable');
-          }
           selected_date.textContent = formatDate(selectedDate);
           selected_date.dataset.value = selectedDate;
           populateUnavailableDates();
