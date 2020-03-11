@@ -10,9 +10,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const departureLocation = document.querySelector('#departure-location');
     const arrivalLocation = document.querySelector('#arrival-location');
 
+    const check1 = $('#arrival-location');
+    const check2 = $('#time1');
+    const check3 = $('#time2');
+    const check4 = $('#check4');
+
+    const time1 = document.querySelector('#time1');
+    const time2 = document.querySelector('#time2');
+    const passengers = document.querySelector('#select-7 .selection');
     //Retrieving values
-    const depLocation = departureLocation.options[departureLocation.selectedIndex].text;
-    console.log(depLocation);
+
+    //written in (y,x), longitude, latitude
+    const newark = [40.6895, -74.1745];
+    //Newark Liberty Airport
+    const cleveland = [41.4058, -81.8539];
+    //Cleveland Hopkins International Airport
+    const boston = [42.3656, -71.0096];
+    //Boston Logan International Airport
+    const hartford = [41.7658, -72.6734];
+    //Bradely International Airport
+    const warwick = [41.7245, -71.4304];
+    //TF Green International Airport
+    const wilmington = [34.2669, -77.9105];
+    //Wilmington International Airport
+    const baltimore = [39.1774, -76.6684];
+
+    //Functions etc...
 
     function create_element(type, parent, classtype) {
       var identify = document.createElement(type);
@@ -23,7 +46,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     };
 
     //Creating elements for confirm page
-    const mobileHeight = 1500;
+    const mobileHeight = 1700;
 
     //positions the confirmation "page" to fixed
     const confirmPosition = create_element('DIV', body, 'confirm-fixed');
@@ -63,21 +86,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //All Departure Flight Info, need to collect and add dates
     const confirmDepLoc = create_element('H1', confirmFlightInfo, 'flight-info');
-    confirmDepLoc.innerHTML = "Location: " + depLocation;
 
     const confirmDepDate = create_element('H1', confirmFlightInfo, 'flight-info');
-    confirmDepDate.innerHTML = "Date:";
+    //confirmDepDate.innerHTML = "Date: " + ;
 
     const confirmDepTime = create_element('H1', confirmFlightInfo, 'flight-info');
-    confirmDepTime.innerHTML = "Time:";
 
     //Arrival H1 for flight info
     const confirmArr = create_element('H1', confirmFlightInfo, 'content-heading');
-    confirmArr.innerHTML = "Arrival";
+    confirmArr.innerHTML = "Return";
 
     //All Arrival Flight Info, need to collect and add dates
     const confirmArrLoc = create_element('H1', confirmFlightInfo, 'flight-info');
-    confirmArrLoc.innerHTML = "Location: ";
+    confirmArrLoc.innerHTML = "Location:";
 
     const confirmArrDate = create_element('H1', confirmFlightInfo, 'flight-info');
     confirmArrDate.innerHTML = "Date:";
@@ -85,19 +106,180 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const confirmArrTime = create_element('H1', confirmFlightInfo, 'flight-info');
     confirmArrTime.innerHTML = "Time:";
 
+    //Passengers and Price H1 for flight Info
+    const confirmP = create_element('H1', confirmFlightInfo, 'content-heading');
+    confirmP.innerHTML = "Price + Passengers";
+
+    //Passengers
+    const confirmPassengers = create_element('H1', confirmFlightInfo, 'flight-info');
+    confirmPassengers.innerHTML = "Passengers:";
+
     //Price
-    const price = create_element('H1', confirmFlightInfo, 'content-heading');
-    price.innerHTML = "Price";
+    const confirmPrice = create_element('H1', confirmFlightInfo, 'flight-info');
+    confirmPrice.innerHTML = "Price:";
 
     //Adding elements to event listeners
-    // show.addEventListener('click', toggleConfirmDisplay);
+    show.addEventListener('click', toggleConfirmDisplay);
 
-    // //Event Listeners
-    // function toggleConfirmDisplay(e) {
-    //   if (form.contains(containCheck)) {
-    //     confirmPosition.style.display = "block";
-    //      $('.confirm-box').animate({height:mobileHeight}, 300);
-    //   }
-    // }
+    //Event Listeners
+    var selects = $('select');
+    // for (let i = 0; i < selections.length; i++) {
+    //
+    // };
+    console.log(selects.length);
+    console.log(check4.val());
+
+    function toggleConfirmDisplay(e) {
+      if (check1.val() != '' && check2.val() != '' && check3.val() != '' && check4.val() != null) {
+
+        const contentHeight = $('.confirm-flight-info').height();
+        confirmContentBackground.style.height = contentHeight;
+
+        const depLocation = departureLocation.options[departureLocation.selectedIndex].text;
+        confirmDepLoc.innerHTML = "Departure Location: " + depLocation;
+
+        const depDateText = document.querySelector('#select-3 .selected-date').innerHTML;
+        confirmDepDate.innerHTML = "Date: " + depDateText;
+
+        const depTimeText = time1.options[time1.selectedIndex].text;
+        confirmDepTime.innerHTML = "Time: " + depTimeText;
+
+        const arrLocation = arrivalLocation.options[arrivalLocation.selectedIndex].text;
+        confirmArrLoc.innerHTML = "Arrival Location: " + arrLocation;
+
+        const arrDateText = document.querySelector('#select-5 .selected-date').innerHTML;
+        confirmArrDate.innerHTML = "Date: " + arrDateText;
+
+        const arrTimeText = time2.options[time2.selectedIndex].text;
+        confirmArrTime.innerHTML = "Time: " + arrTimeText;
+
+        const passenger = passengers.options[passengers.selectedIndex].text;
+        console.log(passenger);
+        confirmPassengers.innerHTML = "Passengers: " + passenger;
+        console.log(confirmPassengers);
+
+        //The below lines are to calculate flight price
+
+        let calcDepLocation = departureLocation.options[departureLocation.selectedIndex].value;
+        console.log(calcDepLocation);
+        let calcArrLocation = arrivalLocation.options[arrivalLocation.selectedIndex].value;
+        console.log(calcArrLocation);
+
+        const newark = [40.6895, -74.1745];
+        //Newark Liberty Airport
+        const cleveland = [41.4058, -81.8539];
+        //Cleveland Hopkins International Airport
+        const boston = [42.3656, -71.0096];
+        //Boston Logan International Airport
+        const hartford = [41.7658, -72.6734];
+        //Bradely International Airport
+        const warwick = [41.7245, -71.4304];
+        //TF Green International Airport
+        const wilmington = [34.2669, -77.9105];
+        //Wilmington International Airport
+        const baltimore = [39.1774, -76.6684];
+
+        console.log(newark);
+
+        if(calcDepLocation === "newark") {
+          calcDepLocation = newark;
+        }
+
+        if(calcDepLocation === "cleveland") {
+          calcDepLocation = cleveland;
+        }
+
+        if(calcDepLocation === "boston") {
+          calcDepLocation = boston;
+        }
+
+        if(calcDepLocation === "hartford") {
+          calcDepLocation = hartford;
+        }
+
+        if(calcDepLocation === "warwick") {
+          calcDepLocation = warwick;
+        }
+
+        if(calcDepLocation === "wilmington") {
+          calcDepLocation = wilmington;
+        }
+
+        if(calcDepLocation === "baltimore") {
+          calcDepLocation = baltimore;
+        }
+
+        if(calcArrLocation === "newark") {
+          calcArrLocation = newark;
+        }
+
+        if(calcArrLocation === "cleveland") {
+          calcArrLocation = cleveland;
+        }
+
+        if(calcArrLocation === "boston") {
+          calcArrLocation = boston;
+        }
+
+        if(calcArrLocation === "hartford") {
+          calcArrLocation = hartford;
+        }
+
+        if(calcArrLocation === "warwick") {
+          calcArrLocation = warwick;
+        }
+
+        if(calcArrLocation === "wilmington") {
+          calcArrLocation = wilmington;
+        }
+
+        if(calcArrLocation === "baltimore") {
+          calcArrLocation = baltimore;
+        }
+
+        console.log(calcArrLocation);
+        console.log(calcDepLocation);
+
+        const flightPrice = calc(calcDepLocation, calcArrLocation);
+        console.log(flightPrice);
+
+        confirmPrice.innerHTML = "Price: " + flightPrice + "USD";
+
+        confirmPosition.style.display = "block";
+        $('.confirm-box').animate({height:mobileHeight}, 300);
+      }
+    }
+
+
+    function calc(city1, city2) {
+      let lon1 = city1[1];
+      let lon2 = city2[1];
+      let lat1 = city1[0];
+      let lat2 = city2[0];
+      var R = 6371; // kilo-metres
+      var φ1 = lat1 * Math.PI / 180;
+      var φ2 = lat2 * Math.PI / 180;
+      var Δφ = (lat2-lat1)* Math.PI / 180;
+      var Δλ = (lon2-lon1)* Math.PI / 180;
+
+      var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
+              Math.cos(φ1) * Math.cos(φ2) *
+              Math.sin(Δλ/2) * Math.sin(Δλ/2);
+      var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+
+      var distance = (R * c);
+
+      if (distance < 100) {
+        return "no";
+      }
+      //0.09 is the price/km
+      var price = Math.ceil((distance*0.09)/10)*10 + 50;
+      console.log(price);
+      price = price*2;
+      return price;
+      console.log(price);
+    };
+
+    console.log(calc(newark, hartford));
 
 });

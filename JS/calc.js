@@ -59,10 +59,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     let lon2 = city2[1];
     let lat1 = city1[0];
     let lat2 = city2[0];
-    console.log(lat2);
     var R = 6371; // kilo-metres
     var φ1 = lat1 * Math.PI / 180;
-    console.log(φ1);
     var φ2 = lat2 * Math.PI / 180;
     var Δφ = (lat2-lat1)* Math.PI / 180;
     var Δλ = (lon2-lon1)* Math.PI / 180;
@@ -70,12 +68,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     var a = Math.sin(Δφ/2) * Math.sin(Δφ/2) +
             Math.cos(φ1) * Math.cos(φ2) *
             Math.sin(Δλ/2) * Math.sin(Δλ/2);
-    console.log(a);
     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-    console.log(c);
 
     var distance = (R * c);
-    console.log(distance);
 
     if (distance < 100) {
       return "no";
@@ -99,10 +94,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const select = document.querySelector('.selection');
   const wrapper = document.querySelector('.wrapper');
   const selectMenus = document.querySelectorAll('.selection')
-  console.log(selectMenus);
   const body = document.querySelector('body');
   const select1 = document.querySelector('#select-1');
-  console.log(select1);
   const select2 = document.querySelector('#select-2');
   const windowWidth = $('body').width();
 
@@ -124,7 +117,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
   contain.style.width = "100%";
   contain.setAttribute("id", "check-height");
 
-  console.log(contain);
 
   //function to create select elements
   function create_select(identify) {
@@ -151,13 +143,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //Departure date elements down-arrow right offset
   let offSet = $('.selection').width();
-  console.log(offSet);
   let outerSet = offSet/4;
-  console.log(outerSet);
   let right = outerSet + 16;
-  console.log(right);
-
-  console.log('hi')
 
   /*Submit info button*/
   console.log(searchClick);
@@ -168,10 +155,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   /*Depature Date Select DIV + Arrow(this has been created underneath the function)*/
   const select3 = create_select('select-3');
-  console.log(select3);
   const arrow0 = create_arrow(select3);
   arrow0.style.right = right;
-  console.log(arrow0);
 
   /*Depature Time Select DIV + Arrow*/
   const select4 = create_select('select-4');
@@ -189,13 +174,19 @@ window.addEventListener('DOMContentLoaded', (event) => {
   format_tell.innerHTML = "*Dates are in DD/MM/YYYY format";
 
   const depTime = create_element('SELECT', select4, 'selection');
+  depTime.setAttribute('ID', "time1");
   depTime.style.width = "25%";
   depTime.style.cssFloat = "right";
   depTime.style.marginBottom = 8;
+  const depChoose = create_element('option', depTime);
+  depChoose.innerHTML = "Time";
+  depChoose.value = "";
   const depTime1 =  create_element('option', depTime);
   depTime1.innerHTML = "14:00";
+  depTime1.value = "14:00";
   const depTime2 =  create_element('option', depTime);
   depTime2.innerHTML = "19:00";
+  depTime2.value = "19:00";
 
 
   /*Down Arrow*/
@@ -203,7 +194,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   /*Arrival Date Heading*/
   const arrHeading = create_element('H2', contain, 'select-heading');
-  arrHeading.innerHTML = 'Arrival Date';
+  arrHeading.innerHTML = 'Returning Date';
 
   /*Arrival Date Select DIV + Arrow*/
   const select5 = create_select('select-5');
@@ -216,6 +207,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   /*Arrival date + time select menus*/
   const arrDate = create_element('DIV', select5, 'selection');
+  arrDate.setAttribute('ID', 'check4');
   arrDate.style.borderWidth = 1;
   arrDate.style.cssFloat = "left";
   arrDate.style.width = "75%";
@@ -226,23 +218,77 @@ window.addEventListener('DOMContentLoaded', (event) => {
   format_tell2.innerHTML = "*Dates are in DD/MM/YYYY format";
 
   const arrTime = create_element('SELECT', select6, 'selection');
+  arrTime.setAttribute('ID', "time2");
   arrTime.style.width = "25%";
   arrTime.style.cssFloat = "right";
   arrTime.style.marginBottom = 8;
+  const arrChoose = create_element('option', arrTime);
+  arrChoose.innerHTML = "Time";
+  arrChoose.value = "";
   const arrTime1 =  create_element('option', arrTime);
   arrTime1.innerHTML = "14:00";
+  arrTime1.value = "14:00";
   const arrTime2 =  create_element('option', arrTime);
   arrTime2.innerHTML = "19:00";
+  arrTime2.value = "19:00";
+  console.log(arrTime2.value);
 
   /*Down Arrow*/
   create_image();
+
+  /*Passengers Heading*/
+  const passengerHeading = create_element('H1', contain, 'select-heading');
+  passengerHeading.innerHTML = "Passengers";
+
+  /*Select DIV + arrow*/
+  const select7 = create_select('select-7');
+  const arrow4 = create_arrow(select7);
+
+  /*Passenger number selection*/
+  const passengerSelect = create_element('SELECT', select7, 'selection');
+
+  /*Creating options for passengerSelect*/
+  const pass1 =  create_element('option', passengerSelect);
+  pass1.innerHTML = "1 Passenger";
+  pass1.value = "1";
+
+  const pass2 =  create_element('option', passengerSelect);
+  pass2.innerHTML = "2 Passengers";
+  pass2.value = "2";
+
+  const pass3 =  create_element('option', passengerSelect);
+  pass3.innerHTML = "3 Passengers";
+  pass3.value = "3";
+
+  const pass4 =  create_element('option', passengerSelect);
+  pass4.innerHTML = "4 Passengers";
+  pass4.value = "4";
+
+  const pass5 =  create_element('option', passengerSelect);
+  pass5.innerHTML = "5 Passengers";
+  pass5.value = "5";
+
+  const pass6 =  create_element('option', passengerSelect);
+  pass6.innerHTML = "6 Passengers";
+  pass6.value = "6";
+
+  const pass7 =  create_element('option', passengerSelect);
+  pass7.innerHTML = "7 Passengers";
+  pass7.value = "7";
+
+  const pass8 =  create_element('option', passengerSelect);
+  pass8.innerHTML = "8 Passengers";
+  pass8.value = "8";
+
+  const pass9 =  create_element('option', passengerSelect);
+  pass9.innerHTML = "9 Passengers";
+  pass9.value = "9";
 
   /*Disclaimer*/
   const disclaimer = create_element('DIV', contain, 'disclaimer');
   disclaimer.textContent = "*All flights are two-way trips";
 
   const containHeight = $('#check-height').height();
-  console.log(containHeight);
 
   $('#check-height').height(0);
 
@@ -271,7 +317,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let depIndex = 0;
   const date_picker_heading_arrival = create_element('H1', heading_div, 'date-picker-heading');
   date_picker_heading_arrival.setAttribute('id', 'arrival-heading');
-  date_picker_heading_arrival.innerHTML = "Arrival Date";
+  date_picker_heading_arrival.innerHTML = "Returning Date";
   $('#arrival-heading').offset({left: windowWidth});
 
   //Creates main date-picker DIV
@@ -304,7 +350,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //Image for closing
   var close = document.createElement('img');
-  console.log(close);
   close.src = '../Images/close.png';
   heading_div.appendChild(close);
   close.style.position = 'absolute';
@@ -312,13 +357,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   //SET text
   const dates_height = $('.dates').height();
-  console.log(dates_height);
   const set = create_element('H3', date_picker, 'set');
   set.classList.add('close-position');
   set.innerHTML = 'SET';
   set.style.top = dates_height;
   set.style.right = 46;
-  console.log(set);
 
   //Adding variables that are associated with elements in date-picker
   const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
@@ -377,16 +420,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
  }
 
  function toggleDepartureArrival(e) {
-   //original width of the arrival date heading is 466px
+   //original width of the arrival date heading is 623px
    e.stopPropagation();
-   date_picker_heading_arrival.style.width = 500;
-   let arrivalLeft = windowWidth/2 - 466/2;
+   date_picker_heading_arrival.style.width = 623;
+   let arrivalLeft = windowWidth/2 - 623/2;
    date_picker_heading_arrival.style.marginLeft = 0;
    date_picker_heading_departure.style.display = "none";
    $('#arrival-heading').animate({
-     left: arrivalLeft}, 500, 'linear'
+     left: arrivalLeft}, 623, 'linear'
    );
-   date_picker_heading_arrival.style.width = 466.09;
+   date_picker_heading_arrival.style.width = 623;
    depIndex = 1;
 
    select3.addEventListener('click', function() {
@@ -404,8 +447,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
  select5.addEventListener('click', function() {
    //Declaring some variables any styles
-   date_picker_heading_arrival.style.width = 500;
-   let arrivalLeft = windowWidth/2 - 466/2;
+   date_picker_heading_arrival.style.width = 623;
+   let arrivalLeft = windowWidth/2 - 623/2;
    date_picker_heading_arrival.style.marginLeft = 0;
    //Done that
    depIndex = 1;
@@ -443,20 +486,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   function goToPrevMonth(e) {
     month--;
-    console.log(month);
     if (month < 0) {
       month = 11;
       year--;
     }
-    console.log(month);
     if (year < 2020) {
       alert('you cannot book for a flight in the past');
       month = 0;
       year = 2020;
     }
     mth.innerHTML = monthsOfYear[month] + ' ' + year;
-    console.log(month);
-    console.log(monthsOfYear[month]);
 
     populateDates();
     populateUnavailableDates();
@@ -485,7 +524,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         [5, 12, 15, 22],
         [3, 9, 23, 27],
         [9, 19, 26],
-        [3, 4, 18, 21],
+        [3, 4, 21],
         [11, 19],
         [7, 9],
         [20, 25],
@@ -495,18 +534,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
         []
     ];
     var unavailableDates = arr[month];
-    console.log(month);
     console.log(unavailableDates);
 
     var unavailableArrDates = arr2[month];
-    console.log(unavailableArrDates);
 
     if(depIndex == 0) {
       for (let i = 0; i < 6; i++) {
         $(".day:contains('" + unavailableArrDates[i] + "')").removeClass('unavailable');
         $(".day:contains('" + unavailableDates[i] + "')").addClass('unavailable');
         console.log(unavailableDates[i]);
+        // let unavailableMark = $(".day:contains('" + unavailableDates[i] + "')");
+        // console.log(unavailableMark);
+        // console.log(unavailableDates);
+        // create_element('DIV', days.unavailableDates, 'day-unavailable');
       }
+
       let unavailables = document.querySelectorAll('.unavailable');
       console.log(unavailables.length);
       if (unavailables.length > 5) {
@@ -568,10 +610,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
       if (day.classList.contains('unavailable')) {
       }
 
+      let selectedDayValue = Number(day.innerHTML);
+      let selectedMonthValue = month+1;
+      today = new Date();
+      var dd = today.getDate();
+      var mm = today.getMonth()+1;
+
       day.addEventListener('click', function() {
         if(depIndex == 0) {
           if (day.classList.contains('unavailable')) {
             alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable.');
+            return false;
+          }
+          if (selectedMonthValue < mm || selectedDayValue < dd && selectedMonthValue <= mm) {
+            alert('You cannot book for a flight in the past.');
             return false;
           }
           selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
@@ -584,9 +636,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
           populateDates();
           populateUnavailableDates();
         } else if (depIndex == 1) {
-          //arrDay.addEventListener('click', function() {
             console.log(depIndex);
-            //this is what you have to work on, make sure you can also book for the arrival date
+            if (day.classList.contains('unavailable')) {
+              alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable.');
+              return false;
+            }
+            if (selectedMonthValue < mm || selectedDayValue < dd && selectedMonthValue <= mm) {
+              alert('You cannot book for a flight in the past.');
+              return false;
+            } //if you have time work on this statement so that if a user presses the arrival before he departs
+            // else if(selectedMonthValue <  || selectedDayValue <  && selectedMonthValue <= ) {
+            //   alert('Your arrival must be after your departure.')
+            // }
             selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
             selectedDay = (i + 1);
             selectedMonth = month;
@@ -672,6 +733,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     select4.addEventListener('click', flipper);
     select5.addEventListener('click', flipper);
     select6.addEventListener('click', flipper);
+    select7.addEventListener('click', flipper);
 
 
     //Now that all the elements are inside the container we can check for the height of the container
@@ -687,7 +749,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       buttonbook.style.backgroundColor = '#f10000';
       buttonbook.style.color = 'white';
       buttonbook.innerHTML = 'BOOK';
-      console.log(buttonbook);
       searhClick = 1;
     }
   });
