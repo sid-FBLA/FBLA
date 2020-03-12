@@ -388,4 +388,21 @@
     margin-left: 0.5rem;
   }
 
+  .confirm-content-background .confirm-submit {
+    border-radius: 20px;
+    height: 160px;
+    width: 300px;
+    font-size: 3rem;
+    position: absolute;
+    right: 3.5rem;
+    bottom: -2rem;
+  }
+
+  .confirm-content-background .go-back {
+    left: 3.5rem;
+    background-color: white;
+    color: #f10000;
+    border-color: #f10000;
+  }
+
 }

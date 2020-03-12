@@ -142,8 +142,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   }
 
   //Departure date elements down-arrow right offset
-  let offSet = $('.selection').width();
+  let offSet = $('.selection').outerWidth();
+  console.log(offSet);
   let outerSet = offSet/4;
+  console.log(outerSet);
   let right = outerSet + 16;
 
   /*Submit info button*/

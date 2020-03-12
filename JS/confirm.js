@@ -158,6 +158,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
         confirmPassengers.innerHTML = "Passengers: " + passenger;
         console.log(confirmPassengers);
 
+        //Submit Button
+        //Make this button actually submit something
+        const submit = create_element('BUTTON', confirmContentBackground, 'button');
+        submit.setAttribute("type", "submit");
+        submit.innerHTML = "Confirm <br> Booking";
+        submit.classList.add('confirm-submit');
+
+        //Go Back BUTTON
+        /*Add an event listener so that when this button is pressed the
+        height of confirm is 0 and the heading is display: none*/
+        const goBack = create_element('BUTTON', confirmContentBackground, 'button');
+        goBack.innerHTML = "Go <br> Back";
+        goBack.classList.add('confirm-submit');
+        goBack.classList.add('go-back');
+
         //The below lines are to calculate flight price
 
         let calcDepLocation = departureLocation.options[departureLocation.selectedIndex].value;
@@ -237,16 +252,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
           calcArrLocation = baltimore;
         }
 
+        let passengerNumber = passengers.options[passengers.selectedIndex].value;
+
         console.log(calcArrLocation);
         console.log(calcDepLocation);
 
-        const flightPrice = calc(calcDepLocation, calcArrLocation);
+        let flightPrice = calc(calcDepLocation, calcArrLocation);
         console.log(flightPrice);
+
+        flightPrice = flightPrice*passengerNumber
 
         confirmPrice.innerHTML = "Price: " + flightPrice + "USD";
 
         confirmPosition.style.display = "block";
         $('.confirm-box').animate({height:mobileHeight}, 300);
+
       }
     }
 
