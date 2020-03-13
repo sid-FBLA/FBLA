@@ -46,7 +46,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     };
 
     //Creating elements for confirm page
-    const mobileHeight = 1700;
+    const mobileHeight = 1850;
 
     //positions the confirmation "page" to fixed
     const confirmPosition = create_element('DIV', body, 'confirm-fixed');
@@ -108,7 +108,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //Passengers and Price H1 for flight Info
     const confirmP = create_element('H1', confirmFlightInfo, 'content-heading');
-    confirmP.innerHTML = "Price + Passengers";
+    confirmP.innerHTML = "Flight Info";
+
+    //Flight Class
+    const confirmClass = create_element('H1', confirmFlightInfo, 'flight-info');
+    confirmClass.innerHTML = "Class: Explore Seat";
+
+    /*Flight Class "disclaimer"*/
+    const confirmClassDisclaimer = create_element('p', confirmClass, 'disclaimer');
+    confirmClassDisclaimer.innerHTML = "*Explore Seat is our only class, each seat is equipped with a TV and tray, and plenty of legroom.";
 
     //Passengers
     const confirmPassengers = create_element('H1', confirmFlightInfo, 'flight-info');
@@ -118,8 +126,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const confirmPrice = create_element('H1', confirmFlightInfo, 'flight-info');
     confirmPrice.innerHTML = "Price:";
 
+
+    //Go Back BUTTON
+    const goBack = create_element('BUTTON', confirmContentBackground, 'button');
+    goBack.innerHTML = "Go <br> Back";
+    goBack.classList.add('confirm-submit');
+    goBack.classList.add('go-back');
+
+    //Submit BUTTON
+    const submit = create_element('BUTTON', confirmContentBackground, 'button');
+    submit.setAttribute("type", "submit");
+    submit.innerHTML = "Confirm <br> Booking";
+    submit.classList.add('confirm-submit');
+
     //Adding elements to event listeners
     show.addEventListener('click', toggleConfirmDisplay);
+    goBack.addEventListener('click', close);
+    submit.addEventListener('click', confirmSubmit);
+
 
     //Event Listeners
     var selects = $('select');
@@ -158,20 +182,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         confirmPassengers.innerHTML = "Passengers: " + passenger;
         console.log(confirmPassengers);
 
-        //Submit Button
-        //Make this button actually submit something
-        const submit = create_element('BUTTON', confirmContentBackground, 'button');
-        submit.setAttribute("type", "submit");
-        submit.innerHTML = "Confirm <br> Booking";
-        submit.classList.add('confirm-submit');
-
-        //Go Back BUTTON
-        /*Add an event listener so that when this button is pressed the
-        height of confirm is 0 and the heading is display: none*/
-        const goBack = create_element('BUTTON', confirmContentBackground, 'button');
-        goBack.innerHTML = "Go <br> Back";
-        goBack.classList.add('confirm-submit');
-        goBack.classList.add('go-back');
 
         //The below lines are to calculate flight price
 
@@ -264,9 +274,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         confirmPrice.innerHTML = "Price: " + flightPrice + "USD";
 
-        confirmPosition.style.display = "block";
-        $('.confirm-box').animate({height:mobileHeight}, 300);
-
+        if ($('.confirm-box').height() < mobileHeight) {
+          confirmPosition.style.display = "block";
+          $('.confirm-box').animate({height:mobileHeight}, 300);
+        }
       }
     }
 
@@ -299,6 +310,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
       return price;
       console.log(price);
     };
+
+    function close(e) {
+      $('.confirm-box').animate({height:0}, 300);
+      $('.confirm-fixed').delay(3000).hide();
+    }
+
+    function confirmSubmit(e) {
+      $('.confirm-box').animate({height:0}, 300);
+      $('.confirm-fixed').delay(3000).hide();
+      alert('Congratulations! You are flying with Explore Airlines your flight has been booked');
+    }
 
     console.log(calc(newark, hartford));
 
