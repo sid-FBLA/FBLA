@@ -42,9 +42,16 @@
     margin-left: 0.5rem;
   }
 
+  .heading img {
+    width: 68px;
+    margin-left: auto;
+  }
+
   .main .how {
     margin-top: 1.5rem;
     font-size: 2rem;
   }
+
+
 
 }
