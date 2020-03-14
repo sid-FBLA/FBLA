@@ -52,6 +52,64 @@
     font-size: 2rem;
   }
 
+}
 
+@media only screen and (min-width: 1024px) {
+  .container-mobile {
+    margin: 0;
+    margin-right: 0;
+    width: auto;
+  }
+
+  #why {
+    padding: 12rem;
+  }
+
+  .page-slogan {
+    font-size: 1.5rem;
+    margin-bottom: 5rem;
+  }
+
+  .main {
+    margin-top: 0;
+    margin-bottom: 7.5rem;
+    width: 819.19px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .heading .claim {
+    font-size: 2.5rem;
+  }
+
+  .main .inline-texpic {
+    display: flex;
+  }
+
+  .main .how {
+    font-size: 1.5rem;
+    max-width: 70%;
+  }
+
+  .main .inline-textpic img {
+    width: 200px;
+    height: 200px;
+    align-self: center;
+    margin-left: auto;
+  }
+
+}
+
+@media only screen and (min-width: 1440px) {
+  .main {
+    width: 1208px;
+    margin: 0 auto;
+    margin-bottom: 7.5rem;
+  }
+
+  .main .how {
+    display: flex;
+    max-width: 75%;
+  }
 
 }
