@@ -797,25 +797,25 @@ window.addEventListener('DOMContentLoaded', (event) => {
     arrow2.style.right = newRight;
 
     //Positioning date Picker + sizing
-    // const dateWidth = $('#select-3 .selection').outerWidth();
-    // console.log(dateWidth);
-    //
-    // contain_date_picker.style.width = dateWidth;
-    // console.log(contain_date_picker.style.width);
-    //
-    // days.style.height = 250;
-    // days.style.zIndex = 200;
-    // set.style.top = 300;
-    // set.style.fontSize = "1.5rem";
-    //
-    // select3.addEventListener('click', function() {
-    //   select3.style.position = "relative";
-    //   contain.style.overflow = "visible";
-    //   select3.appendChild(contain_date_picker);
-    //   month.removeClass('arrow-up');
-    //   contain_date_picker.style.top = 80;
-    //   contain_date_picker.style.backgroundColor = "white";
-    // });
+    const dateWidth = $('#select-3 .selection').outerWidth();
+    console.log(dateWidth);
+
+    contain_date_picker.style.width = dateWidth;
+    console.log(contain_date_picker.style.width);
+
+    days.style.height = 250;
+    days.style.zIndex = 200;
+    set.style.top = 300;
+    set.style.fontSize = "1.5rem";
+
+    select3.addEventListener('click', function() {
+      select3.style.position = "relative";
+      contain.style.overflow = "visible";
+      select3.appendChild(contain_date_picker);
+      month.removeClass('arrow-up');
+      contain_date_picker.style.top = 80;
+      contain_date_picker.style.backgroundColor = "white";
+    });
 
 
   }
