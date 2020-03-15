@@ -166,6 +166,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   /*Departure date + time select menus*/
   const depDate = create_element('DIV', select3, 'selection');
+  depDate.classList.add('left');
   depDate.style.borderWidth = 1;
   depDate.style.cssFloat = "left";
   depDate.style.width = "75%";
@@ -177,6 +178,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   const depTime = create_element('SELECT', select4, 'selection');
   depTime.setAttribute('ID', "time1");
+  depTime.classList.add('right');
   depTime.style.width = "25%";
   depTime.style.cssFloat = "right";
   depTime.style.marginBottom = 8;
@@ -754,6 +756,69 @@ window.addEventListener('DOMContentLoaded', (event) => {
       searhClick = 1;
     }
   });
+
+  console.log($('#time1'))
+
+
+  //Laptops media query 1024px
+  if ($(window).width() >= 1023) {
+
+    //setting widths of elements with classes left and right
+    const select3 = document.querySelector('#select-3');
+    const select5 = document.querySelector('#select-5');
+    const time1 = document.querySelector('#time1');
+    const time2 = document.querySelector('#time2');
+    const bookingBox = document.querySelector('.position');
+    console.log(bookingBox);
+
+    const widthLeft = $('#select3').outerWidth();
+    const widthRight = $('#time1').outerWidth();
+
+    console.log(widthRight);
+
+    select3.style.width = widthLeft - 8;
+    select5.style.width = widthLeft - 8;
+
+    time1.style.width = widthRight - 8;
+    time2.style.width = widthRight - 8;
+
+    console.log(time1.style.width = widthRight - 8);
+
+    //Setting positions of selections for selected date dropdown arrow
+    let newOffSet = $('#time1').outerWidth();
+    console.log(newOffSet);
+    let newOuterSet = newOffSet;
+    console.log(newOuterSet);
+    let newRight = newOuterSet + 24;
+    console.log(newRight);
+
+    /*arrows 0 and 2, are for select 3 and select 5 respectively*/
+    arrow0.style.right = newRight;
+    arrow2.style.right = newRight;
+
+    //Positioning date Picker + sizing
+    // const dateWidth = $('#select-3 .selection').outerWidth();
+    // console.log(dateWidth);
+    //
+    // contain_date_picker.style.width = dateWidth;
+    // console.log(contain_date_picker.style.width);
+    //
+    // days.style.height = 250;
+    // days.style.zIndex = 200;
+    // set.style.top = 300;
+    // set.style.fontSize = "1.5rem";
+    //
+    // select3.addEventListener('click', function() {
+    //   select3.style.position = "relative";
+    //   contain.style.overflow = "visible";
+    //   select3.appendChild(contain_date_picker);
+    //   month.removeClass('arrow-up');
+    //   contain_date_picker.style.top = 80;
+    //   contain_date_picker.style.backgroundColor = "white";
+    // });
+
+
+  }
 
 
 

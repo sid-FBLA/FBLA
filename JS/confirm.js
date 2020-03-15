@@ -319,7 +319,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function confirmSubmit(e) {
       $('.confirm-box').animate({height:0}, 300);
       $('.confirm-fixed').delay(3000).hide();
-      alert('Congratulations! You are flying with Explore Airlines your flight has been booked');
+      alert("Congratulations! You'll be flying with Explore Airlines your flight has been booked.");
     }
 
     console.log(calc(newark, hartford));

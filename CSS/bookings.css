@@ -60,7 +60,7 @@
   }
 
 #departure-location {
-  font-size: 2em;
+  font-size: 2rem;
 }
 
   .select {
@@ -405,4 +405,135 @@
     border-color: #f10000;
   }
 
+}
+
+@media only screen and (min-width: 1024px) {
+
+  .gradient-background {
+    padding-top: 7rem;
+    padding-bottom: 9rem;
+  }
+
+  .gradient-background .announcement {
+    color: white;
+    margin-top: 0;
+  }
+
+  .position {
+    left: 50%;
+    /*819.19/2*/
+    margin-left: -409.56;
+    bottom: 210px;
+    padding: 0.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .booking-box .inline {
+    display: flex;
+  }
+
+  .booking-box .select-heading {
+    font-size: 2rem;
+    margin-top: 1.5rem;
+  }
+
+  .booking-box .left {
+    margin-right: 0.25rem;
+  }
+
+  .booking-box .right {
+    margin-left: 0.25rem;
+  }
+
+  .selection,
+  #departure-location {
+    font-size: 1rem;
+    height: 5rem;
+    padding-right: 2rem;
+  }
+
+  .selected-date,
+  #time1,
+  #time2 {
+    font-size: 1.5rem;
+  }
+
+  .selected-date {
+    top: 25.5px;
+  }
+
+  .flight-book {
+    font-size: 1.5rem;
+  }
+
+  .arrow {
+    top: 39px;
+  }
+
+  .arrow-down {
+    top: 33px;
+  }
+
+  img[src*="down"] {
+    display: none;
+  }
+
+  /*Classes for JS*/
+  .height-full {
+    height: 450px;
+  }
+
+  .disclaimer {
+    font-size: 1rem;
+  }
+
+  /*Date Picker*/
+  .fixed {
+    position: absolute;
+    left: 50%;
+    /*819.19/2 + 11 for padding etc, take abs value then negate*/
+    margin-left: -398.56;
+    z-index: 100;
+    overflow: hidden;
+    border: solid #f10000;
+    border-radius: 5px;
+    z-index: 100;
+  }
+
+  .fixed .heading-div {
+    height: 5rem;
+  }
+
+  .fixed .heading-div .date-picker-heading {
+    font-size: 3rem;
+    margin-left: -188.43px;
+    margin-top: -29px;
+  }
+
+
+
+  .date-picker .dates .months {
+    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  }
+
+  .date-picker .dates .months .mth {
+    font-size: 1.5rem;
+  }
+
+  .date-picker .dates .months .pointers {
+    font-size: 2.5rem;
+  }
+
+  .date-picker .dates .days .day {
+    font-size: 1rem;
+  }
+
+}
+
+@media only screen and (min-width: 1440px) {
+
+  #departure-location,
+  #arrival-location {
+    height: 9rem;
+  }
 }
