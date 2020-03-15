@@ -232,7 +232,7 @@
 
 @media only screen and (min-width: 1024px) {
   .collapsible {
-    max-width: 821.19px;
+    max-width: 829.19px;
   }
 
   .info {
@@ -240,25 +240,25 @@
   }
 
   input[class="num1"]:checked ~ .collap-one {
-    max-height: 58px;
+    max-height: 87px;
     transition: max-height 1s ease-in;
     height: auto;
   }
 
   input[class="num2"]:checked ~ .collap-two {
-    max-height: 58px;
+    max-height: 87px;
     transition: max-height 1s ease-in;
     height: auto;
   }
 
   input[class="num3"]:checked ~ .collap-three {
-    max-height: 124px;
+    max-height: 153px;
     transition: max-height 1s ease-in;
     height: auto;
   }
 
   input[class="num4"]:checked ~ .collap-four {
-    max-height: 58px;
+    max-height: 87px;
     transition: max-height 1s ease-in;
     height: auto;
   }
@@ -272,6 +272,6 @@
 
 @media only screen and (min-width: 1440px) {
   .collapsible {
-    width: 1208px;
+    max-width: 1208px;
   }
 }
