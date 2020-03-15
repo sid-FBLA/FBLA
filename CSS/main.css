@@ -294,6 +294,10 @@ img {
     margin-top: 0.5rem;
     margin-bottom: 1rem;
   }
+
+  .book-button {
+    width: 100%;
+  }
  /*
   .red-border:hover {
     transition: 250ms;
