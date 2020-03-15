@@ -479,41 +479,33 @@
   }
 
   /*Classes for JS*/
-  .height-full {
-    height: 450px;
-  }
 
   .disclaimer {
     font-size: 1rem;
   }
 
+  .height-none {
+    height: 0;
+  }
+
+  .height-full {
+    height: calc(100vh - 82px);
+  }
+
+
   /*Date Picker*/
   .fixed {
-    position: absolute;
-    left: 50%;
-    /*819.19/2 + 11 for padding etc, take abs value then negate*/
-    margin-left: -398.56;
-    z-index: 100;
-    overflow: hidden;
-    border: solid #f10000;
-    border-radius: 5px;
-    z-index: 100;
+    margin-top: 82px;
   }
 
   .fixed .heading-div {
-    height: 5rem;
+    height: 9rem;
   }
 
   .fixed .heading-div .date-picker-heading {
-    font-size: 3rem;
-    margin-left: -188.43px;
-    margin-top: -29px;
-  }
-
-
-
-  .date-picker .dates .months {
-    padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+    font-size: 2.5rem;
+    margin-left: -157.25px;
+    margin-top: -24.5;
   }
 
   .date-picker .dates .months .mth {
@@ -521,14 +513,83 @@
   }
 
   .date-picker .dates .months .pointers {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .date-picker .dates .days {
+    height: 400px;
   }
 
   .date-picker .dates .days .day {
-    font-size: 1rem;
+    font-size: 1.5rem;
   }
 
-}
+  .date-picker .dates .days .day:hover {
+    color: #f10000;
+    background-color: white;
+    border: solid #f10000;
+  }
+
+  .date-picker .dates .days .unavailable:hover {
+    background-color: #666666;
+    opacity: 0.7;
+    border: none;
+    color: black;
+  }
+
+  /*confirm*/
+  .confirm-box {
+    top: 0;
+  }
+
+  .confirm-box .confirm-heading-div {
+    height: 125px;
+  }
+
+  .confirm-heading-div h1,
+  .confirm-heading-div p {
+    margin-top: 1rem;
+    font-size: 2rem;
+    padding-top: 0;
+  }
+
+  .confirm-content {
+    top: 125px;
+  }
+
+  .confirm-box .confirm-heading-div-flatten {
+    top: 100px;
+  }
+
+  .confirm-content .second-heading {
+    font-size: 2rem;
+  }
+
+  .confirm-flight-info .content-heading {
+    font-size: 1.5rem;
+  }
+
+  .confirm-flight-info .flight-info {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
+
+  .disclaimer {
+    font-size: 0.75rem;
+  }
+
+  .confirm-content-background .confirm-submit {
+    height: 90px;
+    width: 150px;
+    font-size: 1rem;
+    border-radius: 5px;
+    bottom: -1rem;
+    right: 5.5rem;
+  }
+
+  .confirm-content-background .go-back {
+    left: 5.5rem;
+  }
 
 @media only screen and (min-width: 1440px) {
 

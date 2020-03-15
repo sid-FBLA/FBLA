@@ -198,7 +198,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   /*Arrival Date Heading*/
   const arrHeading = create_element('H2', contain, 'select-heading');
-  arrHeading.innerHTML = 'Returning Date';
+  arrHeading.innerHTML = 'Return Date';
 
   /*Arrival Date Select DIV + Arrow*/
   const select5 = create_select('select-5');
@@ -292,7 +292,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const disclaimer = create_element('DIV', contain, 'disclaimer');
   disclaimer.textContent = "*All flights are two-way trips";
 
-  const containHeight = $('#check-height').height();
+  const containHeight = $('#check-height').outerHeight(true);
 
   $('#check-height').height(0);
 
@@ -321,7 +321,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let depIndex = 0;
   const date_picker_heading_arrival = create_element('H1', heading_div, 'date-picker-heading');
   date_picker_heading_arrival.setAttribute('id', 'arrival-heading');
-  date_picker_heading_arrival.innerHTML = "Returning Date";
+  date_picker_heading_arrival.innerHTML = "Return Date";
   $('#arrival-heading').offset({left: windowWidth});
 
   //Creates main date-picker DIV
@@ -424,17 +424,31 @@ window.addEventListener('DOMContentLoaded', (event) => {
  }
 
  function toggleDepartureArrival(e) {
-   //original width of the arrival date heading is 623px
+   //original width of the arrival date heading is 492px
    e.stopPropagation();
-   date_picker_heading_arrival.style.width = 623;
-   let arrivalLeft = windowWidth/2 - 623/2;
-   date_picker_heading_arrival.style.marginLeft = 0;
-   date_picker_heading_departure.style.display = "none";
-   $('#arrival-heading').animate({
-     left: arrivalLeft}, 623, 'linear'
-   );
-   date_picker_heading_arrival.style.width = 623;
-   depIndex = 1;
+   if ($(window).width() >= 320 && $(window).width() < 1024) {
+     date_picker_heading_arrival.style.width = 492;
+     let arrivalLeft = windowWidth/2 - 492/2;
+     date_picker_heading_arrival.style.marginLeft = 0;
+     date_picker_heading_departure.style.display = "none";
+     $('#arrival-heading').animate({
+       left: arrivalLeft}, 492, 'linear'
+     );
+     date_picker_heading_arrival.style.width = 492;
+     depIndex = 1;
+   }
+
+   if ($(window).width() >= 1024) {
+     date_picker_heading_arrival.style.width = 246;
+     let arrivalLeft = windowWidth/2 - 246/2;
+     date_picker_heading_arrival.style.marginLeft = 0;
+     date_picker_heading_departure.style.display = "none";
+     $('#arrival-heading').animate({
+       left: arrivalLeft}, 246, 'linear'
+     );
+     date_picker_heading_arrival.style.width = 246;
+     depIndex = 1;
+   };
 
    select3.addEventListener('click', function() {
      depIndex = 0;
@@ -451,16 +465,29 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
  select5.addEventListener('click', function() {
    //Declaring some variables any styles
-   date_picker_heading_arrival.style.width = 623;
-   let arrivalLeft = windowWidth/2 - 623/2;
-   date_picker_heading_arrival.style.marginLeft = 0;
+   if ($(window).width() >= 320 && $(window).width() < 1024) {
+     date_picker_heading_arrival.style.width = 492;
+     let arrivalLeft = windowWidth/2 - 492/2;
+     date_picker_heading_arrival.style.marginLeft = 0;
+     depIndex = 1;
+     date_picker_heading_departure.style.display = "none";
+     date_picker_heading_arrival.style.display = "block";
+     $('#arrival-heading').animate({
+       left: arrivalLeft}, 10, 'linear'
+     );
+   }
+   if ($(window).width() >= 1024) {
+     date_picker_heading_arrival.style.width = 246;
+     let arrivalLeft = windowWidth/2 - 246/2;
+     date_picker_heading_arrival.style.marginLeft = 0;
+     depIndex = 1;
+     date_picker_heading_departure.style.display = "none";
+     date_picker_heading_arrival.style.display = "block";
+     $('#arrival-heading').animate({
+       left: arrivalLeft}, 10, 'linear'
+     );
+   }
    //Done that
-   depIndex = 1;
-   date_picker_heading_departure.style.display = "none";
-   date_picker_heading_arrival.style.display = "block";
-   $('#arrival-heading').animate({
-     left: arrivalLeft}, 10, 'linear'
-   );
    populateUnavailableDates();
    set.addEventListener('click', toggleDatePickerDisplay);
    if (contain_date_picker.classList.contains('height-none')) {
@@ -594,11 +621,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
     if (month == 1) {
       amountDays = 28;
       days.style.height = 500;
+      if ($(window).width() >= 1023) {
+        days.style.height = 400;
+      }
     }
 
     if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
       amountDays = 31;
       days.style.height = 623.5;
+      if ($(window).width() >= 1023) {
+        days.style.height = 400;
+      }
     }
 
 
@@ -739,29 +772,32 @@ window.addEventListener('DOMContentLoaded', (event) => {
     select6.addEventListener('click', flipper);
     select7.addEventListener('click', flipper);
 
-
-    //Now that all the elements are inside the container we can check for the height of the container
-    contain.style.overflow = "hidden";
-
-/*date booking for mobile*/
-  search.addEventListener('click', function() {
-    if(searchClick === 0) {
-      console.log(containHeight);
-      $('#check-height').animate({height:containHeight}, 1000);
-      console.log(containHeight);
-      const buttonbook = document.querySelector('.flight-book');
-      buttonbook.style.backgroundColor = '#f10000';
-      buttonbook.style.color = 'white';
-      buttonbook.innerHTML = 'BOOK';
-      searhClick = 1;
-    }
-  });
-
   console.log($('#time1'))
+
+  contain.style.overflow = "hidden";
+
+  let newContainHeight = 500;
+
+  if ($(window).width() <= 1023 ) {
+    search.addEventListener('click', function() {
+      if(searchClick === 0) {
+          console.log(containHeight);
+          $('#check-height').animate({height:containHeight}, 1000);
+          console.log(containHeight);
+          const buttonbook = document.querySelector('.flight-book');
+          buttonbook.style.backgroundColor = '#f10000';
+          buttonbook.style.color = 'white';
+          buttonbook.innerHTML = 'BOOK';
+          searchClick = 1;
+        }
+      });
+    }
 
 
   //Laptops media query 1024px
   if ($(window).width() >= 1023) {
+
+    //Contain Height
 
     //setting widths of elements with classes left and right
     const select3 = document.querySelector('#select-3');
@@ -796,26 +832,31 @@ window.addEventListener('DOMContentLoaded', (event) => {
     arrow0.style.right = newRight;
     arrow2.style.right = newRight;
 
-    //Positioning date Picker + sizing
-    const dateWidth = $('#select-3 .selection').outerWidth();
-    console.log(dateWidth);
+    //Date Picker
+    days.style.height = 400;
 
-    contain_date_picker.style.width = dateWidth;
-    console.log(contain_date_picker.style.width);
+    //Contain Height
+    //Now that all the elements are inside the container we can check for the height of the container
+    contain.style.overflow = "hidden";
 
-    days.style.height = 250;
-    days.style.zIndex = 200;
-    set.style.top = 300;
-    set.style.fontSize = "1.5rem";
+    let newContainHeight = 549;
 
-    select3.addEventListener('click', function() {
-      select3.style.position = "relative";
-      contain.style.overflow = "visible";
-      select3.appendChild(contain_date_picker);
-      month.removeClass('arrow-up');
-      contain_date_picker.style.top = 80;
-      contain_date_picker.style.backgroundColor = "white";
-    });
+    console.log(newContainHeight);
+
+    /*date booking for mobile*/
+    search.addEventListener('click', function() {
+      if(searchClick === 0) {
+          console.log(newContainHeight);
+          $('#check-height').animate({height:newContainHeight}, 1000);
+          console.log(newContainHeight);
+          const buttonbook = document.querySelector('.flight-book');
+          buttonbook.style.backgroundColor = '#f10000';
+          buttonbook.style.color = 'white';
+          buttonbook.innerHTML = 'BOOK';
+          searchClick = 1;
+        }
+      });
+
 
 
   }

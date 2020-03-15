@@ -47,6 +47,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //Creating elements for confirm page
     const mobileHeight = 1850;
+    const pcHeight = 750;
 
     //positions the confirmation "page" to fixed
     const confirmPosition = create_element('DIV', body, 'confirm-fixed');
@@ -274,10 +275,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         confirmPrice.innerHTML = "Price: " + flightPrice + "USD";
 
-        if ($('.confirm-box').height() < mobileHeight) {
-          confirmPosition.style.display = "block";
-          $('.confirm-box').animate({height:mobileHeight}, 300);
+        if ($(window).width() < 1024) {
+          if ($('.confirm-box').height() < mobileHeight) {
+            confirmPosition.style.display = "block";
+            $('.confirm-box').animate({height:mobileHeight}, 300);
+          }
         }
+
+        if ($(window).width() >= 1024) {
+          confirmPosition.style.width = 819.19;
+          confirm.style.width = 819.19;
+
+          if ($('.confirm-box').height() < pcHeight) {
+            confirmPosition.style.display = "block";
+            $('.confirm-box').animate({height:pcHeight}, 300);
+          }
+        }
+
       }
     }
 
