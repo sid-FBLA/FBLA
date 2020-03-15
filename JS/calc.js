@@ -850,9 +850,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
           $('#check-height').animate({height:newContainHeight}, 1000);
           console.log(newContainHeight);
           const buttonbook = document.querySelector('.flight-book');
-          buttonbook.style.backgroundColor = '#f10000';
-          buttonbook.style.color = 'white';
-          buttonbook.innerHTML = 'BOOK';
           searchClick = 1;
         }
       });

@@ -9,6 +9,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const containCheck = document.querySelector('#check-height');
     const departureLocation = document.querySelector('#departure-location');
     const arrivalLocation = document.querySelector('#arrival-location');
+    const position = document.querySelector('.position');
 
     const check1 = $('#arrival-location');
     const check2 = $('#time1');
@@ -47,7 +48,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //Creating elements for confirm page
     const mobileHeight = 1850;
-    const pcHeight = 750;
+    const pcHeight = 775;
 
     //positions the confirmation "page" to fixed
     const confirmPosition = create_element('DIV', body, 'confirm-fixed');
@@ -153,6 +154,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
     // };
     console.log(selects.length);
     console.log(check4.val());
+
+    let shakeIndex = 1;
 
     function toggleConfirmDisplay(e) {
       if (check1.val() != '' && check2.val() != '' && check3.val() != '' && check4.val() != null) {
@@ -292,6 +295,35 @@ window.addEventListener('DOMContentLoaded', (event) => {
           }
         }
 
+        if ($(window).width() >= 1440) {
+          confirmPosition.style.width = 1208;
+          confirm.style.width = 1208;
+
+          if ($('.confirm-box').height() < pcHeight) {
+            confirmPosition.style.display = "block";
+            $('.confirm-box').animate({height:pcHeight}, 300);
+          }
+        }
+
+      } else if($('#check-height').height() > 90) {
+        const flashMessage = create_element('DIV', wrapper, 'flash-message');
+        flashMessage.innerHTML = "Make sure you have made a valid selection for each option."
+        flashMessage.setAttribute('ID', 'flashMessage');
+        if ($(window).width() >= 1024) {
+          wrapper.insertBefore(flashMessage, position);
+        }
+        if ($('.flash-message').length > 1) {
+          wrapper.removeChild(flashMessage);
+        }
+        $('#flashMessage')
+          .hide()
+          .slideDown(820)
+          .delay(5000)
+          .slideUp(820);
+        $('.position').addClass('shake');
+        setTimeout(function() {
+          $('.position').removeClass('shake');
+        }, 820);
       }
     }
 
@@ -333,7 +365,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     function confirmSubmit(e) {
       $('.confirm-box').animate({height:0}, 300);
       $('.confirm-fixed').delay(3000).hide();
-      alert("Congratulations! You'll be flying with Explore Airlines your flight has been booked.");
+      alert("Congratulations! You'll be flying with Explore Airlines, your flight has been booked.");
     }
 
     console.log(calc(newark, hartford));
