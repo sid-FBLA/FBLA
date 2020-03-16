@@ -38,6 +38,7 @@
 
   .position {
     position: relative;
+    top: 3rem;
   }
 
   .box-change {
@@ -172,6 +173,7 @@
   }
 
   .fixed {
+    margin-top: 154px;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -269,7 +271,7 @@
 
   .height-full {
     transition: 500ms;
-    height: 100%;
+    height: calc(100% - 154px);
   }
 
   .close-position {
@@ -432,7 +434,7 @@
   #flashMessage {
     color: white;
     position: relative;
-    top: 1rem;
+    top: 5rem;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.5rem;
@@ -464,7 +466,7 @@
     left: 50%;
     /*819.19/2*/
     transform: translateX(-50%);
-    bottom: 210px;
+    top: -13rem;
     padding: 0.5rem;
     padding-bottom: 1rem;
     border-radius: 5px;

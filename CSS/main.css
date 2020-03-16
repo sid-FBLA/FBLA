@@ -200,12 +200,15 @@ img {
 
   .main-nav li {
     /*background-color: #FFDD00;*/
-    font-size: 2rem;
+    font-size: 2.5rem;
     text-align: center;
     color: #ffffff;
     padding-top: 4rem;
     padding-bottom: 4rem;
     border-top: 0.2rem solid #f10000;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .main-nav li a {
@@ -213,10 +216,14 @@ img {
     text-decoration: none;
   }
 
+  .main-nav li:last-child {
+    border-bottom: 0.2rem solid #f10000;
+  }
+
   /*rest of main page */
 
   .gradient-background {
-    margin-top: 2rem;
+    margin-top: 0;
   }
 
   .animation {
@@ -258,6 +265,7 @@ img {
   }
 
   .wrapper {
+    margin-top: 154px;
     min-height: calc(100vh - 472px);
     margin-bottom: 5rem;
   }
@@ -383,6 +391,7 @@ img {
     flex-direction: row;
     margin-top: 1rem;
     justify-content: flex-start;
+    flex-grow: none;
     /* To override some other property */
     margin-bottom: 1rem;
     /*margin-bottom: 1.5625rem;*/
@@ -397,7 +406,10 @@ img {
     padding-left: 0.5rem;
     border-left: solid 2px rgba(255, 17, 0, 0.9);
     margin-top: auto;
-    font-size: 1.5em;
+    font-size: 1.5rem;
+    width: auto;
+    margin-left: 0;
+    margin-right: 0;
   }
 
   /*selects 1st list item, idk why*/
@@ -415,6 +427,10 @@ img {
   .main-nav li a:hover {
     transition: 250ms;
     color: #f10000;
+  }
+
+  .main-nav li:last-child {
+    border-bottom: none;
   }
 
   #logo-mobile {

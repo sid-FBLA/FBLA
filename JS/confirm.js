@@ -305,6 +305,33 @@ window.addEventListener('DOMContentLoaded', (event) => {
           }
         }
 
+        console.log(flightPrice);
+
+        let flightPriceText = String(flightPrice);
+
+        if (flightPriceText === "NaN") {
+          confirmPosition.style.display = "none";
+          $('.confirm-box').height(0);
+          const flashMessage = create_element('DIV', wrapper, 'flash-message');
+          flashMessage.innerHTML = "Make sure you have made a valid selection for each option."
+          flashMessage.setAttribute('ID', 'flashMessage');
+          if ($(window).width() >= 1024) {
+            wrapper.insertBefore(flashMessage, position);
+          }
+          if ($('.flash-message').length > 1) {
+            wrapper.removeChild(flashMessage);
+          }
+          $('#flashMessage')
+            .hide()
+            .slideDown(820)
+            .delay(5000)
+            .slideUp(820);
+          $('.position').addClass('shake');
+          setTimeout(function() {
+            $('.position').removeClass('shake');
+          }, 820);
+        }
+
       } else if($('#check-height').height() > 90) {
         const flashMessage = create_element('DIV', wrapper, 'flash-message');
         flashMessage.innerHTML = "Make sure you have made a valid selection for each option."
