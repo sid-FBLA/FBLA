@@ -608,6 +608,16 @@
     color: black;
   }
 
+  .date-picker .dates .days .selected:hover {
+    background-color: #f10000;
+    color: white;
+    border-radius: 20px;
+  }
+
+  .date-picker .dates .days .selected:hover > .dayName {
+    color: white;
+  }
+
   /*confirm*/
   .confirm-box {
     top: 0;
