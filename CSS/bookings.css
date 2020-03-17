@@ -279,6 +279,10 @@
     right: 1rem;
   }
 
+  .close-position:hover {
+    cursor: pointer;
+  }
+
   .date-picker .dates .days .selected {
     color: white;
     background-color: #f10000;
@@ -294,11 +298,20 @@
     position: absolute;
     font-size: 3rem;
     color: #f10000;
+    padding: 0.5rem;
+    border: solid transparent;
+    border-radius: 5px;
+  }
+
+  .date-picker .set:hover {
+    transition: 200ms;
+    border-color: #f10000;
   }
 
   /* For PC*/
   .date-picker .dates .months .pointers:hover {
-    /*pick some styling*/
+    transition: 200ms;
+    text-decoration: underline #f10000;
   }
 
   /*Confirm page*/

@@ -498,6 +498,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   function goToNextMonth(e) {
     month++;
+    selectedMonth = selectedMonth + 1;
     if (month > 11) {
       month = 0;
       year++;
@@ -517,9 +518,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
   function goToPrevMonth(e) {
     month--;
+    selectedMonth = selectedMonth - 1;
     if (month < 0) {
       month = 11;
       year--;
+      selectedYear = selectedYear - 1;
     }
     if (year < 2020) {
       alert('you cannot book for a flight in the past');
@@ -573,7 +576,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
       for (let i = 0; i < 6; i++) {
         $(".day:contains('" + unavailableArrDates[i] + "')").removeClass('unavailable');
         $(".day:contains('" + unavailableDates[i] + "')").addClass('unavailable');
-        console.log(unavailableDates[i]);
         // let unavailableMark = $(".day:contains('" + unavailableDates[i] + "')");
         // console.log(unavailableMark);
         // console.log(unavailableDates);
@@ -611,6 +613,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 };
 
+  function formatDay(val) {
+    let valDay;
+    let day = valDay;
+
+    if (val == 0) {
+      valDay = "Sun";
+    }
+    if (val == 1) {
+      valDay = "Monday";
+    }
+    if (val == 2) {
+      valDay = "Tue";
+    }
+    if (val == 3) {
+      valDay = "Wed";
+    }
+    if (val == 4) {
+      valDay = "Thu";
+    }
+    if (val == 5) {
+      valDay = "Fri";
+    }
+    if (val == 6) {
+      valDay = "Sat";
+    }
+
+    const dayName = document.createElement('DIV');
+    dayName.classList.add('dayName');
+    dayName.style.fontSize = 12;
+    dayName.style.textTransform = "uppercase";
+    dayName.style.marginBottom = 5;
+    dayName.style.marginLeft = 5;
+    //dayName.style.color = "black";
+    dayName.style.letterSpacing = 0.7;
+    dayName.innerHTML = valDay;
+    return dayName;
+  }
+
+
   function populateDates(e) {
 
 
@@ -634,64 +675,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
       }
     }
 
-    function formatDay(val) {
-      let valDay;
-      let day = valDay;
-
-      if (val == 0) {
-        valDay = "Mon";
-      }
-      if (val == 1) {
-        valDay = "Tue";
-      }
-      if (val == 2) {
-        valDay = "Wed";
-      }
-      if (val == 3) {
-        valDay = "Thu";
-      }
-      if (val == 4) {
-        valDay = "Fri";
-      }
-      if (val == 5) {
-        valDay = "Sat";
-      }
-      if (val == 6) {
-        valDay = "Sun";
-      }
-
-      const dayName = document.createElement('DIV');
-      dayName.classList.add('dayName');
-      dayName.style.fontSize = 12;
-      dayName.style.textTransform = "uppercase";
-      dayName.style.marginBottom = 5;
-      dayName.style.marginLeft = 5;
-      //dayName.style.color = "black";
-      dayName.style.letterSpacing = 0.7;
-      console.log(valDay);
-      dayName.innerHTML = valDay;
-      return dayName;
-    }
-
 
     for (let i = 0; i < amountDays; i++) {
       const day = create_element('DIV', days, 'day');
       day.innerHTML = i + 1;
       day.textContent = i + 1;
 
+      selectedYearString = String(selectedYear);
+      selectedMonthString = String(selectedMonth + 1);
+      console.log(selectedMonthString);
+      selectedDayString = String(i+1);
+      let date = new Date(selectedMonthString + ', ' + selectedDayString + ', ' + selectedYearString);
+      console.log(date);
+      day.appendChild(formatDay(date.getDay()));
+
       if (selectedDay == (i + 1) && selectedMonth == month && selectedYear == year) {
         day.classList.add('selected');
       }
 
-      let date = new Date(selectedYear + '-' + (selectedMonth) + '-' + (i+1));
-      console.log(formatDay(date.getDay()));
-      day.appendChild(formatDay(date.getDay()));
-
-
-      console.log(date.getDay());
-
-      if (day.classList.contains('unavailable')) {
-      }
 
       let selectedDayValue = Number(day.innerHTML);
       let selectedMonthValue = month+1;
