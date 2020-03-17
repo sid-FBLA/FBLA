@@ -286,6 +286,10 @@
     border-radius: 20px;
   }
 
+  .date-picker .dates .days .selected .dayName {
+    color: white;
+  }
+
   .date-picker .set {
     position: absolute;
     font-size: 3rem;
@@ -575,10 +579,19 @@
     border-radius: 5px;
   }
 
+  .date-picker .dates .days .day:hover > .dayName {
+    color: #f10000;
+  }
+
   .date-picker .dates .days .unavailable:hover {
     background-color: #666666;
     opacity: 0.7;
+    border-radius: 0;
     border: none;
+    color: black;
+  }
+
+  .date-picker .dates .days .unavailable:hover > .dayName {
     color: black;
   }
 
