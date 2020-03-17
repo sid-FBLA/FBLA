@@ -36,8 +36,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     logo.style.order = 2;
 
     mainNav.style.position = "fixed";
-    mainNav.style.width = "100%";
-    mainNav.style.top = 0;
+    mainNav.style.width = "101%";
+    mainNav.style.top = "-3px";
+    mainNav.style.left = "-0.5%";
     mainNav.style.justifyContent = "space-between";
     mainNav.style.display = "flex";
     mainNav.style.border = "none";

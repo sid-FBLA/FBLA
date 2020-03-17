@@ -36,12 +36,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
     logo.style.order = 2;
 
     mainNav.style.position = "fixed";
-    mainNav.style.width = "100%";
+    mainNav.style.width = "101%";
+    mainNav.style.top = "-3px";
+    mainNav.style.left = "-0.5%";
     mainNav.style.top = 0;
     mainNav.style.justifyContent = "space-between";
     mainNav.style.display = "flex";
     mainNav.style.border = "none";
     mainNav.style.boxShadow = "0rem 0.2rem 0.4rem 0.2rem rgba(0, 0, 0, 0.1)";
+    mainNav.style.top = "-1px";
     heading.style.fontSize = "3rem";
     heading.style.width = "100%";
     heading.style.paddingTop = "3rem";

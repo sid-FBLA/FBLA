@@ -136,7 +136,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   function create_image() {
     let img = create_element('img', contain);
     console.log(img);
-    img.src = '../../Images/down-arrow.png';
+    img.src = '../Images/down-arrow.png';
     img.width = 32;
     img.height = 32;
   }
