@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     var menu = document.createElement('img');
     console.log(menu);
-    menu.src = '../Images/menu.png';
+    menu.src = 'Images/menu.png';
     mainNav.appendChild(menu);
 
     //Styling and setting elements in header
