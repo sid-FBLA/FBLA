@@ -621,7 +621,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       valDay = "Sun";
     }
     if (val == 1) {
-      valDay = "Monday";
+      valDay = "Mon";
     }
     if (val == 2) {
       valDay = "Tue";
