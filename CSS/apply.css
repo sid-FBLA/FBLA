@@ -122,6 +122,7 @@
   }
 
   input[id="expander1"]:not(:checked) +label {
+    background-image: none;
     background-image: url("../Images/expand-down.png");
   }
 

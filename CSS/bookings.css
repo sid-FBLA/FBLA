@@ -11,6 +11,10 @@
 /* main heading */
 @media only screen and (min-width: 360px) {
 
+  select {
+    background-color: white;
+  }
+
   .container-booking {
     width: 80%;
     margin: auto;
