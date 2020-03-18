@@ -282,6 +282,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           if ($('.confirm-box').height() < mobileHeight) {
             confirmPosition.style.display = "block";
             $('.confirm-box').animate({height:mobileHeight}, 300);
+            confirmBox.style.maxHeight = "100vh";
           }
         }
 
@@ -334,7 +335,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       } else if($('#check-height').height() > 90) {
         const flashMessage = create_element('DIV', wrapper, 'flash-message');
-        flashMessage.innerHTML = "Make sure you have made a valid selection for each option."
+        flashMessage.innerHTML = "Make sure you have made a valid selection for each option.";
         flashMessage.setAttribute('ID', 'flashMessage');
         if ($(window).width() >= 1024) {
           wrapper.insertBefore(flashMessage, position);
