@@ -642,6 +642,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const dayName = document.createElement('DIV');
     dayName.classList.add('dayName');
     dayName.style.fontSize = 12;
+    if ($(window).width() < 1023) {
+      dayName.style.fontSize = 14;
+    }
     dayName.style.textTransform = "uppercase";
     dayName.style.marginBottom = 5;
     dayName.style.marginLeft = 5;

@@ -282,7 +282,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           if ($('.confirm-box').height() < mobileHeight) {
             confirmPosition.style.display = "block";
             $('.confirm-box').animate({height:mobileHeight}, 300);
-            confirmBox.style.maxHeight = "100vh";
+            confirm.style.maxHeight = "90vh";
           }
         }
 
