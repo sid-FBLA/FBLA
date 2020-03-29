@@ -145,23 +145,23 @@
     position: absolute;
     border: solid #f10000;
     border-width: 0 2px 2px 0;
-    transform: rotate(-135deg);
+    transform: rotate(-315deg);
     padding: 6px;
     right: 16px;
-    top: 54px;
+    top: 48px;
   }
 
-  .arrow-down {
+  .arrow-down/*This is actually arrow-up*/ {
+    transition-duration: 200ms;
+    top: 54px;
+    /*Rotates from original position so for a clockwise effect, this direction is required*/
+    transform: rotate(-135deg);
+  }
+
+  .arrow-up/*This is actually arrow-down*/ {
     transition-duration: 200ms;
     top: 48px;
-    /*Rotates from original position so for a clockwise effect, this direction is required*/
     transform: rotate(-315deg);
-  }
-
-  .arrow-up {
-    transition-duration: 200ms;
-    top: 54px;
-    transform: rotate(-135deg);
   }
 
   .disclaimer {
@@ -514,7 +514,7 @@
   #departure-location {
     font-size: 1rem;
     height: 5rem;
-    padding-right: 2rem;
+    padding-right: 2.5rem;
   }
 
   .selected-date,
@@ -532,11 +532,11 @@
   }
 
   .arrow {
-    top: 39px;
+    top: 33px;
   }
 
-  .arrow-down {
-    top: 33px;
+  .arrow-down /*this is actually arrow-up*/ {
+    top: 39px;
   }
 
   img[src*="down"] {
