@@ -686,10 +686,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
       selectedYearString = String(selectedYear);
       selectedMonthString = String(selectedMonth + 1);
-      console.log(selectedMonthString);
       selectedDayString = String(i+1);
       let date = new Date(selectedMonthString + ', ' + selectedDayString + ', ' + selectedYearString);
-      console.log(date);
       day.appendChild(formatDay(date.getDay()));
 
       if (selectedDay == (i + 1) && selectedMonth == month && selectedYear == year) {
@@ -702,6 +700,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
       today = new Date();
       var dd = today.getDate();
       var mm = today.getMonth()+1;
+      console.log(dd);
 
       day.addEventListener('click', function() {
         if(depIndex == 0) {
@@ -709,14 +708,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
             alert('Sorry, you can only fly on available dates, any dates marked in gray are unavailable.');
             return false;
           }
-          if (selectedMonthValue < mm || selectedDayValue < dd && selectedMonthValue <= mm) {
-            alert('You cannot book for a flight in the past.');
-            return false;
-          }
           selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
           selectedDay = (i + 1);
           selectedMonth = month;
           selectedYear = year;
+          if (selectedMonthValue < mm || selectedDay < dd && selectedMonthValue == mm) {
+            alert('You cannot book for a flight in the past.');
+            return false;
+          }
           selected_date.textContent = formatDate(selectedDate);
           selected_date.dataset.value = selectedDate;
           populateUnavailableDates();

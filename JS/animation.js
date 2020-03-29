@@ -63,15 +63,15 @@
 
     $('.animation img').show();
     $('.animation img').eq(0).animate({
-      left: leftoffset}, 1000, 'linear'
+      left: leftoffset}, 1000, 'swing'
     );
     //Technically their are 3 children, as their are two discount.png's just leave this alone
     $('.animation img').eq(2).delay(1000).animate({
-      left: leftoffset}, 1000, 'linear'
+      left: leftoffset}, 1000, 'swing'
     );
 
     $('.animation img').eq(4).delay(2000).animate({
-      left: leftoffset}, 1000, 'linear'
+      left: leftoffset}, 1000, 'swing'
     );
   }
 
