@@ -10,6 +10,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const departureLocation = document.querySelector('#departure-location');
     const arrivalLocation = document.querySelector('#arrival-location');
     const position = document.querySelector('.position');
+    const footer = document.querySelector('footer');
 
     const check1 = $('#arrival-location');
     const check2 = $('#time1');
@@ -314,10 +315,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
           confirmPosition.style.display = "none";
           $('.confirm-box').height(0);
           const flashMessage = create_element('DIV', wrapper, 'flash-message');
-          flashMessage.innerHTML = "Make sure you have made a valid selection for each option."
+          flashMessage.innerHTML = "Make sure you have made a valid selection for each option.";
           flashMessage.setAttribute('ID', 'flashMessage');
+          //This could be completely unnecessary
+          flashMessage.style.top = "-11.5rem";
           if ($(window).width() >= 1024) {
-            wrapper.insertBefore(flashMessage, position);
+           wrapper.insertAfter(flashMessage, position);
           }
           if ($('.flash-message').length > 1) {
             wrapper.removeChild(flashMessage);
@@ -326,7 +329,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             .hide()
             .slideDown(820)
             .delay(5000)
-            .slideUp(820);
+            //.slideUp(820);
           $('.position').addClass('shake');
           setTimeout(function() {
             $('.position').removeClass('shake');
@@ -337,8 +340,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const flashMessage = create_element('DIV', wrapper, 'flash-message');
         flashMessage.innerHTML = "Make sure you have made a valid selection for each option.";
         flashMessage.setAttribute('ID', 'flashMessage');
+        flashMessage.style.top = "-11.5rem";
         if ($(window).width() >= 1024) {
-          wrapper.insertBefore(flashMessage, position);
+          $('#flashMessage').insertAfter('.position');
         }
         if ($('.flash-message').length > 1) {
           wrapper.removeChild(flashMessage);
@@ -347,7 +351,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           .hide()
           .slideDown(820)
           .delay(5000)
-          .slideUp(820);
+          //.slideUp(820);
         $('.position').addClass('shake');
         setTimeout(function() {
           $('.position').removeClass('shake');
