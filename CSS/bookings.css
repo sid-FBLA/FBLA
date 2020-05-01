@@ -312,6 +312,22 @@
     border-color: #f10000;
   }
 
+  .date-picker .key {
+    position: relative;
+    display: flex;
+    left: 56px;
+    transform: translateY(-50%);
+  }
+
+  .date-picker .key div {
+    align-self: center;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #666666;
+    margin-right: 0.5rem;
+  }
+
   /* For PC*/
   .date-picker .dates .months .pointers:hover {
     transition: 200ms;

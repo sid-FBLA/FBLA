@@ -367,6 +367,15 @@ window.addEventListener('DOMContentLoaded', (event) => {
   set.style.top = dates_height;
   set.style.right = 46;
 
+  const setHeight = set.offsetHeight;
+
+  //KEY
+  const key_unavailable_container = create_element('DIV', date_picker, 'key');
+  const key_unavailable = create_element('DIV', key_unavailable_container);
+  const key_unavailable_text = create_element('H3', key_unavailable_container);
+  key_unavailable_container.style.top = dates_height + setHeight/2;
+  key_unavailable_text.innerHTML = "All dates marked in grey are unavailable";
+
   //Adding variables that are associated with elements in date-picker
   const monthsOfYear = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September',
 'October', 'November', 'December'];
@@ -535,9 +544,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
     populateUnavailableDates();
   }
 
-  let modifier = true;
-  //Unavailable dates for populateDates();
-  //selects days that are not available
 
   function populateUnavailableDates() {
     let arr = [
