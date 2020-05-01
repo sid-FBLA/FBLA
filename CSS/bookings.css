@@ -11,8 +11,18 @@
 /* main heading */
 @media only screen and (min-width: 360px) {
 
+  .box:hover {
+    transition-delay: 3000ms;
+    transition-duration: 77ms;
+    border-color: white;
+  }
+
   select {
     background-color: white;
+  }
+
+  select:hover {
+    cursor: pointer;
   }
 
   .container-booking {
@@ -103,6 +113,7 @@
 
   .selection:hover {
     border-color: #f10000;
+    cursor: pointer;
   }
 
   .selection option {
