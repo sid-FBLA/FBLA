@@ -30,8 +30,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
     menu.src = 'Images/menu.png';
     mainNav.appendChild(menu);
 
+    const closeMenu = document.createElement('img');
+    closeMenu.src = 'Images/close-main.png';
+    mainNav.appendChild(closeMenu);
+    closeMenu.style.display = 'none';
+
     //Styling and setting elements in header
     menu.style.order = 0;
+    closeMenu.style.order = 0;
     heading.style.order = 1;
     logo.style.order = 2;
 
@@ -58,6 +64,12 @@ window.addEventListener('DOMContentLoaded', (event) => {
     menu.style.width = 100;
     menu.style.marginTop = "1.5rem";
     menu.style.marginLeft = "2rem";
+    closeMenu.style.height = 100;
+    closeMenu.style.width = 100;
+    closeMenu.style.padding = 7;
+    closeMenu.style.marginTop = "1.5rem";
+    closeMenu.style.marginLeft = "2rem";
+
 
     const dropDownMargin = $('.nav-header').height();
 
@@ -71,15 +83,20 @@ window.addEventListener('DOMContentLoaded', (event) => {
       if ($('.main-nav').height() == 0) {
         dropdown.style.width = "100%";
         $('.main-nav').animate({height:"100vh"}, 500);
+        menu.style.display = 'none';
+        closeMenu.style.display = 'block';
       }
-
-      if ($('.main-nav').height() > 10) {
-        console.log("true");
-        setTimeout(function() {
-          dropdown.style.width = 0;
-        }, 500);
-        $('.main-nav').animate({height: 0}, 500);
-      }
+      closeMenu.addEventListener('click', function() {
+        if ($('.main-nav').height() > 10) {
+          console.log("true");
+          setTimeout(function() {
+            dropdown.style.width = 0;
+          }, 500);
+          $('.main-nav').animate({height: 0}, 500);
+        }
+        closeMenu.style.display = 'none';
+        menu.style.display = 'block';
+      })
     })
 
 
