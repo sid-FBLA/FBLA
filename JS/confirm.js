@@ -329,7 +329,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             .hide()
             .slideDown(820)
             .delay(5000)
-            //.slideUp(820);
+            .slideUp(820);
           $('.position').addClass('shake');
           setTimeout(function() {
             $('.position').removeClass('shake');
@@ -351,7 +351,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
           .hide()
           .slideDown(820)
           .delay(5000)
-          //.slideUp(820);
+          .slideUp(820);
         $('.position').addClass('shake');
         setTimeout(function() {
           $('.position').removeClass('shake');
