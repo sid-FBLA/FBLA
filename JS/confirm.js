@@ -318,9 +318,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
           flashMessage.innerHTML = "Make sure you have made a valid selection for each option.";
           flashMessage.setAttribute('ID', 'flashMessage');
           //This could be completely unnecessary
-          flashMessage.style.top = "-11.5rem";
+          flashMessage.style.top = "5.5rem";
           if ($(window).width() >= 1024) {
-           wrapper.insertAfter(flashMessage, position);
+           $('#flashMessage').insertAfter('.position');
+           flashMessage.style.top = "-11.5rem";
           }
           if ($('.flash-message').length > 1) {
             wrapper.removeChild(flashMessage);
@@ -340,9 +341,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
         const flashMessage = create_element('DIV', wrapper, 'flash-message');
         flashMessage.innerHTML = "Make sure you have made a valid selection for each option.";
         flashMessage.setAttribute('ID', 'flashMessage');
-        flashMessage.style.top = "-11.5rem";
+        flashMessage.style.top = "5.5rem";
         if ($(window).width() >= 1024) {
           $('#flashMessage').insertAfter('.position');
+          flashMessage.style.top = "-11.5rem";
         }
         if ($('.flash-message').length > 1) {
           wrapper.removeChild(flashMessage);
