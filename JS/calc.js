@@ -13,8 +13,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //Bradely International Airport
   const warwick = [41.7245, -71.4304];
   //TF Green International Airport
-  const wilmington = [34.2669, -77.9105];
-  //Wilmington International Airport
+  const wilmington = [39.6802, -75.6035];
+  //Wilmington Airport(aka New Castle Airport)
   const baltimore = [39.1774, -76.6684];
 
 
