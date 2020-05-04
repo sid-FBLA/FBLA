@@ -736,10 +736,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
             if (selectedMonthValue < mm || selectedDayValue < dd && selectedMonthValue <= mm) {
               alert('You cannot book for a flight in the past.');
               return false;
-            } //if you have time work on this statement so that if a user presses the arrival before he departs
-            // else if(selectedMonthValue <  || selectedDayValue <  && selectedMonthValue <= ) {
-            //   alert('Your arrival must be after your departure.')
-            // }
+            }
+            console.log(selected_date.dataset.value);
             selectedDate = new Date(year + '-' + (month + 1) + '-' + (i+1));
             selectedDay = (i + 1);
             selectedMonth = month;
@@ -751,6 +749,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
             selected_arrival_date.textContent = formatDate(selectedDate);
             selected_arrival_date.dataset.value = selectedDate;
+            if (selected_arrival_date.dataset.value < selected_date.dataset.value) {
+              alert("Your arrival must be after your departure");
+              return false;
+            }
             populateUnavailableDates();
             populateDates();
             populateUnavailableDates();
