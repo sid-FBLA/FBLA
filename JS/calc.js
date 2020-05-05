@@ -328,8 +328,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   const date_picker = create_element('DIV', contain_date_picker, 'date-picker');
 
   //Selects DIV for selected date, display formatted selected date
-  const selected_date = create_element('DIV', select3, 'selected-date');
-  const selected_arrival_date = create_element('DIV', select5, 'selected-date');
+  let selected_date = create_element('DIV', select3, 'selected-date');
+  let selected_arrival_date = create_element('DIV', select5, 'selected-date');
 
   //Creates DIV that holds all dates
   const dates = create_element('DIV', date_picker, 'dates');
@@ -396,6 +396,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
   let selectedArrivalDay = day;
   let selectedArrivalMonth = month;
   let selectedArrivalYear = year;
+
+  //Incase user books return after departure
+  selected_date.dataset.value = date;
+  console.log(selected_date.dataset.value);
 
   console.log(monthsOfYear[month]);
   mth.innerHTML = monthsOfYear[month] + ' ' + year;
@@ -574,7 +578,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         []
     ];
     var unavailableDates = arr[month];
-    console.log(unavailableDates);
 
     var unavailableArrDates = arr2[month];
 
@@ -603,10 +606,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       for (let i = 0; i < 6; i++) {
         $(".day:contains('" + unavailableDates[i] + "')").removeClass('unavailable');
         $(".day:contains('" + unavailableArrDates[i] + "')").addClass('unavailable');
-        console.log(unavailableArrDates[i]);
       }
       let unavailables = document.querySelectorAll('.unavailable');
-      console.log(unavailables.length);
       if (unavailables.length > 5) {
         $(".day:contains('23')").removeClass('unavailable');
         $(".day:contains('25')").removeClass('unavailable');
@@ -749,10 +750,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
             selected_arrival_date.textContent = formatDate(selectedDate);
             selected_arrival_date.dataset.value = selectedDate;
-            if (selected_arrival_date.dataset.value < selected_date.dataset.value) {
-              alert("Your arrival must be after your departure");
-              return false;
-            }
             populateUnavailableDates();
             populateDates();
             populateUnavailableDates();
