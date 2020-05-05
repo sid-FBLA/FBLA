@@ -8,3 +8,5 @@ View the project with this link: https://sid-fbla.github.io/FBLA/
 All of the icons taken from flaticon.com have been cited correctly by the Creative Commons Attribution 3.0 license (https://creativecommons.org/licenses/by/3.0/)
 
 Hope You Enjoy!!!
+
+Note: This project is not open for collaboration.
