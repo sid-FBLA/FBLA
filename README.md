@@ -9,4 +9,6 @@ All of the icons taken from flaticon.com have been cited correctly by the Creati
 
 Hope You Enjoy!!!
 
+This website is compatible with any screen size/resolution, however, it looks the best on 1920x1080 pixel computer screens.
+
 Note: This project is not open for collaboration.
