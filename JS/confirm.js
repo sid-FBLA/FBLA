@@ -411,7 +411,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     const adjustedRatioWidth = 1366/1920;
     const adjustedRatioHeight = 768/1080;
     adjustCalls = 0;
-    if (window.devicePixelRatio === 1) {
+    if (screen.width === 1366 && screen.height === 768) {
       confirm.style.overflow = 'scroll';
       console.log('hi');
       function adjust(item) {

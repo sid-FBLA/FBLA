@@ -20,6 +20,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
   console.log(window.devicePixelRatio);
 
   /*other global variables*/
+  console.log(screen.width);
+  console.log(screen.height);
 
 
   console.log("hi");
@@ -431,7 +433,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
     const adjustedRatioWidth = 1366/1920;
     const adjustedRatioHeight = 768/1080;
-    if (window.devicePixelRatio === 1) {
+    if (screen.width === 1366 && screen.height === 768) {
       console.log('hi');
       function adjust(item) {
         if (adjustCalls < 9) {
