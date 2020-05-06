@@ -286,7 +286,7 @@
 
   .height-full {
     transition: 500ms;
-    height: calc(100% - 154px);
+    height: 100%;
   }
 
   .close-position {
@@ -693,7 +693,7 @@
 
   .disclaimer {
     font-size: 0.75rem;
-    margin-top: 0.25rem;
+    margin-top: 0.25rem !important;
   }
 
   .confirm-content-background .confirm-submit {

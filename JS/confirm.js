@@ -49,7 +49,10 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     //Creating elements for confirm page
     const mobileHeight = 1850;
-    const pcHeight = 775;
+    let pcHeight = 775;
+    if (window.devicePixelRatio === 1) {
+      pcHeight = 760;
+    }
 
     //positions the confirmation "page" to fixed
     const confirmPosition = create_element('DIV', body, 'confirm-fixed');
@@ -403,5 +406,36 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
     console.log(calc(newark, hartford));
+
+    //Adjusting for screen sizes
+    const adjustedRatioWidth = 1366/1920;
+    const adjustedRatioHeight = 768/1080;
+    adjustCalls = 0;
+    if (window.devicePixelRatio === 1) {
+      confirm.style.overflow = 'scroll';
+      console.log('hi');
+      function adjust(item) {
+        if (adjustCalls < 9) {
+          let width = item.offsetWidth;
+          let newWidth = width*adjustedRatioWidth
+          item.style.offsetWidth = newWidth;
+          let height = item.offsetHeight;
+          console.log(height);
+          let newHeight = height*adjustedRatioHeight;
+          console.log(newHeight);
+          item.style.offsetHeight = newHeight;
+          let newHeightString = String(newHeight);
+          console.log(newHeightString);
+          item.setAttribute('style', 'height: ' + newHeightString);
+          adjustCalls++;
+        }
+      };
+      confirm.style.overflow = 'scroll';
+      // $('.confirm-submit').css('position', 'static');
+      confirmPrice.style.marginBottom = "12rem";
+      // // goBack.setAttribute('bottom', '0');
+      // // submit.setAttribute('bottom', '0');
+
+    }
 
 });

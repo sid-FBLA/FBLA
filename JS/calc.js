@@ -17,7 +17,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //Wilmington Airport(aka New Castle Airport)
   const baltimore = [39.1774, -76.6684];
 
-
+  console.log(window.devicePixelRatio);
 
   /*other global variables*/
 
@@ -337,7 +337,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   //Creates DIV that holds all months
   const months = create_element('DIV', dates, 'months');
 
-  //Creates DIVs that allow the user to swithc between months
+  //Creates DIVs that allow the user to switch between months
   const prevMonth = create_element('DIV', months, 'pointers');
   prevMonth.classList.add('prev-mth');
   prevMonth.innerHTML = '&lt;';
@@ -419,6 +419,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
   populateUnavailableDates();
 
   //Event Listeners that relate exclusively to date picker
+  let adjustCalls = 0;
   function toggleDatePickerDisplay(e) {
     e.stopPropagation();
     if (contain_date_picker.classList.contains('height-none')) {
@@ -428,6 +429,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
       contain_date_picker.classList.remove('height-full');
       contain_date_picker.classList.add('height-none');
     }
+    const adjustedRatioWidth = 1366/1920;
+    const adjustedRatioHeight = 768/1080;
+    if (window.devicePixelRatio === 1) {
+      console.log('hi');
+      function adjust(item) {
+        if (adjustCalls < 9) {
+          let width = item.offsetWidth;
+          let newWidth = width*adjustedRatioWidth
+          item.style.offsetWidth = newWidth;
+          let height = item.offsetHeight;
+          console.log(height);
+          let newHeight = height*adjustedRatioHeight;
+          console.log(newHeight);
+          item.style.offsetHeight = newHeight;
+          let newHeightString = String(newHeight);
+          console.log(newHeightString);
+          item.setAttribute('style', 'height: ' + newHeightString);
+          adjustCalls++;
+        }
+      };
+      console.log(heading_div.offsetHeight);
+      console.log(dates.offsetHeight);
+      adjust(heading_div);
+      adjust(date_picker);
+      adjust(dates);
+      adjust(months);
+      adjust(prevMonth);
+      adjust(mth);
+      adjust(nextMonth);
+      adjust(days);
+      adjust(close);
+      close.style.position = 'relative';
+      close.style.top = "0.5rem";
+      close.style.left = "0.5rem";
+      console.log(heading_div.offsetHeight);
+      console.log(dates.offsetHeight)
+      set.style.top = dates.offsetHeight;
+      key_unavailable_container.style.top = dates.offsetHeight + setHeight/2;
+      }
   }
 
 //This line may be useless
@@ -679,8 +719,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     if (month == 0 || month == 2 || month == 4 || month == 6 || month == 7 || month == 9 || month == 11) {
       amountDays = 31;
-      days.style.height = 623.5;
-      if ($(window).width() >= 1023) {
+      //days.style.height = 623.5;
+      if ($(window).width() >= 1023 && (window.devicePixelRatio === 2)) {
         days.style.height = 400;
       }
     }
@@ -909,8 +949,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
       });
 
 
-
   }
+
 
 
 
